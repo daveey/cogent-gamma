@@ -1,6 +1,6 @@
-"""Alpha policy: optimized semantic heuristic for CvC.
+"""CvC agent policy: optimized semantic heuristic.
 
-AlphaCogAgentPolicy extends SemanticCogAgentPolicy with:
+CogletAgentPolicy extends SemanticCogAgentPolicy with:
 - Resource-aware macro directives (mine least-available resource)
 - Phase-based pressure budgets (aligner/scrambler allocation over time)
 - Miner safety retreat logic
@@ -33,8 +33,8 @@ def _least_resource(resources: dict[str, int]) -> str:
     return min(_ELEMENTS, key=lambda r: resources[r])
 
 
-class AlphaCogAgentPolicy(SemanticCogAgentPolicy):
-    """Optimized agent policy: aggressive alignment with scrambler defense."""
+class CogletAgentPolicy(SemanticCogAgentPolicy):
+    """Per-agent policy with optimized heuristics."""
 
     def _macro_directive(self, state: MettagridState) -> MacroDirective:
         resources = _shared_resources(state)
@@ -65,13 +65,13 @@ class AlphaCogAgentPolicy(SemanticCogAgentPolicy):
         return False
 
 
-class AlphaCyborgPolicy(MettagridSemanticPolicy):
-    """Semantic heuristic policy — no LLM dependencies."""
+class CogletBasePolicy(MettagridSemanticPolicy):
+    """Base MultiAgentPolicy using CogletAgentPolicy per agent."""
     short_names: list[str] | None = None
 
     def agent_policy(self, agent_id: int) -> AgentPolicy:
         if agent_id not in self._agent_policies:
-            self._agent_policies[agent_id] = AlphaCogAgentPolicy(
+            self._agent_policies[agent_id] = CogletAgentPolicy(
                 self.policy_env_info,
                 agent_id=agent_id,
                 world_model=SharedWorldModel(),
