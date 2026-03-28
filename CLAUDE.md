@@ -7,9 +7,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **metta-ai/cogos** — CogOS operating system
 - **metta-ai/cogora** — Cogora platform
 
-## Project Status
+## Project Structure
 
-This repo is in early design phase — no source code yet, only architecture docs in `docs/`.
+```
+src/coglet/     # Framework: Coglet base class + mixins
+cogames/        # CvC player: Coach, PlayerCoglet, PolicyCoglet
+docs/           # Architecture design docs
+```
 
 ## Architecture
 
@@ -22,26 +26,36 @@ A Coglet is both: every COG is itself a LET under a higher COG, forming a recurs
 
 ### Communication Model
 
-- **Data plane**: `@on_message(channel)` — receive data from named channels
-- **Control plane**: `@on_enact(command_type)` — receive commands from supervising COG
-- **Output**: `transmit(channel, result)` — push results outbound
-- **Supervision**: `observe(let_id, channel)`, `guide(let_id, command)`, `create(config)`
-- All communication is async, location-agnostic, fire-and-forget (guide has no return value; observe is the only feedback path)
+- **Data plane**: `@listen(channel)` — receive data from named channels
+- **Control plane**: `@enact(command_type)` — receive commands from supervising COG
+- **Output**: `transmit(channel, data)` — push results outbound
+- **Supervision**: `observe(handle, channel)`, `guide(handle, command)`, `create(config)`
+- All communication is async, location-agnostic, fire-and-forget
 
 ### Mixins
 
-Optional capabilities any Coglet can compose: LifeLet (lifecycle hooks), GitLet (repo-as-policy with git patches), LogLet (separate log stream), TickLet (`@every` decorator for periodic behavior), CodeLet (mutable function table), MulLet (fan-out N identical LETs behind one handle with map/reduce).
+LifeLet (lifecycle hooks), GitLet (repo-as-policy), LogLet (log stream), TickLet (`@every` periodic), CodeLet (mutable function table), MulLet (fan-out N children).
 
-### Tournament System (`docs/tournament.md`)
+### CvC Player Stack
 
-Two independent hierarchies meeting at an interface boundary:
+Coach (Claude Code) → PlayerCoglet (GitLet) → PolicyCoglet (CodeLet + LLM brain)
 
-**User side**: Coach (Claude Code prompt) → PlayerCoglet (GitLet) → PolicyCoglet (CodeLet)
+### Key Commands
 
-**Softmax side**: TournamentCoglet → MulLet(GameCoglets) → EpisodeCoglet → EnvCoglet + MulLet(players)
+```bash
+# Play locally
+cogames play -m machina_1 -p class=cvc.cvc_policy.CogletPolicy -c 8 --seed 42
 
-Key design points:
-- Tournament and PlayGround share the same `register(policy_config) → CogletHandle` interface
-- Round boundary is the sync point — Coach improves policy between rounds
-- Games within a round run in parallel via MulLet
-- Trust boundary: Softmax owns infrastructure; user policies run sandboxed inside it
+# Upload to tournament
+cogames upload -p class=cvc.cvc_policy.CogletPolicy -n coglet-v0 \
+  -f cvc -f mettagrid_sdk -f setup_policy.py \
+  --setup-script setup_policy.py --season beta-cvc
+```
+
+### Docs
+
+- [README.md](README.md) — Project overview and quickstart
+- [docs/coglet.md](docs/coglet.md) — Architecture design (COG/LET primitives)
+- [docs/framework.md](docs/framework.md) — Framework implementation reference
+- [docs/tournament.md](docs/tournament.md) — Tournament system design
+- [docs/cvc-player.md](docs/cvc-player.md) — CvC player system (Coach, Player, Policy)

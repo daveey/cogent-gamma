@@ -72,15 +72,15 @@ class PlayerCoglet(Coglet, GitLet):
         self.llm = self.config.llm
         self.history = []
 
-    @on_message("score")
+    @listen("score")
     def handle_score(self, data):
         self.history.append(data)
 
-    @on_message("replay")
+    @listen("replay")
     def handle_replay(self, data):
         self.history.append(data)
 
-    @on_message("logs")
+    @listen("logs")
     def handle_logs(self, data):
         self.history.append(data)
 
@@ -96,7 +96,7 @@ class PlayerCoglet(Coglet, GitLet):
             self.guide(self.policy, Command("commit", patch))
             self.history = []
 
-    @on_enact("patch")
+    @enact("patch")
     def handle_patch(self, patch):
         # Coach (Claude Code) can direct improvements via patches
         self.guide(self.policy, Command("commit", patch))
@@ -115,7 +115,7 @@ class PolicyCoglet(Coglet, CodeLet):
         self.inventory_history = []
         self.tick = 0
 
-    @on_message("obs")
+    @listen("obs")
     def step(self, obs):
         action = self.functions["step"](obs)
         self.transmit("action", action)
@@ -126,7 +126,7 @@ class PolicyCoglet(Coglet, CodeLet):
             self.inventory_history.append(new_inventory)
             self.inventory = new_inventory
 
-    @on_enact("register")
+    @enact("register")
     def register(self, funcs: dict[str, Callable]):
         self.functions.update(funcs)
 
@@ -153,11 +153,11 @@ class PolicyCog(Coglet, CodeLet):
         # return a config for a PolicyLet bound to this COG's function table
         return PolicyLetConfig(functions=self.functions, cog=self)
 
-    @on_message("inventory")
+    @listen("inventory")
     def handle_inventory(self, data):
         self.inventory_history.append(data)
 
-    @on_enact("register")
+    @enact("register")
     def register(self, funcs: dict[str, Callable]):
         self.functions.update(funcs)
         # push updated functions to all vended PolicyLets
@@ -177,7 +177,7 @@ class PolicyLet(Coglet, CodeLet):
         self.inventory = {}
         self.tick = 0
 
-    @on_message("obs")
+    @listen("obs")
     def step(self, obs):
         action = self.functions["step"](obs)
         self.transmit("action", action)
@@ -188,7 +188,7 @@ class PolicyLet(Coglet, CodeLet):
             self.transmit("inventory", new_inventory)
             self.inventory = new_inventory
 
-    @on_enact("register")
+    @enact("register")
     def register(self, funcs: dict[str, Callable]):
         self.functions.update(funcs)
 ```
@@ -275,7 +275,7 @@ class GameCoglet(Coglet):
                 env=self.config.env
             ))
 
-    @on_message("score")
+    @listen("score")
     def handle_score(self, result):
         self.scores.append(result)
         if len(self.scores) == self.config.episodes_per_game:
@@ -302,19 +302,19 @@ class EpisodeCoglet(Coglet):
         # wire env → players → env
         # env transmits observations, players transmit actions
 
-    @on_message("obs")
+    @listen("obs")
     def handle_obs(self, data):
         # env produced observations, route to players
         self.guide(self.players, Command("step", data))
         self.replay.append(data)
 
-    @on_message("action")
+    @listen("action")
     def handle_action(self, data):
         # players produced actions, route to env
         self.guide(self.env, Command("step", data))
         self.replay.append(data)
 
-    @on_message("done")
+    @listen("done")
     def handle_done(self, data):
         self.transmit("score", data.scores)
         self.transmit("replay", self.replay)
@@ -329,7 +329,7 @@ class EnvCoglet(Coglet):
         obs = self.env.reset()
         self.transmit("obs", obs)
 
-    @on_enact("step")
+    @enact("step")
     def step(self, actions):
         obs, rewards, done, info = self.env.step(actions)
         self.transmit("obs", obs)

@@ -22,23 +22,23 @@ Event-driven. The framework owns the channels and dispatches to the Coglet.
 
 | Method | Caller | Purpose |
 |---|---|---|
-| `@on_message(channel)` | framework | Decorator: register a handler for a named data channel |
-| `@on_enact(command_type)` | COG (via framework) | Decorator: register a handler for a named control command |
+| `@listen(channel)` | framework | Decorator: register a handler for a named data channel |
+| `@enact(command_type)` | COG (via framework) | Decorator: register a handler for a named control command |
 | `transmit(channel, result)` | self | Push output to a named channel |
 
-`@on_message` is the data plane. `@on_enact` is the control plane. `transmit` is the only outbound call.
+`@listen` is the data plane. `@enact` is the control plane. `transmit` is the only outbound call.
 
 ```python
 class MyCoglet(Coglet):
-    @on_message("obs")
+    @listen("obs")
     def handle_obs(self, data):
         self.transmit("action", self.decide(data))
 
-    @on_message("score")
+    @listen("score")
     def handle_score(self, data):
         self.history.append(data)
 
-    @on_enact("reload")
+    @enact("reload")
     def reload(self):
         self.load_config()
 ```
@@ -136,16 +136,16 @@ Useful for COGs that need to periodically observe their fleet and decide on inte
 
 ### 6.5 CodeLet
 
-The Coglet's behavior is a `dict[str, Callable]`. Functions are registered and replaced at runtime via `@on_enact("register")`. No repo, no serialization — just live Python functions in a dict.
+The Coglet's behavior is a `dict[str, Callable]`. Functions are registered and replaced at runtime via `@enact("register")`. No repo, no serialization — just live Python functions in a dict.
 
 ```python
 class MyPolicy(Coglet, CodeLet):
-    @on_message("obs")
+    @listen("obs")
     def step(self, obs):
         action = self.functions["step"](obs)
         self.transmit("action", action)
 
-    @on_enact("register")
+    @enact("register")
     def register(self, funcs: dict[str, Callable]):
         self.functions.update(funcs)
 ```
