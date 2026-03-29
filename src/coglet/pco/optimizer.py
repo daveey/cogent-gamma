@@ -32,6 +32,7 @@ class ProximalCogletOptimizer(Coglet, LifeLet):
         losses: list[LossCoglet],
         constraints: list[ConstraintCoglet],
         learner: LearnerCoglet,
+        max_retries: int = 3,
         **kwargs: Any,
     ) -> None:
         super().__init__(**kwargs)
@@ -40,6 +41,7 @@ class ProximalCogletOptimizer(Coglet, LifeLet):
         self._losses = losses
         self._constraints = constraints
         self._learner = learner
+        self._max_retries = max_retries
         self._actor_handle: CogletHandle | None = None
         self._critic_handle: CogletHandle | None = None
 
@@ -75,33 +77,45 @@ class ProximalCogletOptimizer(Coglet, LifeLet):
             signal = await asyncio.wait_for(sub.get(), timeout=timeout)
             signals.append(signal)
 
-        # 4. Learner: dispatch signals, collect update
-        update_sub = self._learner._bus.subscribe("update")
-        await self._learner._dispatch_listen("signals", signals)
-        update = await asyncio.wait_for(update_sub.get(), timeout=timeout)
-
-        # 5. Constraints: dispatch patch to each, collect verdicts
-        verdicts = []
-        verdict_subs = []
-        for constraint in self._constraints:
-            sub = constraint._bus.subscribe("verdict")
-            verdict_subs.append(sub)
-            await constraint._dispatch_listen("update", update)
-
-        for sub in verdict_subs:
-            verdict = await asyncio.wait_for(sub.get(), timeout=timeout)
-            verdicts.append(verdict)
-
-        # 6. Check acceptance
-        accepted = all(v.get("accepted", False) for v in verdicts)
+        # 4-6. Learner -> Constraints loop with retries
+        accepted = False
         reason = None
-        if not accepted:
+        update = None
+        learner_signals = signals
+
+        for _attempt in range(self._max_retries):
+            # 4. Learner: dispatch signals, collect update
+            update_sub = self._learner._bus.subscribe("update")
+            await self._learner._dispatch_listen("signals", learner_signals)
+            update = await asyncio.wait_for(update_sub.get(), timeout=timeout)
+
+            # 5. Constraints: dispatch patch to each, collect verdicts
+            verdicts = []
+            verdict_subs = []
+            for constraint in self._constraints:
+                sub = constraint._bus.subscribe("verdict")
+                verdict_subs.append(sub)
+                await constraint._dispatch_listen("update", update)
+
+            for sub in verdict_subs:
+                verdict = await asyncio.wait_for(sub.get(), timeout=timeout)
+                verdicts.append(verdict)
+
+            # 6. Check acceptance
+            accepted = all(v.get("accepted", False) for v in verdicts)
+            if accepted:
+                reason = None
+                break
+
             reasons = [
                 v.get("reason", "rejected")
                 for v in verdicts
                 if not v.get("accepted", False)
             ]
             reason = "; ".join(reasons)
+
+            # Feed rejection back as additional signal for next attempt
+            learner_signals = signals + [{"rejection": reason}]
 
         # 7. If accepted, apply update to actor and critic
         if accepted:
