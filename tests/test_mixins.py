@@ -1,4 +1,4 @@
-"""Unit tests for all mixins: LifeLet, TickLet, CodeLet, GitLet, LogLet, MulLet, SuppressLet."""
+"""Unit tests for all mixins: LifeLet, TickLet, ProgLet, GitLet, LogLet, MulLet, SuppressLet."""
 from __future__ import annotations
 
 import asyncio
@@ -11,7 +11,7 @@ import pytest
 
 from coglet import (
     Coglet, CogletConfig, CogletRuntime, Command,
-    LifeLet, TickLet, CodeLet, GitLet, LogLet, MulLet, SuppressLet,
+    LifeLet, TickLet, ProgLet, Program, GitLet, LogLet, MulLet, SuppressLet,
     listen, enact, every,
 )
 
@@ -139,42 +139,42 @@ def test_ticklet_minute_unit():
     assert interval == 1
 
 
-# ======== CodeLet ========
+# ======== ProgLet ========
 
-class PolicyCodeLet(Coglet, CodeLet):
+class PolicyProgLet(Coglet, ProgLet):
     pass
 
 
 @pytest.mark.asyncio
-async def test_codelet_register():
-    cog = PolicyCodeLet()
-    assert cog.functions == {}
+async def test_proglet_register():
+    cog = PolicyProgLet()
+    assert cog.programs == {}
 
     def my_fn(x):
         return x * 2
 
-    await cog._dispatch_enact(Command("register", {"double": my_fn}))
-    assert "double" in cog.functions
-    assert cog.functions["double"](5) == 10
+    await cog._dispatch_enact(Command("register", {"double": Program(executor="code", fn=my_fn)}))
+    assert "double" in cog.programs
+    assert await cog.invoke("double", 5) == 10
 
 
 @pytest.mark.asyncio
-async def test_codelet_update():
-    cog = PolicyCodeLet()
-    await cog._dispatch_enact(Command("register", {"f": lambda x: x}))
-    await cog._dispatch_enact(Command("register", {"f": lambda x: x + 1}))
-    assert cog.functions["f"](0) == 1
+async def test_proglet_update():
+    cog = PolicyProgLet()
+    await cog._dispatch_enact(Command("register", {"f": Program(executor="code", fn=lambda x: x)}))
+    await cog._dispatch_enact(Command("register", {"f": Program(executor="code", fn=lambda x: x + 1)}))
+    assert await cog.invoke("f", 0) == 1
 
 
 @pytest.mark.asyncio
-async def test_codelet_multiple():
-    cog = PolicyCodeLet()
+async def test_proglet_multiple():
+    cog = PolicyProgLet()
     await cog._dispatch_enact(Command("register", {
-        "add": lambda a, b: a + b,
-        "mul": lambda a, b: a * b,
+        "add": Program(executor="code", fn=lambda a: a[0] + a[1]),
+        "mul": Program(executor="code", fn=lambda a: a[0] * a[1]),
     }))
-    assert cog.functions["add"](2, 3) == 5
-    assert cog.functions["mul"](2, 3) == 6
+    assert await cog.invoke("add", (2, 3)) == 5
+    assert await cog.invoke("mul", (2, 3)) == 6
 
 
 # ======== GitLet ========

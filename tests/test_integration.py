@@ -10,7 +10,7 @@ import pytest
 
 from coglet import (
     Coglet, CogletConfig, CogletHandle, CogletRuntime, CogletTrace,
-    Command, LifeLet, TickLet, CodeLet, LogLet, MulLet, SuppressLet,
+    Command, LifeLet, TickLet, ProgLet, Program, LogLet, MulLet, SuppressLet,
     listen, enact, every,
 )
 
@@ -164,27 +164,26 @@ async def test_suppress_channels_while_logging():
     await rt.shutdown()
 
 
-# ---- Integration: CodeLet hot-swap ----
+# ---- Integration: ProgLet hot-swap ----
 
-class HotSwapPolicy(Coglet, CodeLet, LifeLet):
+class HotSwapPolicy(Coglet, ProgLet, LifeLet):
     def __init__(self, **kwargs: Any):
         super().__init__(**kwargs)
         self.results: list[Any] = []
 
     async def on_start(self) -> None:
-        self.functions["process"] = lambda x: x.upper()
+        self.programs["process"] = Program(executor="code", fn=lambda x: x.upper())
 
     @listen("input")
     async def on_input(self, data: Any) -> None:
-        fn = self.functions.get("process")
-        if fn:
-            result = fn(data)
+        if "process" in self.programs:
+            result = await self.invoke("process", data)
             self.results.append(result)
             await self.transmit("output", result)
 
 
 @pytest.mark.asyncio
-async def test_codelet_hot_swap():
+async def test_proglet_hot_swap():
     rt = CogletRuntime()
     handle = await rt.spawn(CogletConfig(cls=HotSwapPolicy))
     cog: HotSwapPolicy = handle.coglet
@@ -197,7 +196,7 @@ async def test_codelet_hot_swap():
     assert result == "HELLO"
 
     # Hot-swap to reverse
-    await cog._dispatch_enact(Command("register", {"process": lambda x: x[::-1]}))
+    await cog._dispatch_enact(Command("register", {"process": Program(executor="code", fn=lambda x: x[::-1])}))
 
     await cog._dispatch_listen("input", "hello")
     result = await asyncio.wait_for(sub.get(), timeout=1.0)
@@ -375,7 +374,7 @@ async def test_restart_preserves_handle():
 
 # ---- Integration: multiple mixins on one coglet ----
 
-class KitchenSink(SuppressLet, Coglet, LifeLet, TickLet, CodeLet, LogLet):
+class KitchenSink(SuppressLet, Coglet, LifeLet, TickLet, ProgLet, LogLet):
     def __init__(self, **kwargs: Any):
         super().__init__(**kwargs)
         self.lifecycle_events: list[str] = []
@@ -383,7 +382,7 @@ class KitchenSink(SuppressLet, Coglet, LifeLet, TickLet, CodeLet, LogLet):
 
     async def on_start(self) -> None:
         self.lifecycle_events.append("start")
-        self.functions["greet"] = lambda name: f"hello {name}"
+        self.programs["greet"] = Program(executor="code", fn=lambda name: f"hello {name}")
 
     async def on_stop(self) -> None:
         self.lifecycle_events.append("stop")
@@ -394,9 +393,9 @@ class KitchenSink(SuppressLet, Coglet, LifeLet, TickLet, CodeLet, LogLet):
 
     @listen("input")
     async def on_input(self, data: Any) -> None:
-        fn = self.functions.get("greet")
-        if fn:
-            await self.transmit("output", fn(data))
+        if "greet" in self.programs:
+            result = await self.invoke("greet", data)
+            await self.transmit("output", result)
 
 
 @pytest.mark.asyncio
@@ -407,7 +406,7 @@ async def test_kitchen_sink():
     cog: KitchenSink = handle.coglet
 
     assert cog.lifecycle_events == ["start"]
-    assert "greet" in cog.functions
+    assert "greet" in cog.programs
 
     # Subscribe to outputs
     out_sub = cog._bus.subscribe("output")

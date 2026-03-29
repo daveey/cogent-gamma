@@ -1,7 +1,7 @@
-"""PolicyCoglet: CodeLet-based policy for cogames.
+"""PolicyCoglet: ProgLet-based policy for cogames.
 
 Bridges the Coglet framework to cogames' MultiAgentPolicy interface.
-The step function lives in the CodeLet function table and can be
+The step program lives in the ProgLet program table and can be
 rewritten by the LLM at runtime.
 """
 from __future__ import annotations
@@ -10,16 +10,16 @@ from dataclasses import dataclass
 from typing import Any, Callable, Optional
 
 from coglet.coglet import Coglet, listen, enact
-from coglet.codelet import CodeLet
+from coglet.proglet import ProgLet, Program
 from coglet.lifelet import LifeLet
 from coglet.ticklet import TickLet
 
 
-class PolicyCoglet(Coglet, CodeLet, LifeLet, TickLet):
+class PolicyCoglet(Coglet, ProgLet, LifeLet, TickLet):
     """Innermost execution layer for cogames.
 
-    Holds a mutable function table (CodeLet) whose "step" function
-    is called on each observation. The LLM can rewrite functions via
+    Holds a mutable program table (ProgLet) whose "step" program
+    is called on each observation. The LLM can rewrite programs via
     @enact("register").
     """
 
@@ -29,10 +29,9 @@ class PolicyCoglet(Coglet, CodeLet, LifeLet, TickLet):
 
     @listen("obs")
     async def handle_obs(self, data: Any) -> None:
-        step_fn = self.functions.get("step")
-        if step_fn is None:
+        if "step" not in self.programs:
             return
-        action = step_fn(data)
+        action = await self.invoke("step", data)
         await self.transmit("action", action)
         await self.tick()
 
