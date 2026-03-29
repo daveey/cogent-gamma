@@ -184,12 +184,11 @@ def run_solution(puzzle: dict, code: str) -> dict:
 
     passed_tests = 0
     first_error = None
-    for test_input, expected in puzzle["tests"]:
+    for test_case in puzzle["tests"]:
+        *inputs, expected = test_case
+        test_input = inputs[0] if len(inputs) == 1 else tuple(inputs)
         try:
-            if isinstance(test_input, tuple):
-                result = fn(*test_input)
-            else:
-                result = fn(test_input)
+            result = fn(*inputs) if len(inputs) > 1 else fn(inputs[0])
             if result == expected:
                 passed_tests += 1
             elif first_error is None:
@@ -468,3 +467,85 @@ def test_harness_catches_bad_solution():
     result = run_solution(puzzle, "def fizzbuzz(n): return str(n)")
     assert result["passed"] is False
     assert result["error"] is not None
+
+
+@pytest.mark.skipif(not _HAS_API_KEY, reason="ANTHROPIC_API_KEY not set")
+@pytest.mark.asyncio
+async def test_pco_llm_experiment():
+    """Full PCO experiment: 5 epochs of LLM-driven code improvement."""
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    runtime = CogletRuntime()
+    pco_handle = await runtime.spawn(CogletConfig(
+        cls=ProximalCogletOptimizer,
+        kwargs=dict(
+            actor_config=CogletConfig(cls=CodeGenActor, kwargs=dict(puzzles=PUZZLES)),
+            critic_config=CogletConfig(cls=CodeReviewCritic, kwargs=dict(puzzles=PUZZLES)),
+            losses=[ActorLoss(), CriticLoss()],
+            constraints=[MaxRewritesConstraint()],
+            learner=CodeGenLearner(),
+            max_retries=2,
+        ),
+    ))
+    pco = pco_handle.coglet
+
+    num_epochs = 5
+    metrics = []
+
+    print("\n  ┌───────┬──────────────────┬──────────────────┬──────────┐")
+    print("  │ Epoch │ Actor Pass Rate  │ Critic Accuracy  │ Accepted │")
+    print("  ├───────┼──────────────────┼──────────────────┼──────────┤")
+
+    for epoch in range(num_epochs):
+        result = await pco.run_epoch(timeout=120.0)
+
+        actor_signal = next((s for s in result["signals"] if s["name"] == "actor_loss"), {})
+        critic_signal = next((s for s in result["signals"] if s["name"] == "critic_loss"), {})
+
+        total = actor_signal.get("total", 15)
+        actor_pass = total - actor_signal.get("magnitude", 0)
+        critic_correct = total - critic_signal.get("magnitude", 0)
+
+        epoch_metrics = {
+            "epoch": epoch + 1,
+            "actor_pass_rate": actor_pass / total,
+            "actor_passed": actor_pass,
+            "critic_accuracy": critic_correct / total,
+            "critic_correct": critic_correct,
+            "total": total,
+            "accepted": result["accepted"],
+        }
+        metrics.append(epoch_metrics)
+
+        print(
+            f"  │   {epoch + 1}   │   {actor_pass:2d}/{total} ({epoch_metrics['actor_pass_rate']:5.0%})   "
+            f"│   {critic_correct:2d}/{total} ({epoch_metrics['critic_accuracy']:5.0%})   "
+            f"│ {'  yes   ' if result['accepted'] else '  no    '} │"
+        )
+
+    print("  └───────┴──────────────────┴──────────────────┴──────────┘")
+
+    # Write results
+    (RESULTS_DIR / "metrics.json").write_text(json.dumps(metrics, indent=2))
+
+    actor = pco._actor_handle.coglet
+    (RESULTS_DIR / "final_solutions.json").write_text(
+        json.dumps(actor.solutions, indent=2)
+    )
+
+    critic = pco._critic_handle.coglet
+    (RESULTS_DIR / "final_critic_strategy.txt").write_text(critic.strategy)
+
+    await runtime.shutdown()
+
+    # ── Assertions ─────────────────────────────────────
+    first = metrics[0]
+    last = metrics[-1]
+
+    print(f"\n  Actor improvement:  {first['actor_pass_rate']:.0%} → {last['actor_pass_rate']:.0%}")
+    print(f"  Critic improvement: {first['critic_accuracy']:.0%} → {last['critic_accuracy']:.0%}")
+
+    assert last["actor_pass_rate"] > first["actor_pass_rate"], \
+        f"Actor should improve: {first['actor_pass_rate']:.0%} → {last['actor_pass_rate']:.0%}"
+    assert last["actor_pass_rate"] >= 10 / 15, \
+        f"Actor should solve at least 10/15: got {last['actor_passed']}/15"
