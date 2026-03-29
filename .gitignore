@@ -9,3 +9,6 @@ uv.lock
 
 # Coach session data (ephemeral, regenerated each run)
 .coach/sessions/
+
+# Test experiment results (ephemeral)
+.tests/
