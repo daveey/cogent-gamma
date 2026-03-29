@@ -25,10 +25,19 @@ src/coglet/
 ├── loglet.py          # LogLet mixin (separate log channel with levels)
 ├── mullet.py          # MulLet mixin (fan-out N children, scatter/gather)
 ├── suppresslet.py     # SuppressLet mixin (gate channels/commands)
+├── weblet.py          # WebLet mixin + CogWebRegistry (graph visualization)
 └── trace.py           # CogletTrace (jsonl event recording)
 
+src/cogweb/            # CogWeb graph visualization UI
+├── __init__.py
+└── ui/
+    ├── __init__.py
+    ├── server.py      # CogWebUI (FastAPI + WebSocket server)
+    └── static/
+        └── index.html # Interactive SVG graph frontend
+
 cogames/               # CvC player: Coach, PlayerCoglet, PolicyCoglet
-tests/                 # 108 tests across unit + integration
+tests/                 # 200 tests across unit + integration
 docs/                  # Architecture and design docs
 ```
 
@@ -147,6 +156,65 @@ Order in the class definition matters (MRO). Mixins that override Coglet methods
 - Meta-commands (suppress/unsuppress) always pass through
 - Must appear before Coglet in MRO: `class MyLET(SuppressLet, Coglet): ...`
 
+#### weblet.py — CogWeb UI Registration
+- `WebLet` mixin — registers coglet with a `CogWebRegistry` for graph visualization
+- `CogWebRegistry` — holds live coglet references, builds snapshots on demand
+- `CogWebNode` — dataclass for one node's metadata (class, mixins, channels, children, config, status)
+- `CogWebSnapshot` — full graph (nodes + edges), serializable via `to_dict()`
+- `@enact("cogweb_status")` — lets COG or UI set node status ("running", "error", "stopped")
+- **Inert without registry** — if `cogweb` kwarg is not passed, the mixin is a no-op
+- **Live references** — registry stores coglet instances, not snapshots. `snapshot()` always
+  reflects current state (children, channels, etc.)
+- Cooperates with `LifeLet`: auto-registers in `on_start()`, deregisters in `on_stop()`
+- Records parent→child control edges when both parent and child have WebLet
+
+```python
+from coglet import Coglet, CogletConfig, CogletRuntime, LifeLet
+from coglet.weblet import CogWebRegistry, WebLet
+
+class MyNode(Coglet, WebLet, LifeLet):
+    async def on_start(self):
+        await super().on_start()
+        await self.create(CogletConfig(cls=Worker, kwargs={"cogweb": self._cogweb}))
+
+registry = CogWebRegistry()
+rt = CogletRuntime()
+await rt.spawn(CogletConfig(cls=MyNode, kwargs={"cogweb": registry}))
+snap = registry.snapshot()
+snap.to_dict()  # {"nodes": {...}, "edges": [...]}
+```
+
+### CogWeb UI — Graph Visualization Server
+
+`CogWebUI` wraps a `CogWebRegistry` with an HTTP/WebSocket server:
+
+```python
+from cogweb.ui import CogWebUI
+
+ui = CogWebUI(registry, host="0.0.0.0", port=8787)
+await ui.start()   # non-blocking background server
+# Open http://localhost:8787
+await ui.stop()
+```
+
+**Endpoints**:
+- `GET /` — serves the interactive graph UI (single-page SVG app)
+- `GET /api/graph` — JSON snapshot of the current graph
+- `WS /ws` — live WebSocket updates (pushes snapshots when graph changes)
+
+**WebSocket protocol**:
+- Server → client: `{"type": "snapshot", "data": {...}}` — full graph state
+- Client → server: `{"type": "refresh"}` — request immediate snapshot
+- Client → server: `{"type": "ping"}` → server responds `{"type": "pong"}`
+
+**UI features**:
+- Hierarchical auto-layout (COGs above, LETs below)
+- Pan/zoom with mouse wheel, drag nodes to reposition
+- Click nodes to inspect (class, mixins, handlers, channels, children, config)
+- Color-coded edges: blue solid = data, red dashed = control
+- Minimap for navigation in large graphs
+- Auto-reconnecting WebSocket with REST fallback
+
 ### trace.py — Event Recording
 
 - `CogletTrace(path)` — open a jsonl file for writing
@@ -162,7 +230,7 @@ Each line: `{"t": <seconds_since_start>, "coglet": "ClassName", "op": "transmit"
 PYTHONPATH=src python -m pytest tests/ -v
 ```
 
-108 tests, organized by component:
+200 tests, organized by component:
 - `test_channel.py` — Channel, ChannelSubscription, ChannelBus
 - `test_coglet.py` — Coglet base, decorators, dispatch, COG interface
 - `test_handle.py` — Command, CogletConfig, CogletHandle
@@ -170,6 +238,8 @@ PYTHONPATH=src python -m pytest tests/ -v
 - `test_mixins.py` — LifeLet, TickLet, ProgLet, GitLet, LogLet, MulLet
 - `test_improvements.py` — SuppressLet, tree, trace, ticker errors, restart, on_child_error
 - `test_integration.py` — multi-layer hierarchies, cross-mixin interactions
+- `test_weblet.py` — WebLet mixin, CogWebRegistry, live snapshots, edges
+- `test_cogweb_ui.py` — CogWebUI server (REST, WebSocket, runtime integration)
 
 ## Key Patterns
 

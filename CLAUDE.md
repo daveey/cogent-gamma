@@ -11,8 +11,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```
 src/coglet/     # Framework: Coglet base class + mixins
+src/cogweb/     # CogWeb: graph visualization UI (FastAPI + WebSocket + SVG)
 cogames/        # CvC player: Coach, PlayerCoglet, PolicyCoglet
-tests/          # 108 unit + integration tests (pytest + pytest-asyncio)
+tests/          # 200 unit + integration tests (pytest + pytest-asyncio)
 docs/           # Architecture design docs
 ```
 
@@ -37,7 +38,7 @@ A Coglet is both: every COG is itself a LET under a higher COG, forming a recurs
 
 ### Mixins
 
-LifeLet (lifecycle hooks), GitLet (repo-as-policy), LogLet (log stream), TickLet (`@every` periodic), ProgLet (unified program table with pluggable executors), MulLet (fan-out N children), SuppressLet (output gating).
+LifeLet (lifecycle hooks), GitLet (repo-as-policy), LogLet (log stream), TickLet (`@every` periodic), ProgLet (unified program table with pluggable executors), MulLet (fan-out N children), SuppressLet (output gating), WebLet (CogWeb UI registration).
 
 ### Runtime Features
 

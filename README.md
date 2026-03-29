@@ -21,10 +21,19 @@ src/coglet/          # Framework
   runtime.py         # CogletRuntime — boots and manages Coglet trees
   lifelet.py         # LifeLet mixin — on_start/on_stop lifecycle
   ticklet.py         # TickLet mixin — @every periodic scheduling
-  codelet.py         # CodeLet mixin — mutable function table
+  proglet.py         # ProgLet mixin — unified program table with executors
+  llm_executor.py    # LLMExecutor — multi-turn LLM conversations
   gitlet.py          # GitLet mixin — repo-as-policy with git patches
   loglet.py          # LogLet mixin — separate log stream
   mullet.py          # MulLet mixin — fan-out N children behind one handle
+  suppresslet.py     # SuppressLet mixin — COG-controlled output gating
+  weblet.py          # WebLet mixin — register with CogWeb UI for visualization
+
+src/cogweb/          # CogWeb graph visualization UI
+  ui/
+    server.py        # FastAPI + WebSocket server
+    static/
+      index.html     # Interactive SVG graph frontend
 
 cogames/             # CvC (Cogs vs Clips) game player
   cvc/
@@ -109,10 +118,12 @@ See [docs/coglet.md](docs/coglet.md) for the full architecture design.
 |---|---|
 | **LifeLet** | `on_start()` / `on_stop()` lifecycle hooks |
 | **TickLet** | `@every(interval, unit)` periodic scheduling |
-| **CodeLet** | `self.functions: dict[str, Callable]` — mutable at runtime |
+| **ProgLet** | Unified program table with pluggable executors |
 | **GitLet** | Repo-as-policy — patches applied as git commits |
 | **LogLet** | Separate log stream from transmit stream |
 | **MulLet** | Fan-out N identical children with map/reduce |
+| **SuppressLet** | COG-controlled output gating (subsumption) |
+| **WebLet** | Register with CogWeb UI for graph visualization |
 
 ## CvC Player Stack
 
@@ -131,6 +142,57 @@ PolicyCoglet (CogletPolicy)
   ├── Python heuristic (CogletAgentPolicy) — handles every step
   ├── LLM brain (Claude) — analyzes ~14x per episode
   └── Writes learnings to disk on episode end
+```
+
+## CogWeb — Graph Visualization
+
+CogWeb provides a browser-based UI for visualizing live coglet supervision trees.
+
+### Setup
+
+Add `WebLet` to any coglet and pass a shared `CogWebRegistry`:
+
+```python
+from coglet import Coglet, CogletConfig, CogletRuntime, LifeLet
+from coglet.weblet import CogWebRegistry, WebLet
+from cogweb.ui import CogWebUI
+
+class Supervisor(Coglet, WebLet, LifeLet):
+    async def on_start(self):
+        await super().on_start()
+        await self.create(CogletConfig(cls=Worker, kwargs={"cogweb": self._cogweb}))
+
+class Worker(Coglet, WebLet, LifeLet):
+    pass
+
+# Boot
+registry = CogWebRegistry()
+ui = CogWebUI(registry, port=8787)
+rt = CogletRuntime()
+
+await ui.start()
+await rt.spawn(CogletConfig(cls=Supervisor, kwargs={"cogweb": registry}))
+# Open http://localhost:8787
+```
+
+### Features
+
+- **Live graph** — nodes auto-register on start, deregister on stop
+- **Hierarchical layout** — parent COGs above, child LETs below
+- **Interactive** — pan, zoom, drag nodes, click to inspect
+- **Inspector panel** — shows class, mixins, @listen/@enact handlers, channels, children, restart config
+- **WebSocket updates** — graph refreshes automatically as coglets start/stop
+- **REST API** — `GET /api/graph` returns JSON snapshot
+
+### Without the UI
+
+Use `CogWebRegistry` standalone for programmatic introspection:
+
+```python
+registry = CogWebRegistry()
+# ... spawn WebLet-enabled coglets ...
+snap = registry.snapshot()
+print(snap.to_dict())  # {"nodes": {...}, "edges": [...]}
 ```
 
 ### How Scoring Works
