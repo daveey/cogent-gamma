@@ -334,13 +334,40 @@ def llm_call(prompt: str, *, system: str = "", max_tokens: int = 4096) -> str:
 
 
 def extract_json(text: str) -> Any:
-    """Extract JSON from LLM response, handling markdown code blocks."""
+    """Extract JSON from LLM response. Tries multiple strategies."""
     text = text.strip()
-    if text.startswith("```"):
+
+    # Strip markdown code fences
+    if "```" in text:
         lines = text.split("\n")
         lines = [l for l in lines if not l.strip().startswith("```")]
-        text = "\n".join(lines)
-    return json.loads(text)
+        text = "\n".join(lines).strip()
+
+    # Try direct parse
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+
+    # Try to find JSON object in the text
+    import re
+    # Find outermost { ... } allowing nested braces
+    depth = 0
+    start = None
+    for i, ch in enumerate(text):
+        if ch == "{":
+            if depth == 0:
+                start = i
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0 and start is not None:
+                try:
+                    return json.loads(text[start : i + 1])
+                except json.JSONDecodeError:
+                    start = None
+
+    raise json.JSONDecodeError("No valid JSON found", text, 0)
 
 
 # ── Coglets ──────────────────────────────────────────
@@ -517,6 +544,7 @@ class CodeGenLearner(LearnerCoglet):
         # puzzle_name → list of {"code": str, "error": str, "epoch": int}
         self._history: dict[str, list[dict]] = {}
         self._epoch = 0
+        self._last_critic_strategy = "Look for common bugs: off-by-one errors, missing edge cases, wrong return types."
 
     async def learn(self, experience, evaluation, signals):
         self._epoch += 1
@@ -593,33 +621,34 @@ class CodeGenLearner(LearnerCoglet):
             except (json.JSONDecodeError, ValueError):
                 pass
 
-        # Update critic strategy — append insights rather than replace
+        # Update critic strategy — only when there are false positives
+        # (predicted pass but actually failed). False negatives (predicted fail,
+        # actually pass) are less harmful — being cautious is fine.
         if critic_signal and critic_signal.get("wrong_predictions"):
             wrong = critic_signal["wrong_predictions"]
-            wrong_parts = []
-            for w in wrong:
-                wrong_parts.append(
-                    f"- {w['name']}: predicted {w['predicted']}, actually {w['actual']}"
-                    + (f" (error: {w['error']})" if w.get("error") else "")
+            false_positives = [w for w in wrong if w["predicted"] == "pass" and w["actual"] == "fail"]
+            false_negatives = [w for w in wrong if w["predicted"] == "fail" and w["actual"] == "pass"]
+
+            if false_positives or len(false_negatives) > 5:
+                wrong_parts = []
+                for w in false_positives:
+                    wrong_parts.append(f"- {w['name']}: you said PASS but it FAILED (error: {w.get('error', 'unknown')})")
+                for w in false_negatives[:5]:
+                    wrong_parts.append(f"- {w['name']}: you said FAIL but it actually PASSED")
+
+                prompt = (
+                    f"You are a code review critic. Your current strategy is:\n\"{self._last_critic_strategy}\"\n\n"
+                    f"You got {len(false_positives)} false positives and {len(false_negatives)} false negatives:\n"
+                    + "\n".join(wrong_parts)
+                    + "\n\nUpdate your strategy. Be SPECIFIC about what patterns to look for. "
+                    "Start with your existing strategy text and add/modify specific rules. "
+                    "Key insight: if you have many false negatives (said FAIL but passed), you are being too pessimistic — "
+                    "most well-structured code does pass. 2-4 sentences."
+                    "\n\nReturn ONLY the strategy text."
                 )
 
-            # Get the current strategy from the evaluation context
-            current_strategy = ""
-            if evaluation and "predictions" in evaluation:
-                # The critic's strategy is passed through indirectly
-                current_strategy = getattr(self, "_last_critic_strategy", "")
-
-            prompt = (
-                f"You are a code review critic. Current strategy:\n{current_strategy}\n\n"
-                "Your predictions were wrong for these puzzles:\n"
-                + "\n".join(wrong_parts)
-                + "\n\nWrite an IMPROVED evaluation strategy that ADDS specific new checks to your existing approach. "
-                "Keep what works, add what's missing. 2-4 sentences total."
-                "\n\nReturn ONLY the strategy text, no JSON or markdown."
-            )
-
-            new_critic_strategy = llm_call(prompt, max_tokens=300)
-            self._last_critic_strategy = new_critic_strategy
+                new_critic_strategy = llm_call(prompt, max_tokens=300)
+                self._last_critic_strategy = new_critic_strategy
 
         return {
             "solutions": new_solutions,
