@@ -319,8 +319,11 @@ def run_solution(puzzle: dict, code: str) -> dict:
 _HAS_API_KEY = bool(os.environ.get("ANTHROPIC_API_KEY"))
 
 
-def llm_call(prompt: str, *, system: str = "", max_tokens: int = 4096) -> str:
-    """Single Claude Sonnet call."""
+_LLM_TRACE: list[dict] = []  # global trace log for all LLM calls
+
+
+def llm_call(prompt: str, *, system: str = "", max_tokens: int = 4096, label: str = "") -> str:
+    """Single Claude Sonnet call. Logs to _LLM_TRACE."""
     client = anthropic.Anthropic()
     kwargs: dict[str, Any] = dict(
         model="claude-sonnet-4-20250514",
@@ -330,7 +333,16 @@ def llm_call(prompt: str, *, system: str = "", max_tokens: int = 4096) -> str:
     if system:
         kwargs["system"] = system
     response = client.messages.create(**kwargs)
-    return response.content[0].text
+    text = response.content[0].text
+    _LLM_TRACE.append({
+        "label": label,
+        "system": system,
+        "prompt": prompt,
+        "response": text,
+        "input_tokens": response.usage.input_tokens,
+        "output_tokens": response.usage.output_tokens,
+    })
+    return text
 
 
 def extract_json(text: str) -> Any:
@@ -414,7 +426,7 @@ class CodeGenActor(Coglet):
                 + "\n\n".join(puzzle_specs)
             )
 
-            response = llm_call(prompt, system="You are an expert Python programmer.", max_tokens=8192)
+            response = llm_call(prompt, system="You are an expert Python programmer.", max_tokens=8192, label="actor_init")
             try:
                 batch_solutions = extract_json(response)
                 self.solutions.update(batch_solutions)
@@ -462,7 +474,7 @@ class CodeReviewCritic(Coglet):
             + "\n\n".join(solution_texts)
         )
 
-        response = llm_call(prompt, system="You are a code reviewer predicting test outcomes.")
+        response = llm_call(prompt, system="You are a code reviewer predicting test outcomes.", label="critic_predict")
         try:
             predictions = extract_json(response)
         except (json.JSONDecodeError, ValueError):
@@ -615,7 +627,7 @@ class CodeGenLearner(LearnerCoglet):
                 + "\n\n".join(fix_parts)
             )
 
-            response = llm_call(prompt, system="You are an expert Python programmer fixing bugs.", max_tokens=8192)
+            response = llm_call(prompt, system="You are an expert Python programmer fixing bugs.", max_tokens=8192, label="learner_fix")
             try:
                 new_solutions = extract_json(response)
             except (json.JSONDecodeError, ValueError):
@@ -647,7 +659,7 @@ class CodeGenLearner(LearnerCoglet):
                     "\n\nReturn ONLY the strategy text."
                 )
 
-                new_critic_strategy = llm_call(prompt, max_tokens=300)
+                new_critic_strategy = llm_call(prompt, max_tokens=300, label="learner_critic_update")
                 self._last_critic_strategy = new_critic_strategy
 
         return {
