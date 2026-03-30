@@ -5,13 +5,18 @@ Commands:
     coglet runtime stop [--port PORT]
     coglet runtime status [--port PORT]
 
-    coglet create PATH.cog [--port PORT]          -> coglet_id
+    coglet create PATH.cog [--port PORT]                  -> name-xxxx
     coglet stop ID [--port PORT]
     coglet guide ID COMMAND [DATA] [--port PORT]
     coglet observe ID CHANNEL [--follow] [--port PORT]
-    coglet connect SRC_ID CHANNEL DEST_ID [--port PORT]
+    coglet link SRC_ID:CHANNEL DEST_ID:CHANNEL [--port]   wire channels
+    coglet unlink SRC_ID:CHANNEL DEST_ID:CHANNEL [--port]
+    coglet links [--port PORT]
 
-    coglet run PATH.cog [--trace PATH]            (one-shot, no daemon)
+    coglet run PATH.cog [--trace PATH]                    (one-shot, no daemon)
+
+IDs are "classname-xxxx" (e.g. counter-a3f1).
+Channel refs use "id:channel" syntax (e.g. counter-a3f1:count).
 
 MCP endpoint at /mcp.
 """
@@ -20,9 +25,11 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import hashlib
 import importlib
 import json
 import sys
+import time
 import tomllib
 from pathlib import Path
 from typing import Any
@@ -32,6 +39,35 @@ from coglet.runtime import CogletRuntime
 from coglet.trace import CogletTrace
 
 DEFAULT_PORT = 4510
+
+
+# ---------------------------------------------------------------------------
+# ID generation
+# ---------------------------------------------------------------------------
+
+def _make_id(class_name: str) -> str:
+    """Generate a human-readable id: lowered-classname-4hexchars."""
+    # Strip common suffixes for brevity
+    name = class_name
+    for suffix in ("Coglet", "Cog"):
+        if name.endswith(suffix) and len(name) > len(suffix):
+            name = name[: -len(suffix)]
+    name = name.lower()
+    # 4 hex chars from hash of name + time for uniqueness
+    h = hashlib.sha256(f"{class_name}{time.time_ns()}".encode()).hexdigest()[:4]
+    return f"{name}-{h}"
+
+
+# ---------------------------------------------------------------------------
+# Channel ref parsing: "coglet_id:channel_name"
+# ---------------------------------------------------------------------------
+
+def _parse_channel_ref(ref: str) -> tuple[str, str]:
+    """Parse 'id:channel' into (id, channel). Exits on bad format."""
+    if ":" not in ref:
+        sys.exit(f"error: expected 'id:channel', got '{ref}'")
+    parts = ref.split(":", 1)
+    return parts[0], parts[1]
 
 
 # ---------------------------------------------------------------------------
@@ -111,20 +147,25 @@ def create_app(trace_path: str | None = None):
 
     trace = CogletTrace(trace_path) if trace_path else None
     runtime = CogletRuntime(trace=trace)
-    registry: dict[str, tuple[Any, str, str]] = {}  # id -> (handle, cog_dir, class_name)
-    connections: list[tuple[str, str, str, asyncio.Task]] = []  # (src_id, ch, dest_id, task)
-    next_id = [0]
-
-    def alloc_id() -> str:
-        cid = str(next_id[0])
-        next_id[0] += 1
-        return cid
+    # id -> (handle, cog_dir, class_name)
+    registry: dict[str, tuple[Any, str, str]] = {}
+    # (src_id, src_ch, dest_id, dest_ch, task)
+    links: list[tuple[str, str, str, str, asyncio.Task]] = []
 
     def _lookup(coglet_id: str):
         entry = registry.get(coglet_id)
         if not entry:
             raise HTTPException(404, f"no coglet with id '{coglet_id}'")
         return entry
+
+    def _channels_for(coglet_id: str) -> list[str]:
+        """Return list of active channel names for a coglet."""
+        handle = _lookup(coglet_id)[0]
+        # Channels that have been transmitted on
+        bus_channels = list(handle.coglet._bus._subscribers.keys())
+        # Channels from @listen handlers
+        listen_channels = list(handle.coglet._listen_handlers.keys())
+        return sorted(set(bus_channels + listen_channels))
 
     @app.post("/create", operation_id="create_coglet")
     async def create_coglet(cog_dir: str):
@@ -134,8 +175,8 @@ def create_app(trace_path: str | None = None):
             raise HTTPException(404, f"'{cog_dir}' is not a directory")
         base = load_cogbase(path)
         handle = await runtime.spawn(base)
-        cid = alloc_id()
         class_name = type(handle.coglet).__name__
+        cid = _make_id(class_name)
         registry[cid] = (handle, str(path), class_name)
         return {"id": cid, "class": class_name}
 
@@ -143,15 +184,14 @@ def create_app(trace_path: str | None = None):
     async def stop_coglet(coglet_id: str):
         """Stop a running coglet by id."""
         handle, _, class_name = _lookup(coglet_id)
-        # Cancel any connections involving this coglet
         remaining = []
-        for src, ch, dest, task in connections:
+        for src, src_ch, dest, dest_ch, task in links:
             if src == coglet_id or dest == coglet_id:
                 task.cancel()
             else:
-                remaining.append((src, ch, dest, task))
-        connections.clear()
-        connections.extend(remaining)
+                remaining.append((src, src_ch, dest, dest_ch, task))
+        links.clear()
+        links.extend(remaining)
         await runtime._stop_coglet(handle.coglet)
         del registry[coglet_id]
         return {"msg": f"stopped {class_name} (id={coglet_id})"}
@@ -162,6 +202,19 @@ def create_app(trace_path: str | None = None):
         handle = _lookup(coglet_id)[0]
         await handle.guide(Command(type=command, data=data))
         return {"msg": f"sent '{command}' to {coglet_id}"}
+
+    @app.get("/channels/{coglet_id}", operation_id="list_channels")
+    async def list_channels(coglet_id: str):
+        """List all channels (transmit + @listen) for a coglet."""
+        handle, _, class_name = _lookup(coglet_id)
+        transmit_chs = list(handle.coglet._bus._subscribers.keys())
+        listen_chs = list(handle.coglet._listen_handlers.keys())
+        return {
+            "id": coglet_id,
+            "class": class_name,
+            "transmit": sorted(transmit_chs),
+            "listen": sorted(listen_chs),
+        }
 
     @app.get("/observe/{coglet_id}/{channel}", operation_id="observe_coglet")
     async def observe_coglet(coglet_id: str, channel: str):
@@ -179,61 +232,65 @@ def create_app(trace_path: str | None = None):
 
         return StreamingResponse(event_stream(), media_type="text/event-stream")
 
-    @app.post("/connect", operation_id="connect_channel")
-    async def connect_channel(src_id: str, channel: str, dest_id: str):
-        """Wire src coglet's channel output to dest coglet's @listen handler.
+    @app.post("/link", operation_id="link_channels")
+    async def link_channels(
+        src_id: str, src_channel: str, dest_id: str, dest_channel: str
+    ):
+        """Wire src's transmit channel to dest's @listen channel.
 
-        Every time src transmits on `channel`, the data is dispatched
-        to dest's @listen(channel) handler.
+        Every time src transmits on src_channel, the data is dispatched
+        to dest's @listen(dest_channel) handler.
         """
         src_handle = _lookup(src_id)[0]
-        dest_handle = _lookup(dest_id)[0]
-        sub = src_handle.coglet._bus.subscribe(channel)
+        _lookup(dest_id)  # validate dest exists
+        dest_handle = registry[dest_id][0]
+        sub = src_handle.coglet._bus.subscribe(src_channel)
 
         async def _pipe():
             try:
                 async for data in sub:
-                    await dest_handle.coglet._dispatch_listen(channel, data)
+                    await dest_handle.coglet._dispatch_listen(dest_channel, data)
             except asyncio.CancelledError:
                 pass
 
         task = asyncio.create_task(_pipe())
-        connections.append((src_id, channel, dest_id, task))
+        links.append((src_id, src_channel, dest_id, dest_channel, task))
         return {
-            "msg": f"connected {src_id}:{channel} -> {dest_id}",
-            "connections": len(connections),
+            "msg": f"{src_id}:{src_channel} -> {dest_id}:{dest_channel}",
         }
 
-    @app.delete("/connect", operation_id="disconnect_channel")
-    async def disconnect_channel(src_id: str, channel: str, dest_id: str):
-        """Remove a channel connection."""
+    @app.delete("/link", operation_id="unlink_channels")
+    async def unlink_channels(
+        src_id: str, src_channel: str, dest_id: str, dest_channel: str
+    ):
+        """Remove a channel link."""
         remaining = []
         found = False
-        for src, ch, dest, task in connections:
-            if src == src_id and ch == channel and dest == dest_id:
+        for s, sc, d, dc, task in links:
+            if s == src_id and sc == src_channel and d == dest_id and dc == dest_channel:
                 task.cancel()
                 found = True
             else:
-                remaining.append((src, ch, dest, task))
-        connections.clear()
-        connections.extend(remaining)
+                remaining.append((s, sc, d, dc, task))
+        links.clear()
+        links.extend(remaining)
         if not found:
-            raise HTTPException(404, "connection not found")
-        return {"msg": f"disconnected {src_id}:{channel} -> {dest_id}"}
+            raise HTTPException(404, "link not found")
+        return {"msg": f"unlinked {src_id}:{src_channel} -> {dest_id}:{dest_channel}"}
 
-    @app.get("/connections", operation_id="list_connections")
-    async def list_connections():
-        """List all active channel connections."""
+    @app.get("/links", operation_id="list_links")
+    async def list_links():
+        """List all active channel links."""
         return {
-            "connections": [
-                {"src": src, "channel": ch, "dest": dest}
-                for src, ch, dest, _ in connections
+            "links": [
+                {"src": s, "src_channel": sc, "dest": d, "dest_channel": dc}
+                for s, sc, d, dc, _ in links
             ]
         }
 
     @app.get("/status", operation_id="runtime_status")
     async def status():
-        """Show runtime status: tree, coglet list, and connections."""
+        """Show runtime status: tree, coglet list, and links."""
         coglets = []
         for cid, (handle, cog_dir, class_name) in registry.items():
             coglets.append({
@@ -241,27 +298,26 @@ def create_app(trace_path: str | None = None):
                 "class": class_name,
                 "cog_dir": cog_dir,
                 "children": len(handle.coglet._children),
+                "channels": _channels_for(cid),
             })
         return {
             "tree": runtime.tree(),
             "coglets": coglets,
-            "connections": [
-                {"src": src, "channel": ch, "dest": dest}
-                for src, ch, dest, _ in connections
+            "links": [
+                {"src": s, "src_channel": sc, "dest": d, "dest_channel": dc}
+                for s, sc, d, dc, _ in links
             ],
         }
 
     @app.get("/tree", operation_id="runtime_tree")
     async def tree():
-        """Return ASCII tree visualization of the coglet hierarchy."""
         return {"tree": runtime.tree()}
 
     @app.post("/shutdown", operation_id="shutdown_runtime")
     async def shutdown():
-        """Shut down the runtime and exit."""
         async def _shutdown():
             await asyncio.sleep(0.5)
-            for _, _, _, task in connections:
+            for _, _, _, _, task in links:
                 task.cancel()
             await runtime.shutdown()
             import os
@@ -294,16 +350,17 @@ def _post(port: int, path: str, **params) -> dict:
     import urllib.parse
     url = f"{_base_url(port)}{path}"
     if params:
-        url += "?" + urllib.parse.urlencode({k: v for k, v in params.items() if v is not None})
+        url += "?" + urllib.parse.urlencode(
+            {k: v for k, v in params.items() if v is not None})
     req = urllib.request.Request(url, method="POST", data=b"")
     try:
         with urllib.request.urlopen(req) as resp:
             return json.loads(resp.read().decode())
-    except urllib.error.URLError as e:
-        sys.exit(f"error: cannot connect to runtime on port {port}: {e}")
     except urllib.error.HTTPError as e:
         body = json.loads(e.read().decode())
         sys.exit(f"error: {body.get('detail', body)}")
+    except urllib.error.URLError as e:
+        sys.exit(f"error: cannot connect to runtime on port {port}: {e}")
 
 
 def _delete(port: int, path: str, **params) -> dict:
@@ -311,11 +368,15 @@ def _delete(port: int, path: str, **params) -> dict:
     import urllib.parse
     url = f"{_base_url(port)}{path}"
     if params:
-        url += "?" + urllib.parse.urlencode({k: v for k, v in params.items() if v is not None})
+        url += "?" + urllib.parse.urlencode(
+            {k: v for k, v in params.items() if v is not None})
     req = urllib.request.Request(url, method="DELETE")
     try:
         with urllib.request.urlopen(req) as resp:
             return json.loads(resp.read().decode())
+    except urllib.error.HTTPError as e:
+        body = json.loads(e.read().decode())
+        sys.exit(f"error: {body.get('detail', body)}")
     except urllib.error.URLError as e:
         sys.exit(f"error: cannot connect to runtime on port {port}: {e}")
 
@@ -381,7 +442,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(prog="coglet", description="Manage coglet runtimes.")
     sub = parser.add_subparsers(dest="command")
 
-    # runtime
+    # runtime start|stop|status
     rt = sub.add_parser("runtime", help="manage the runtime daemon")
     rt_sub = rt.add_subparsers(dest="action")
     rt_start = rt_sub.add_parser("start", parents=[port_args])
@@ -409,21 +470,20 @@ def main() -> None:
     gu.add_argument("cmd_type", metavar="command", type=str)
     gu.add_argument("data", nargs="?", default=None)
 
-    # connect
-    cn = sub.add_parser("connect", parents=[port_args],
-                        help="wire src channel -> dest @listen")
-    cn.add_argument("src_id", type=str, help="source coglet id")
-    cn.add_argument("channel", type=str, help="channel name")
-    cn.add_argument("dest_id", type=str, help="destination coglet id")
+    # link src_id:channel dest_id:channel
+    ln = sub.add_parser("link", parents=[port_args],
+                        help="wire src:channel -> dest:channel")
+    ln.add_argument("src", type=str, help="source (id:channel)")
+    ln.add_argument("dest", type=str, nargs="?", default=None,
+                    help="destination (id:channel). Omit to list channels.")
 
-    # disconnect
-    dc = sub.add_parser("disconnect", parents=[port_args])
-    dc.add_argument("src_id", type=str)
-    dc.add_argument("channel", type=str)
-    dc.add_argument("dest_id", type=str)
+    # unlink
+    ul = sub.add_parser("unlink", parents=[port_args])
+    ul.add_argument("src", type=str, help="source (id:channel)")
+    ul.add_argument("dest", type=str, help="destination (id:channel)")
 
-    # connections
-    sub.add_parser("connections", parents=[port_args], help="list active connections")
+    # links
+    sub.add_parser("links", parents=[port_args], help="list active links")
 
     # run (one-shot)
     rn = sub.add_parser("run")
@@ -444,11 +504,12 @@ def main() -> None:
             if resp["coglets"]:
                 print()
                 for c in resp["coglets"]:
-                    print(f"  id={c['id']}  class={c['class']}  children={c['children']}  cog_dir={c['cog_dir']}")
-            if resp.get("connections"):
+                    chs = ", ".join(c.get("channels", []))
+                    print(f"  {c['id']}  {c['class']}  children={c['children']}  channels=[{chs}]")
+            if resp.get("links"):
                 print()
-                for c in resp["connections"]:
-                    print(f"  {c['src']}:{c['channel']} -> {c['dest']}")
+                for lk in resp["links"]:
+                    print(f"  {lk['src']}:{lk['src_channel']} -> {lk['dest']}:{lk['dest_channel']}")
             if not resp["coglets"]:
                 print("\nno coglets running.")
 
@@ -476,22 +537,40 @@ def main() -> None:
             params["data"] = json.dumps(data_val) if not isinstance(data_val, str) else data_val
         print(_post(port, f"/guide/{args.id}", **params).get("msg"))
 
-    elif args.command == "connect":
-        resp = _post(port, "/connect",
-                     src_id=args.src_id, channel=args.channel, dest_id=args.dest_id)
+    elif args.command == "link":
+        if args.dest is None:
+            # No dest — list channels for the coglet
+            coglet_id = args.src
+            resp = _get(port, f"/channels/{coglet_id}")
+            print(f"{resp['id']} ({resp['class']})")
+            if resp["transmit"]:
+                print(f"  transmit: {', '.join(resp['transmit'])}")
+            if resp["listen"]:
+                print(f"  listen:   {', '.join(resp['listen'])}")
+            if not resp["transmit"] and not resp["listen"]:
+                print("  (no channels)")
+        else:
+            src_id, src_ch = _parse_channel_ref(args.src)
+            dest_id, dest_ch = _parse_channel_ref(args.dest)
+            resp = _post(port, "/link",
+                         src_id=src_id, src_channel=src_ch,
+                         dest_id=dest_id, dest_channel=dest_ch)
+            print(resp.get("msg"))
+
+    elif args.command == "unlink":
+        src_id, src_ch = _parse_channel_ref(args.src)
+        dest_id, dest_ch = _parse_channel_ref(args.dest)
+        resp = _delete(port, "/link",
+                       src_id=src_id, src_channel=src_ch,
+                       dest_id=dest_id, dest_channel=dest_ch)
         print(resp.get("msg"))
 
-    elif args.command == "disconnect":
-        resp = _delete(port, "/connect",
-                       src_id=args.src_id, channel=args.channel, dest_id=args.dest_id)
-        print(resp.get("msg"))
-
-    elif args.command == "connections":
-        resp = _get(port, "/connections")
-        for c in resp["connections"]:
-            print(f"  {c['src']}:{c['channel']} -> {c['dest']}")
-        if not resp["connections"]:
-            print("no connections.")
+    elif args.command == "links":
+        resp = _get(port, "/links")
+        for lk in resp["links"]:
+            print(f"  {lk['src']}:{lk['src_channel']} -> {lk['dest']}:{lk['dest_channel']}")
+        if not resp["links"]:
+            print("no links.")
 
     elif args.command == "run":
         if not args.cog_dir.is_dir():

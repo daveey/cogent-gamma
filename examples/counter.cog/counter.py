@@ -12,7 +12,7 @@ class CounterCoglet(Coglet, LifeLet, TickLet):
         print("[counter] started")
 
     @every(1, "s")
-    async def tick(self):
+    async def emit(self):
         self.n += 1
         await self.transmit("count", self.n)
 
