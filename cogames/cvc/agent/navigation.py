@@ -39,6 +39,7 @@ class NavigationMixin:
     _world_model: WorldModel
     _step_index: int
     _agent_id: int
+    _role_id: int
     _last_attempt: MoveAttempt | None
     _last_global_pos: tuple[int, int] | None
     _temp_blocks: dict[tuple[int, int], int]
@@ -163,12 +164,12 @@ class NavigationMixin:
         hub = self._nearest_hub(state)  # type: ignore[attr-defined]
         center = (hub.global_x, hub.global_y) if hub is not None else current_pos
         offsets = _h.explore_offsets(role)
-        offset_index = (self._explore_index + self._agent_id) % len(offsets)
+        offset_index = (self._explore_index + self._role_id) % len(offsets)
         target = offsets[offset_index]
         absolute_target = (center[0] + target[0], center[1] + target[1])
         if _h.manhattan(current_pos, absolute_target) <= 2:
             self._explore_index += 1
-            offset_index = (self._explore_index + self._agent_id) % len(offsets)
+            offset_index = (self._explore_index + self._role_id) % len(offsets)
             target = offsets[offset_index]
             absolute_target = (center[0] + target[0], center[1] + target[1])
         return self._move_to_position(state, absolute_target, summary=summary, vibe=_h.role_vibe(role))

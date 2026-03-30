@@ -1,13 +1,13 @@
 {
-  "last_session": "20260330-090000",
-  "best_score": 6.18,
-  "best_version": "fix role misassignment from team_summary.members visibility",
-  "total_sessions": 9,
+  "last_session": "20260330-130000",
+  "best_score": 18.38,
+  "best_version": "agent_id normalization for tournament mode",
+  "total_sessions": 13,
   "policy_name": "coglet-v0",
   "season": "beta-cvc",
-  "tournament_best": 3.05,
-  "tournament_rank": 252,
-  "tournament_top": 14.66,
-  "latest_submission": "coglet-v0:v17",
-  "key_fix": "removed broken _desired_role override that used incomplete team_summary.members count"
+  "tournament_best": 4.44,
+  "tournament_rank": 291,
+  "tournament_top": 14.82,
+  "latest_submission": "coglet-v0:v19",
+  "key_fix": "role_id = agent_id % 8 — agents 8-15 now get correct roles in tournament"
 }

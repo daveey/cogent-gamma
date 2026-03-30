@@ -50,6 +50,9 @@ class CvcEngine(
     ) -> None:
         super().__init__(policy_env_info)
         self._agent_id = agent_id
+        # Normalized ID (0-7) for role assignment and team-relative lookups.
+        # In tournament/run mode, agent IDs may be 8-15 for the second team.
+        self._role_id = agent_id % 8
         self._world_model = world_model
         self._claims: dict[tuple[int, int], tuple[int, int]] = shared_claims if shared_claims is not None else {}
         self._junctions: dict[tuple[int, int], tuple[str | None, int]] = shared_junctions if shared_junctions is not None else {}
@@ -63,7 +66,7 @@ class CvcEngine(
         self._vibe_actions = set(policy_env_info.vibe_action_names)
         self._fallback_action = "noop" if "noop" in self._action_names else policy_env_info.action_names[0]
         self._explore_index = 0
-        self._default_resource_bias = _h._ELEMENTS[agent_id % len(_h._ELEMENTS)]
+        self._default_resource_bias = _h._ELEMENTS[self._role_id % len(_h._ELEMENTS)]
         self._resource_bias = self._default_resource_bias
         self._last_inventory_signature: tuple[tuple[str, int], ...] | None = None
         self._stalled_steps = 0

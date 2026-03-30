@@ -33,7 +33,7 @@ class JunctionMixin:
         if hub is not None:
             return hub
 
-        bootstrap_offset = _HUB_OFFSETS.get(self._agent_id)
+        bootstrap_offset = _HUB_OFFSETS.get(self._role_id)
         if bootstrap_offset is None:
             return None
         return KnownEntity(

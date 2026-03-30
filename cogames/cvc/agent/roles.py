@@ -32,7 +32,7 @@ class RolesMixin:
         if station is not None:
             return self._move_to_known(state, station, summary=f"get_{role}_gear", vibe="change_vibe_gear")  # type: ignore[attr-defined]
 
-        target = _h.spawn_relative_station_target(self._agent_id, role)
+        target = _h.spawn_relative_station_target(self._role_id, role)
         if target is None:
             hub = self._nearest_hub(state)  # type: ignore[attr-defined]
             if hub is None:

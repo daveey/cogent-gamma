@@ -30,6 +30,7 @@ class PressureMetrics:
 class PressureMixin:
     _world_model: WorldModel
     _agent_id: int
+    _role_id: int
     _step_index: int
 
     def _desired_role(self, state: MettagridState, *, objective: str | None = None) -> str:
@@ -42,9 +43,9 @@ class PressureMixin:
             if len(aligner_ids) == aligner_budget:
                 break
             aligner_ids.append(agent_id)
-        if self._agent_id in scrambler_ids:
+        if self._role_id in scrambler_ids:
             return "scrambler"
-        if self._agent_id in aligner_ids:
+        if self._role_id in aligner_ids:
             return "aligner"
         return "miner"
 
