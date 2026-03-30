@@ -3,7 +3,7 @@
 import pytest
 
 from cvc.pco_runner import run_pco_epoch
-from cvc.programs import seed_programs
+from cvc.programs import all_programs
 
 
 @pytest.mark.asyncio
@@ -31,7 +31,7 @@ async def test_full_pco_epoch_computes_signals():
     ]
     result = await run_pco_epoch(
         experience=experience,
-        programs=seed_programs(),
+        programs=all_programs(),
         client=None,
     )
     assert "accepted" in result
