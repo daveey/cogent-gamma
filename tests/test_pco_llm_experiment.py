@@ -418,31 +418,24 @@ class CodeReviewCritic(Coglet):
         for r in results:
             p = next((p for p in self.puzzles if p["name"] == r["name"]), None)
             desc = p["description"] if p else ""
-            # Show puzzle spec + sample test cases so critic can mentally run the code
-            test_examples = ""
+            test_example = ""
             if p and p.get("tests"):
-                samples = p["tests"][:3]
-                for tc in samples:
-                    *inputs, expected = tc
-                    inp = inputs[0] if len(inputs) == 1 else tuple(inputs)
-                    test_examples += f"  {inp!r} → {expected!r}\n"
+                tc = p["tests"][0]
+                *inputs, expected = tc
+                inp = inputs[0] if len(inputs) == 1 else tuple(inputs)
+                test_example = f"  e.g. {inp!r} → {expected!r}"
             solution_texts.append(
-                f"### {r['name']}\n"
-                f"Description: {desc}\n"
-                f"Test cases:\n{test_examples}"
-                f"```python\n{r['code']}\n```"
+                f"### {r['name']}\n{desc}\n{test_example}\n```python\n{r['code']}\n```"
             )
 
         prompt = (
-            f"Your evaluation strategy: {self.strategy}\n\n"
-            "For each solution below, mentally trace through the test cases and predict "
-            "whether it will PASS or FAIL ALL test cases. A single failing test means FAIL. "
-            "Return a JSON object mapping puzzle name to 'pass' or 'fail'. "
-            "Return ONLY the JSON object.\n\n"
+            f"Strategy: {self.strategy}\n\n"
+            "Predict PASS or FAIL for each solution. "
+            "Return JSON mapping name to 'pass' or 'fail'. ONLY JSON.\n\n"
             + "\n\n".join(solution_texts)
         )
 
-        response = llm_call(prompt, system="You are a meticulous code reviewer. Trace each test case through the code step by step.", max_tokens=8192)
+        response = llm_call(prompt, system="You are a code reviewer predicting test outcomes.")
         try:
             predictions = extract_json(response)
         except (json.JSONDecodeError, ValueError):
