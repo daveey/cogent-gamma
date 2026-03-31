@@ -117,6 +117,54 @@ Tournament format: multi-stage elimination. Policies qualify via self-play, get 
 | `EXTRACTOR_MEMORY` | 600 | Steps to remember extractor locations |
 | Hub initial resources | 24 each | num_agents × 3 of each element |
 
+## Team Coordination
+
+**In tournament, your agents play on a team with agents controlled by OTHER policies.** You must perform well across all team compositions, not just a team of your own clones. The team shares a hub, shared inventory, and junctions — but each agent is controlled by its own independent policy instance.
+
+### What You Can See About Teammates
+
+Via `team_summary` (game-provided, read-only):
+- `team_summary.members` — list of visible teammates with `entity_id`, `role` (inferred from gear: miner/aligner/scrambler/unknown), `position`, `status`
+- `team_summary.shared_inventory` — hub resources (all team members deposit to the same pool)
+- `team_summary.shared_objectives` — any shared objectives set by the game
+
+Via `visible_entities` — any teammate in your 13×13 viewport appears as a `SemanticEntity` with:
+- `attributes["role"]` — their current gear role
+- `attributes["agent_id"]` — their agent ID
+- `labels` — includes "friendly"
+- Position, inventory visible on the entity
+
+### Vibe Actions (Signaling)
+
+Each action has an optional **vibe** component — a visual signal visible to any agent in the viewport. Current vibes:
+- `change_vibe_miner` — signals "I'm mining"
+- `change_vibe_aligner` — signals "I'm aligning"
+- `change_vibe_scrambler` — signals "I'm scrambling"
+- `change_vibe_heart` — signals "I'm getting hearts"
+- `change_vibe_gear` — signals "I'm getting gear"
+- `change_vibe_default` — neutral/retreat
+
+Vibes are set as the second component of every action: `Action(name="move_north", vibe="change_vibe_aligner")`. Other agents in range can observe the vibe on the entity in their viewport.
+
+**Currently our agent sets vibes based on current role/action but does NOT read teammate vibes.** This is a key improvement opportunity — reading teammate vibes enables:
+- Avoiding duplicate targets (if teammate is heading to same junction)
+- Complementary role selection (if 3 teammates are already aligning, switch to mining)
+- Coordinated expansion (if teammate is aligning nearby, push further out)
+
+### Coordination Challenges
+
+1. **You don't control your teammates.** They may be starter policies, random policies, or other competing agents. Don't assume they'll cooperate
+2. **Shared economy.** All agents deposit to the same hub. If teammates are bad miners, your aligners starve. If you over-mine, you waste capacity
+3. **Role overlap.** Without coordination, multiple agents may rush the same junction or role. Use vibes + position to infer teammate intent
+4. **The LLM can learn to coordinate.** The `analyze` program should observe teammate roles, positions, and vibes to adjust strategy — e.g. "3 teammates are mining, I should align" or "teammate is heading to nearby junction, I'll target a different one"
+
+### Improvement Ideas for Coordination
+
+- **Read teammate vibes** in the engine — when choosing targets, check if a visible friendly agent has `change_vibe_aligner` and is closer to a candidate junction
+- **Adaptive role allocation** — observe `team_summary.members` roles and adjust pressure budgets to complement teammates instead of assuming a fixed 8-agent split
+- **LLM coordination** — expand the `analyze` prompt to include teammate positions, roles, and vibes, and let it suggest role switches or target avoidance
+- **Vibe signaling protocol** — use vibes more expressively (e.g. cycle vibes to encode target direction, or use default vibe to signal "retreating/need help")
+
 ## Architecture
 
 CvCPolicy is a **ProgLet** — a unified program table with two executor types:
