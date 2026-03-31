@@ -124,15 +124,7 @@ def phase_name(state: MettagridState, role: str) -> str:
 def heart_batch_target(state: MettagridState, role: str) -> int:
     if role not in _HEART_BATCH_TARGETS:
         return 0
-    target = _HEART_BATCH_TARGETS[role]
-    step = state.step or 0
-    if role == "aligner" and step >= 500:
-        target = max(target, 4)
-    if role == "aligner" and step >= 2_000:
-        target = max(target, 5)
-    if role == "aligner" and step >= 5_000:
-        target = max(target, 6)
-    return target
+    return _HEART_BATCH_TARGETS[role]
 
 
 def team_can_afford_gear(state: MettagridState, role: str) -> bool:
