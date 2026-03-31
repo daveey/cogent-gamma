@@ -1,7 +1,7 @@
 """coglet CLI — manage a persistent coglet runtime via FastAPI.
 
 Commands:
-    coglet runtime start [--port PORT] [--trace PATH]
+    coglet runtime start [--port PORT] [--trace-otlp ENDPOINT]
     coglet runtime stop
     coglet runtime status
 
@@ -16,7 +16,7 @@ Commands:
     coglet unlink SRC:CH DEST:CH
     coglet links
 
-    coglet run PATH.cog [--trace PATH]        one-shot (no daemon)
+    coglet run PATH.cog [--trace-otlp ENDPOINT]  one-shot (no daemon)
 
 IDs are "classname-xxxx" (e.g. counter-a3f1).
 Channel refs use "id:channel" syntax (e.g. counter-a3f1:count).
@@ -149,7 +149,7 @@ def _serialize(obj: Any) -> Any:
 # Enact commands from mixins — hidden from UI to reduce clutter
 _INTERNAL_ENACT = {"log_level", "register", "executor", "suppress", "unsuppress", "cogweb_status"}
 
-def create_app(trace_path: str | None = None):
+def create_app(trace_otlp: str | None = None):
     """Create the FastAPI app with all runtime endpoints + MCP + CogWeb."""
     import signal
 
@@ -176,7 +176,7 @@ def create_app(trace_path: str | None = None):
     app = FastAPI(title="coglet-runtime", description="Coglet runtime API",
                   lifespan=lifespan)
 
-    trace = CogletTrace(trace_path) if trace_path else None
+    trace = CogletTrace(otlp_endpoint=trace_otlp) if trace_otlp else None
     runtime = CogletRuntime(trace=trace)
     # id -> (handle, cog_dir, class_name)
     registry: dict[str, tuple[Any, str, str]] = {}
@@ -702,18 +702,18 @@ def create_app(trace_path: str | None = None):
     return app
 
 
-def start_server(port: int, trace_path: str | None = None, foreground: bool = False) -> None:
+def start_server(port: int, trace_otlp: str | None = None, foreground: bool = False) -> None:
     if foreground:
         import uvicorn
-        app = create_app(trace_path=trace_path)
+        app = create_app(trace_otlp=trace_otlp)
         uvicorn.run(app, host="0.0.0.0", port=port, log_level="info")
         return
 
     import os, subprocess, sys, time
     cmd = [sys.executable, "-m", "coglet.cli", "runtime", "start", "--foreground",
            "--port", str(port)]
-    if trace_path:
-        cmd += ["--trace", trace_path]
+    if trace_otlp:
+        cmd += ["--trace-otlp", trace_otlp]
     # Ensure the subprocess can find the same coglet package as the parent
     env = os.environ.copy()
     src_dir = str(Path(__file__).parent.parent)
@@ -810,10 +810,10 @@ def _observe_sse(port: int, coglet_id: str, channel: str, follow: bool) -> None:
 # One-shot run
 # ---------------------------------------------------------------------------
 
-async def run_oneshot(cog_dir: Path, trace_path: str | None = None) -> None:
+async def run_oneshot(cog_dir: Path, trace_otlp: str | None = None) -> None:
     import signal as sig
     base = load_cogbase(cog_dir)
-    trace = CogletTrace(trace_path) if trace_path else None
+    trace = CogletTrace(otlp_endpoint=trace_otlp) if trace_otlp else None
     runtime = CogletRuntime(trace=trace)
 
     stop = asyncio.Event()
@@ -850,11 +850,11 @@ def runtime():
 
 @runtime.command()
 @_port_option
-@click.option("--trace", type=str, default=None, help="Path for trace recording.")
+@click.option("--trace-otlp", type=str, default=None, help="OTLP endpoint for OpenTelemetry tracing (e.g. http://localhost:4317).")
 @click.option("--foreground", is_flag=True, help="Run in foreground (default: daemon).")
-def start(port, trace, foreground):
+def start(port, trace_otlp, foreground):
     """Start the runtime server."""
-    start_server(port, trace_path=trace, foreground=foreground)
+    start_server(port, trace_otlp=trace_otlp, foreground=foreground)
 
 
 @runtime.command()
@@ -1064,10 +1064,10 @@ def shell(port):
 
 @main.command()
 @click.argument("cog_dir", type=click.Path(exists=True, file_okay=False))
-@click.option("--trace", type=str, default=None, help="Path for trace recording.")
-def run(cog_dir, trace):
+@click.option("--trace-otlp", type=str, default=None, help="OTLP endpoint for OpenTelemetry tracing (e.g. http://localhost:4317).")
+def run(cog_dir, trace_otlp):
     """One-shot run (no daemon)."""
-    asyncio.run(run_oneshot(Path(cog_dir), trace_path=trace))
+    asyncio.run(run_oneshot(Path(cog_dir), trace_otlp=trace_otlp))
 
 
 if __name__ == "__main__":

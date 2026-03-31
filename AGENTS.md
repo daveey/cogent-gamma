@@ -94,8 +94,8 @@ There is no replay/history — missed messages are gone.
 - `tree()` — ASCII visualization of the live supervision hierarchy
 - `handle_child_error(handle, error)` — consult parent's on_child_error, apply restart policy
 
-**Tracing**: pass `CogletRuntime(trace=CogletTrace("path.jsonl"))` to record all
-transmit/enact events. The runtime wraps each coglet's methods transparently.
+**Tracing**: pass `CogletRuntime(trace=CogletTrace(otlp_endpoint="http://localhost:4317"))` to
+export all transmit/enact events as OpenTelemetry spans. The runtime wraps each coglet's methods transparently.
 
 **Restart**: on child error, the runtime asks the parent, then applies exponential
 backoff (`backoff_s * 2^attempt`). The CogletHandle is preserved — it points to the
@@ -216,14 +216,14 @@ await ui.stop()
 - Minimap for navigation in large graphs
 - Auto-reconnecting WebSocket with REST fallback
 
-### trace.py — Event Recording
+### trace.py — OpenTelemetry Tracing
 
-- `CogletTrace(path)` — open a jsonl file for writing
-- `record(coglet_type, op, target, data)` — append one event
-- `close()` — flush and close
-- `CogletTrace.load(path)` — static, load trace for inspection
+- `CogletTrace(otlp_endpoint=...)` — export spans to an OTLP collector
+- `CogletTrace(exporter=...)` — use a custom SpanExporter
+- `record(coglet_type, op, target, data)` — create an OTel span
+- `close()` — shutdown the TracerProvider
 
-Each line: `{"t": <seconds_since_start>, "coglet": "ClassName", "op": "transmit"|"enact", "target": "<channel_or_command>", "data": ...}`
+Each span has attributes: `coglet.type`, `coglet.op`, `coglet.target`, `coglet.data`
 
 ## CLI, API, and MCP
 
@@ -233,7 +233,7 @@ The `coglet` command manages a persistent runtime daemon:
 
 ```bash
 # Runtime lifecycle
-coglet runtime start [--port 4510] [--trace events.jsonl]
+coglet runtime start [--port 4510] [--trace-otlp http://localhost:4317]
 coglet runtime stop
 coglet runtime status
 

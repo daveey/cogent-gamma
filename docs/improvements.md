@@ -48,16 +48,14 @@ CogletRuntime
 
 **Status: Implemented** — `src/coglet/trace.py`, integrated into `CogletRuntime`
 
-Optional tracing that logs every `transmit()` and `guide()` with timestamps to a
-jsonl file. Each line: `{t, coglet, op, target, data}`.
+Optional OpenTelemetry-based tracing that records every `transmit()` and `guide()` as
+OTel spans with attributes `coglet.type`, `coglet.op`, `coglet.target`, `coglet.data`.
 
 ```python
-trace = CogletTrace("trace.jsonl")
+trace = CogletTrace(otlp_endpoint="http://localhost:4317")
 rt = CogletRuntime(trace=trace)
 # ... run coglets ...
-# trace.jsonl contains all transmit/enact events with timestamps
-
-entries = CogletTrace.load("trace.jsonl")  # replay/inspect
+# spans are exported to the OTLP collector (Jaeger, Grafana Tempo, etc.)
 ```
 
 The runtime wraps each coglet's `transmit()` and `_dispatch_enact()` transparently
