@@ -63,24 +63,15 @@ class CvCPolicyImpl(StatefulPolicyImpl[CvCAgentState]):
         programs: dict[str, Program],
         llm_executor: LLMExecutor | None = None,
         game_id: str = "",
-        shared_junctions: dict | None = None,
-        shared_claims: dict | None = None,
     ) -> None:
         self._policy_env_info = policy_env_info
         self._agent_id = agent_id
         self._programs = programs
         self._llm_executor = llm_executor
         self._game_id = game_id
-        self._shared_junctions = shared_junctions
-        self._shared_claims = shared_claims
 
     def initial_agent_state(self) -> CvCAgentState:
-        gs = GameState(
-            self._policy_env_info,
-            agent_id=self._agent_id,
-            shared_junctions=self._shared_junctions,
-            shared_claims=self._shared_claims,
-        )
+        gs = GameState(self._policy_env_info, agent_id=self._agent_id)
         return CvCAgentState(game_state=gs)
 
     def _invoke_sync(self, name: str, *args: Any) -> Any:
@@ -217,9 +208,6 @@ class CvCPolicy(MultiAgentPolicy):
         self._llm_executor: LLMExecutor | None = None
         self._episode_start = time.time()
         self._game_id = kwargs.get("game_id", f"game_{int(time.time())}")
-        # Shared state across agents controlled by this policy (not cross-policy)
-        self._shared_junctions: dict[tuple[int, int], tuple[str | None, int]] = {}
-        self._shared_claims: dict[tuple[int, int], tuple[int, int]] = {}
         self._init_llm()
 
         import atexit
@@ -249,8 +237,6 @@ class CvCPolicy(MultiAgentPolicy):
                 programs=self._programs,
                 llm_executor=self._llm_executor,
                 game_id=self._game_id,
-                shared_junctions=self._shared_junctions,
-                shared_claims=self._shared_claims,
             )
             self._agent_policies[agent_id] = StatefulAgentPolicy(
                 impl, self._policy_env_info, agent_id=agent_id,
@@ -270,8 +256,6 @@ class CvCPolicy(MultiAgentPolicy):
         if self._agent_policies:
             self._write_learnings()
         self._episode_start = time.time()
-        self._shared_junctions.clear()
-        self._shared_claims.clear()
         for p in self._agent_policies.values():
             p.reset()
 

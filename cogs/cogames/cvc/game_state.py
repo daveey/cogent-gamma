@@ -36,15 +36,9 @@ class GameState:
         policy_env_info: PolicyEnvInterface,
         *,
         agent_id: int,
-        shared_junctions: dict | None = None,
-        shared_claims: dict | None = None,
     ) -> None:
         self.engine = CogletAgentPolicy(
-            policy_env_info,
-            agent_id=agent_id,
-            world_model=WorldModel(),
-            shared_junctions=shared_junctions if shared_junctions is not None else {},
-            shared_claims=shared_claims if shared_claims is not None else {},
+            policy_env_info, agent_id=agent_id, world_model=WorldModel()
         )
         self.agent_id = agent_id
         self.role: str = "miner"
