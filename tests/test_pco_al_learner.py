@@ -1,7 +1,8 @@
-"""Tests for ALLearnerCoglet — Agent Lightning APO inside PCO.
+"""Tests for AgentLightningLearnerCoglet — Agent Lightning APO inside PCO.
 
-Tests the integration pattern using mocks (agentlightning not required)
-and verifies that AL-backed learning works within PCO's constraint retry loop.
+Tests the integration pattern using passthrough mode (agentlightning not
+required) and verifies that Agent Lightning-backed learning works within
+PCO's constraint retry loop.
 """
 
 import asyncio
@@ -10,8 +11,8 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
 
 from coglet import Coglet, CogBase, CogletRuntime, enact, listen
-from coglet.pco.al_learner import (
-    ALLearnerCoglet,
+from cogs.agent_lightning.learner import (
+    AgentLightningLearnerCoglet,
     _default_reward,
     _default_context_formatter,
 )
@@ -48,7 +49,6 @@ class PromptActor(Coglet):
 class QualityCritic(Coglet):
     @listen("experience")
     async def evaluate(self, experience):
-        # Score based on prompt length (longer = "better" for this toy example)
         prompt = experience.get("prompt", "")
         await self.transmit("evaluation", {
             "prompt_length": len(prompt),
@@ -65,7 +65,6 @@ class PromptLengthLoss(LossCoglet):
 
     async def compute_loss(self, experience, evaluation):
         length = evaluation.get("prompt_length", 0)
-        # Target: prompt should be >= 50 chars
         deficit = max(0, 50 - length)
         return {"name": "prompt_length", "magnitude": deficit}
 
@@ -124,13 +123,13 @@ def test_default_context_formatter():
     assert "Rejection feedback: nope" in result
 
 
-# ── Integration: ALLearnerCoglet in passthrough mode ──────
+# ── Integration: AgentLightningLearnerCoglet in passthrough mode ──
 
 
 @pytest.mark.asyncio
-async def test_al_learner_passthrough_without_agentlightning():
+async def test_agent_lightning_learner_passthrough():
     """Without agentlightning installed, learn() returns current prompt."""
-    learner = ALLearnerCoglet(
+    learner = AgentLightningLearnerCoglet(
         resource_key="prompt",
         initial_prompt="be helpful",
     )
@@ -146,9 +145,9 @@ async def test_al_learner_passthrough_without_agentlightning():
 
 
 @pytest.mark.asyncio
-async def test_al_learner_custom_reward_fn():
+async def test_agent_lightning_learner_custom_reward_fn():
     """Custom reward function is used."""
-    learner = ALLearnerCoglet(
+    learner = AgentLightningLearnerCoglet(
         initial_prompt="test",
         reward_fn=lambda signals: 42.0,
     )
@@ -159,9 +158,9 @@ async def test_al_learner_custom_reward_fn():
 
 
 @pytest.mark.asyncio
-async def test_al_learner_tracks_epochs():
+async def test_agent_lightning_learner_tracks_epochs():
     """Epoch counter increments across learn() calls."""
-    learner = ALLearnerCoglet(initial_prompt="v0")
+    learner = AgentLightningLearnerCoglet(initial_prompt="v0")
 
     r1 = await learner.learn({}, {}, [])
     r2 = await learner.learn({}, {}, [])
@@ -172,13 +171,13 @@ async def test_al_learner_tracks_epochs():
     assert r3["epoch"] == 3
 
 
-# ── Full PCO integration with ALLearnerCoglet ─────────────
+# ── Full PCO integration with AgentLightningLearnerCoglet ─
 
 
 @pytest.mark.asyncio
-async def test_al_learner_in_pco_epoch():
-    """ALLearnerCoglet works as a drop-in for PCO's learner slot."""
-    learner = ALLearnerCoglet(
+async def test_agent_lightning_learner_in_pco_epoch():
+    """AgentLightningLearnerCoglet works as a drop-in for PCO's learner slot."""
+    learner = AgentLightningLearnerCoglet(
         resource_key="prompt",
         initial_prompt="be concise",
     )
@@ -204,31 +203,28 @@ async def test_al_learner_in_pco_epoch():
     assert result["accepted"] is True
     assert result["patch"]["prompt"] == "be concise"
     assert result["patch"]["source"] == "agent_lightning_apo"
-    # Actor received the update
     actor = pco._actor_handle.coglet
     assert actor.prompt == "be concise"
     await runtime.shutdown()
 
 
 @pytest.mark.asyncio
-async def test_al_learner_with_constraint_retry():
-    """ALLearnerCoglet handles PCO constraint rejection and retry."""
+async def test_agent_lightning_learner_with_constraint_retry():
+    """AgentLightningLearnerCoglet handles PCO constraint rejection and retry."""
 
-    class GrowingALLearner(ALLearnerCoglet):
+    class GrowingAgentLightningLearner(AgentLightningLearnerCoglet):
         """On rejection, appends to prompt to make it longer."""
 
         async def learn(self, experience, evaluation, signals):
             result = await super().learn(experience, evaluation, signals)
-            # Check if we got rejected — signals will contain rejection feedback
             rejected = any(
                 isinstance(s, dict) and "rejection" in s for s in signals
             )
             if rejected:
-                # Make prompt longer to satisfy RejectShortPrompts
                 result["prompt"] = result["prompt"] + " — improved with more detail"
             return result
 
-    learner = GrowingALLearner(
+    learner = GrowingAgentLightningLearner(
         resource_key="prompt",
         initial_prompt="short",  # 5 chars, will be rejected
     )
@@ -252,17 +248,15 @@ async def test_al_learner_with_constraint_retry():
 
     result = await pco.run_epoch()
 
-    # First attempt: "short" (5 chars) rejected
-    # Second attempt: "short — improved with more detail" (33 chars) accepted
     assert result["accepted"] is True
     assert "improved" in result["patch"]["prompt"]
     await runtime.shutdown()
 
 
 @pytest.mark.asyncio
-async def test_al_learner_multi_epoch_in_pco():
-    """ALLearnerCoglet works across multiple PCO epochs."""
-    learner = ALLearnerCoglet(
+async def test_agent_lightning_learner_multi_epoch_in_pco():
+    """AgentLightningLearnerCoglet works across multiple PCO epochs."""
+    learner = AgentLightningLearnerCoglet(
         resource_key="prompt",
         initial_prompt="v0",
     )
@@ -287,7 +281,6 @@ async def test_al_learner_multi_epoch_in_pco():
 
     assert len(results) == 3
     assert all(r["accepted"] for r in results)
-    # Epoch counter advances
     assert results[0]["patch"]["epoch"] == 1
     assert results[1]["patch"]["epoch"] == 2
     assert results[2]["patch"]["epoch"] == 3
