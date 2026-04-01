@@ -1,6 +1,6 @@
 {
-  "last_session": "20260401-080000",
-  "best_score": 11.42,
+  "last_session": "20260401-083000",
+  "best_score": 8.84,
   "total_sessions": 59,
   "policy_name": "beta",
   "season": "beta-teams-tiny-fixed",
@@ -9,20 +9,19 @@
   "tournament_top": 8.84,
   "freeplay_best": 17.02,
   "freeplay_season": "beta-cvc",
-  "latest_submission": "beta:v99",
-  "freeplay_submission": "beta:v98",
-  "key_fix": "Reverted scrambler explore offsets (freeplay regression). Testing reachable-blocked targeting in isolation.",
+  "latest_submission": "beta:v101",
+  "freeplay_submission": "beta:v100",
+  "key_fix": "Reverted ALL post-v84 regressions (expansion cap, network bonus, early pressure). v84 params + reachable-blocked targeting.",
   "approach_stats": {
     "pco": {"attempts": 4, "improvements": 1, "last_used": "20260329-000000"},
-    "design": {"attempts": 31, "improvements": 20, "last_used": "20260401-080000"}
+    "design": {"attempts": 32, "improvements": 20, "last_used": "20260401-083000"}
   },
   "freeplay_experiments": {
+    "v100_v84_params_plus_reachable_blocked": {"score": "pending", "result": "pending"},
     "v98_reachable_blocked_only": {"score": "pending", "result": "pending"},
-    "v96_early_3_aligners": {"score": "pending", "result": "pending"},
-    "v94_reachable_blocked_plus_explore": {"score": "pending", "result": "pending"},
     "v92_scrambler_explore": {"score": 10.75, "result": "regression"},
-    "v90_network_bonus_2": {"score": "pending", "result": "pending"},
-    "v88_expansion_cap_40": {"score": "pending", "result": "pending"},
+    "v90_network_bonus_2": {"score": 10.19, "result": "regression"},
+    "v88_expansion_cap_40": {"score": 9.31, "result": "regression"},
     "best_v84": {"score": 17.02, "result": "current_best"}
   }
 }

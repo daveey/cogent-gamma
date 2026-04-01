@@ -1,9 +1,9 @@
 # Coach TODO
 
 ## Current Priorities
-- [ ] Monitor v98 freeplay (reachable-blocked targeting, NO explore offsets)
-- [ ] Monitor v94 freeplay (reachable-blocked + explore offsets — expect regression)
-- [ ] Monitor v88 freeplay (expansion bonus cap 40)
+- [ ] Monitor v100 freeplay (v84 params + reachable-blocked targeting)
+- [ ] Analyze why v84 is best — what makes it work in freeplay vs self-play?
+- [ ] Study alpha.0 match replays to find specific weaknesses
 - [ ] Update IMPROVE.md constants: JUNCTION_ALIGN_DISTANCE=15 (not 3), JUNCTION_AOE_RANGE=10 (not 4)
 
 ## Improvement Ideas
@@ -44,6 +44,9 @@
 - [x] Scrambler heart batch 2→1 — -34.1% regression, wastes hearts
 - [x] Early pressure ramp (step 200) — economy can't sustain with only 2 miners, -8.8%
 - [x] Mid-range scrambler explore offsets (25 before 36) — self-play +24.9% but freeplay 10.75 vs 17.02 baseline
+- [x] Expansion bonus cap 30→40 — self-play +16.4% but freeplay 9.31 vs 17.02 baseline
+- [x] Network bonus 0.5→2.0 — self-play +50.9% but freeplay 10.19 vs 17.02 baseline
+- [x] Early pressure 2→3 aligners — self-play +6.4% but untested/likely regression
 
 ## Testing Notes
 - **ALWAYS test 1v1 with `cogames run -c 16 -p A -p B`** not just scrimmage
@@ -53,9 +56,8 @@
 - Need 7+ seeds minimum for any signal in self-play
 
 ## Done
-- [x] (ID) Reachable-blocked scramble targeting — self-play +49.0%, submitted v94/v95
-- [x] (ID) Reverted scrambler explore offsets, testing reachable-blocked in isolation — v98/v99
-- [x] (ID) Mid-range scrambler explore offsets (25 before 36) — self-play +24.9% BUT freeplay 10.75 (regression)
+- [x] (ID) Reverted ALL post-v84 regressions + reachable-blocked targeting — v100/v101
+- [x] (ID) Reachable-blocked scramble targeting — self-play +49.0%, freeplay pending
 - [x] (ID) Expansion bonus cap 30→40 — self-play +16.4%, submitted v88/v89
 - [x] (ID) Faster unstick 12→8 steps — variance halved, min improved, submitted v86/v87
 - [x] (ID) Scramble blocked_neutrals weight 4.0→6.0 — self-play neutral, submitted v84/v85
