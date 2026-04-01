@@ -7,7 +7,7 @@ description: Run one improvement iteration. Chooses between PCO and IntelligentD
 
 Orchestrates improvement by choosing between `/improve.pco` and `/improve.design` based on effectiveness.
 
-Assumes `.improve/state.json` and the current session directory already exist (via `/improve.start-session`). Reads `IMPROVE.md` for domain context.
+Assumes `.improve/state.json` and the current session directory already exist (via `/improve.start-session`). Reads `IMPROVE.md` for domain context and `COGENT.md` for the cogent's identity and personality.
 
 ## Step 1: Choose Approach
 
