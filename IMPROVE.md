@@ -1,6 +1,6 @@
 # IMPROVE.md — CvC Tournament Agent
 
-Coaching guide for the Cogs vs Clips tournament agent. Currently **#1** with 10.63 (beta:v7).
+Coaching guide for the Cogs vs Clips tournament agent. Currently **#2** in freeplay with 17.02 (beta:v84). alpha.0 leads at ~20.5.
 
 ## Objective
 
@@ -109,8 +109,8 @@ Tournament format: multi-stage elimination. Policies qualify via self-play, get 
 | Constant | Value | Meaning |
 |----------|-------|---------|
 | `HUB_ALIGN_DISTANCE` | 25 | Hub can align junctions within this range |
-| `JUNCTION_ALIGN_DISTANCE` | 3 | Friendly junctions extend alignment network by this |
-| `JUNCTION_AOE_RANGE` | 4 | Junctions affect nearby junctions within this |
+| `JUNCTION_ALIGN_DISTANCE` | 15 | Friendly junctions extend alignment network by this |
+| `JUNCTION_AOE_RANGE` | 10 | Junctions affect nearby junctions within this |
 | `RETREAT_MARGIN` | 15 | Base HP safety margin (alpha.0 uses 20) |
 | `DEPOSIT_THRESHOLD` | 12 | Miner deposits cargo at this amount |
 | `TARGET_CLAIM_STEPS` | 30 | Junction claim expiry |
@@ -274,6 +274,7 @@ The alpha.0 agent lives at `metta-ai/cogora` (`src/cvc/cogent/player_cog/policy/
 ## Strategies
 
 ### What Works
+- **Shared junction memory**: All agents on same policy share junction discovery + claims via shared dicts. Massive self-play improvement (+214%). Freeplay testing in progress (v113)
 - **Chain-building**: Capture junctions near existing friendly junctions to expand the alignment network outward from hub
 - **Pressure budgets**: Phase-based role allocation (more miners early, transition to aligners)
 - **Heart batching**: Aligners collect 3+ hearts before heading out
@@ -281,13 +282,8 @@ The alpha.0 agent lives at `metta-ai/cogora` (`src/cvc/cogent/player_cog/policy/
 - **Claim system**: Agents claim junctions to avoid duplicating effort
 
 ### What To Try
-- **Hotspot tracking**: Like alpha.0, track scramble events per junction — deprioritize junctions that keep getting scrambled
-- **Wider enemy AOE for retreat**: Alpha.0 uses 20, we use 4. May explain survival difference
-- **Increase RETREAT_MARGIN to 20**: Match alpha.0's more conservative survival
-- **LLM stagnation detection**: Use LLM to detect when agents are stuck and adjust directives
-- Remove scramblers for cooperative scoring (test in 1v1, not scrimmage)
+- **LLM stagnation detection**: Use LLM to detect when agents are stuck and adjust directives (alpha.0's key advantage)
 - Dynamic role switching based on game state
-- Better junction discovery — agents miss junctions behind walls
 - PCO evolution — run more epochs to evolve program table
 - Study opponent replays via `cogames match-artifacts <id>` for new strategies
 
@@ -306,10 +302,16 @@ The alpha.0 agent lives at `metta-ai/cogora` (`src/cvc/cogent/player_cog/policy/
 - Emergency mining threshold 50 or 10 — hurts more than helps
 - Enemy avoidance penalty in aligner scoring — helps self-play (+31%) but HURTS freeplay (-33%)
 - Remove scramblers entirely — helps self-play (+26%) but HURTS freeplay (-31%). Scramblers needed to deny opponent junctions
-- RETREAT_MARGIN=20 — always hurts self-play (-19%). Dead end confirmed
+- RETREAT_MARGIN=18 — freeplay 7.78 (big regression)
+- RETREAT_MARGIN=20 — freeplay 9.99 (regression). Also hurts self-play (-19%)
 - Tighter aligner explore offsets (manhattan 15) — agents miss distant junctions (-35%)
 - Heart batch cap at 4 (remove 5/6 scaling) — uncertain, tested bundled with other changes
 - Self-play improvements DON'T predict freeplay improvements — the two are weakly correlated
+- Expansion bonus cap 30→40 — self-play +16% but freeplay 9.31 (regression)
+- Network bonus 0.5→2.0 — self-play +51% but freeplay 10.19 (regression)
+- Mid-range scrambler explore offsets — self-play +25% but freeplay 10.75 (regression)
+- Reachable-blocked scramble targeting — self-play +49% but freeplay 10.00-10.88 (regression)
+- enemy_aoe penalty 8.0→4.0 — untested in freeplay, reverted to be safe
 
 ### Critical Learnings
 - **Scrambler is heart-starved**: In self-play with (4,1) budget, the scrambler has 0 hearts for most of the game because 4 aligners consume all team hearts first. The scrambler is effectively useless in self-play, but still matters in freeplay (even occasional scrambles deny opponent)
