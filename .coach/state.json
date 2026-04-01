@@ -1,7 +1,7 @@
 {
-  "last_session": "20260331-233000",
+  "last_session": "20260401-001500",
   "best_score": 10.00,
-  "total_sessions": 46,
+  "total_sessions": 47,
   "policy_name": "beta",
   "season": "beta-teams-tiny-fixed",
   "tournament_best": 10.00,
@@ -9,12 +9,12 @@
   "tournament_top": 10.00,
   "freeplay_best": 1.81,
   "freeplay_season": "beta-cvc",
-  "latest_submission": "beta:v69",
-  "freeplay_submission": "beta:v68",
-  "key_fix": "Resubmitted after season reset: v68 (freeplay), v69 (tournament). Includes 1-scrambler + hotspot tracking.",
+  "latest_submission": "beta:v71",
+  "freeplay_submission": "beta:v70",
+  "key_fix": "Network proximity bonus (alpha.0 weight 0.5) for chain-building. Self-play neutral.",
   "approach_stats": {
     "pco": {"attempts": 4, "improvements": 1, "last_used": "20260329-000000"},
-    "design": {"attempts": 18, "improvements": 11, "last_used": "20260331-233000"}
+    "design": {"attempts": 19, "improvements": 11, "last_used": "20260401-001500"}
   },
   "freeplay_experiments": {
     "v28_enemy_avoidance": {"score": 1.21, "result": "regression"},
@@ -25,6 +25,7 @@
     "v64_one_scrambler": {"score": "pending", "result": "pending"},
     "v66_hotspot_tracking": {"score": "pending", "result": "pending"},
     "v68_resubmit": {"score": "pending", "result": "pending"},
+    "v70_hotspot_network": {"score": "pending", "result": "pending"},
     "best_v15": {"score": 1.81, "result": "baseline_best"}
   }
 }

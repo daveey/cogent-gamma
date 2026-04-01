@@ -74,13 +74,25 @@ def aligner_target_score(
         else:
             hub_penalty = hub_dist * 0.3
     hotspot_penalty = min(hotspot_count, 3) * 8.0
+    # Small bonus for junctions near existing friendly network (chain-building)
+    # Matching alpha.0's _DEFAULT_NETWORK_WEIGHT = 0.5
+    network_bonus = 0.0
+    if friendly_sources:
+        nearby_friendly = sum(
+            1
+            for source in friendly_sources
+            if source.entity_type != "hub"
+            and manhattan(candidate.position, source.position) <= _JUNCTION_ALIGN_DISTANCE
+        )
+        network_bonus = min(nearby_friendly, 4) * 0.5
     return (
         distance
         - min(expansion * 5.0, 30.0)
         + enemy_aoe * 8.0
         + (_CLAIMED_TARGET_PENALTY if claimed_by_other else 0.0)
         + hub_penalty
-        + hotspot_penalty,
+        + hotspot_penalty
+        - network_bonus,
         -float(expansion),
     )
 
