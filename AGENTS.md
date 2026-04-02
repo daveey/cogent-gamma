@@ -16,7 +16,6 @@ Skills are in `cogent/skills/`. Read the SKILL.md file and follow its instructio
 - **dashboard** — Generate HTML dashboard from cogent state showing experiments, scores, and learnings.
 ## Docs
 
-- [docs/coglet.md](docs/coglet.md) — Coglet framework: COG/LET primitives, mixins, runtime
 - [docs/architecture.md](docs/architecture.md) — Policy architecture, program table, PCO, alpha.0 reference
 - [docs/strategy.md](docs/strategy.md) — What works, what to try, dead ends, learnings
 - [docs/rules.md](docs/rules.md) — Game rules, constants, team coordination
