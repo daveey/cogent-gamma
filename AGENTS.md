@@ -14,8 +14,6 @@ Skills are in `cogent/skills/`. Read the SKILL.md file and follow its instructio
 - **improve** — One improvement iteration: analyze code, implement a change, test across seeds, auto-submit if improved.
 - **proximal-cogent-optimize** — PCO cycle: play a game, collect experience, LLM proposes patches, test, submit.
 - **dashboard** — Generate HTML dashboard from cogent state showing experiments, scores, and learnings.
-- **memory-wipe** — Nuclear reset of memory and state. Identity survives.
-
 ## Docs
 
 - [docs/coglet.md](docs/coglet.md) — Coglet framework: COG/LET primitives, mixins, runtime
