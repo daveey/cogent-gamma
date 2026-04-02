@@ -1,21 +1,8 @@
 # On Create
 
-End-to-end cogent onboarding. Runs on the user's local Claude Code. One question at a time, curated options plus custom. Fun and fast.
+Cogamer-specific setup after the cogent platform has already created the cogent and chosen a name. One question at a time, curated options plus custom.
 
-## Step 1 — Name
-
-Generate 6-8 random handle-style names (lowercase, hyphens ok, no spaces). Draw inspiration from AI players, Iain Banks Culture ship names, famous robots, sci-fi characters. Different names each time.
-
-```
-=== CHOOSE YOUR COGENT'S NAME ===
-
-  A) <generated>
-  B) <generated>
-  ...
-  H) [Write your own]
-```
-
-## Step 2 — Archetype
+## Step 1 — Archetype
 
 ```
 === CHOOSE YOUR ARCHETYPE ===
@@ -32,7 +19,7 @@ How does {name} approach the battlefield?
 
 Expand chosen archetype into 2-3 sentences for the personality section.
 
-## Step 3 — Motto
+## Step 2 — Motto
 
 Generate 4 options themed to the chosen archetype. Plus custom.
 
@@ -46,7 +33,7 @@ Generate 4 options themed to the chosen archetype. Plus custom.
   E) [Write your own]
 ```
 
-## Step 4 — Doctrine
+## Step 3 — Doctrine
 
 ```
 === CHOOSE YOUR DOCTRINE ===
@@ -59,30 +46,11 @@ Generate 4 options themed to the chosen archetype. Plus custom.
   F) [Write your own]
 ```
 
-## Step 5 — Launch
+## Step 4 — Write Identity
 
-Run:
-
-```bash
-cogent <name> create
-```
-
-This forks `metta-ai/cogamer` to `<user>/cogent-<name>` (private), generates deploy keys, and launches the cogent.
-
-## Step 6 — Clone & Write Identity
-
-Clone the fork locally:
-
-```bash
-gh repo clone <user>/cogent-<name>
-cd cogent-<name>
-```
-
-Write `cogent/IDENTITY.md`:
+Append archetype, motto, and doctrine to `cogent/IDENTITY.md` (the platform has already written the name).
 
 ```markdown
-# <name>
-
 ## Archetype
 <expanded archetype description>
 
@@ -92,27 +60,3 @@ Write `cogent/IDENTITY.md`:
 ## Doctrine
 <chosen doctrine>
 ```
-
-Commit and push:
-
-```bash
-git add cogent/IDENTITY.md
-git commit -m "Initialize cogent: <name>"
-git push
-```
-
-## Step 7 — Verify
-
-Poll until the cogent is alive:
-
-```bash
-cogent <name> status
-```
-
-Wait for a heartbeat, then send a test message:
-
-```bash
-cogent <name> send "hello"
-```
-
-Wait for a response. Report success to the user.
