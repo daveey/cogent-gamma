@@ -6,38 +6,37 @@
       "last_used": null
     },
     "design": {
-      "attempts": 13,
-      "improvements": 4,
-      "last_used": "20260403-015-testing"
+      "attempts": 15,
+      "improvements": 6,
+      "last_used": "20260403-017-testing"
     }
-  },
-  "last_improvement": {
-    "date": "20260403",
-    "version": "011",
-    "focus": "Teammate proximity penalty increase for coordination",
-    "description": "Increased teammate_closer penalty from 6.0 to 9.0 in aligner_target_score to reduce duplicate targeting in multi-team format.",
-    "result": "VALIDATED VIA TOURNAMENT: gamma:v1 avg 7.74 per cog (rank #60) across 19 matches on beta-cvc",
-    "tournament_scores": {
-      "matches": 19,
-      "avg": 7.74,
-      "range": "0.00-26.01",
-      "rank": 60,
-      "season": "beta-cvc"
-    },
-    "status": "baseline_established",
-    "notes": "Baseline for gamma:v1 stabilizing around 7.74 avg (was 9.96 with 13 matches, natural variance). Includes improvements 004+007+011+RETREAT_MARGIN."
   },
   "testing_in_progress": {
     "date": "20260403",
-    "version": "015",
-    "focus": "Corner-safe exploration offsets for four_score",
-    "description": "Fixed out-of-bounds exploration targets for corner spawns. Reduced offset magnitudes (22\u219215 max) and added dynamic flipping based on hub quadrant. Fixes 63% OOB rate for aligners, 75% for miners/scramblers.",
-    "rationale": "Agents waste time pathing to invalid OOB targets in four_score corner spawns. 100% valid exploration improves territory discovery and agent efficiency.",
-    "upload": "gamma_scissors",
+    "version": "017",
+    "focus": "Corner-safe exploration for four_score spawns",
+    "description": "Fixed out-of-bounds exploration: reduced offset magnitudes (22\u219215), added dynamic flipping for corner detection. All roles now 100% valid exploration (was 63% OOB for aligners, 75% for miners/scramblers).",
+    "rationale": "Agents wasted time pathing to invalid OOB targets in corner spawns. Better exploration improves territory discovery.",
+    "upload": "gamma_scissors:v1",
     "season": "beta-cvc",
-    "status": "uploaded_awaiting_matches",
-    "notes": "Includes all previous improvements (004+007+011+012+014). First improvement from scissors cogent.",
-    "uploaded_at": "20260403 23:30 UTC"
+    "uploaded_at": "20260403 23:30 UTC",
+    "note": "Independent improvement on top of 014+015 baseline. Complements enemy avoidance with efficient exploration."
+  },
+  "last_improvement": {
+    "date": "20260403",
+    "version": "014+015",
+    "focus": "Contested territory avoidance + scrambler expansion-blocking",
+    "description": "Combined: (014) enemy_aoe 8.0\u219210.0 for aligners + (015) blocked_neutrals 6.0\u21928.0 for scramblers",
+    "result": "MAJOR IMPROVEMENT: gamma_v3:v1 avg 11.31 per cog vs gamma:v1 baseline 7.45 (+51.8%)",
+    "tournament_scores": {
+      "matches": 18,
+      "avg": 11.31,
+      "range": "TBD",
+      "rank": 32,
+      "season": "beta-cvc"
+    },
+    "status": "validated",
+    "notes": "Early 4-match sample showed regression (3.58 avg) but with 18 matches shows strong improvement. Both changes synergize: aligners avoid contested territory, scramblers prioritize high-impact enemy junctions. Outperforms 014 alone (10.84 avg). Uploaded as gamma_v3:v1."
   },
   "failed_attempts": [
     {

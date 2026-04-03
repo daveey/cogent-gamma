@@ -1,10 +1,10 @@
 # gamma — Improvement TODOs
 
 ## In Progress
-- [ ] (20260403-014) Enemy AOE penalty increase: 8.0→10.0 (+25%) to avoid contested territory. Uploaded as gamma_v2:v1 to beta-cvc, awaiting tournament validation.
-- [ ] Monitor gamma:v1 tournament performance (currently rank #46, 9.96 avg, 13+ matches)
+- [ ] (20260403-016) Expansion bonus increase: 5.0→6.0 per junction (+20%). gamma_v4:v1 tests without scrambler fix, gamma_v5:v1 includes all validated improvements. Awaiting tournament validation.
 
 ## Completed
+- [x] (20260403-014+015) Combined improvements: enemy_aoe 8.0→10.0 + blocked_neutrals 6.0→8.0 → +51.8% improvement (7.45→11.31). Uploaded as gamma_v3:v1, rank #32 on beta-cvc.
 - [x] (ID) Wider enemy AOE for retreat: wired _near_enemy_territory (radius 20) into _should_retreat — +458% avg score
 - [x] (20260403-001) LLM objective feature: wired up expand/defend/economy_bootstrap objectives to pressure budgets — was broken, now functional
 - [x] (20260403-001) Documentation: added four_score.md, updated all docs for multi-team format
