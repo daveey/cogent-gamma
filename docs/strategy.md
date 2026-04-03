@@ -1,5 +1,10 @@
 # Strategy
 
+**NOTE**: Current learnings are from machina_1 (2-team) testing. Four_score (4-team) dynamics may differ — see `docs/four_score.md`. Multi-team format requires adjustments for:
+- Multi-directional expansion (4 corners vs 2 sides)
+- Higher junction churn (more scramblers active)
+- Opportunistic targeting (weaker teams become targets)
+
 ## What Works
 - **Chain-building**: Capture junctions near existing friendly junctions to expand the alignment network outward from hub
 - **Pressure budgets**: Phase-based role allocation (more miners early, transition to aligners)

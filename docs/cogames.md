@@ -12,23 +12,34 @@ Verify: `source .venv/bin/activate && cogames --version`
 
 ## Running Locally
 
-Play a game and check the "per cog" score:
+### Machina_1 (2 teams, 8 agents each = 16 total)
 
-```bash
-source .venv/bin/activate
-PYTHONPATH=src/cogamer cogames play -m machina_1 \
-  -p class=cvc.cogamer_policy.CvCPolicy \
-  -c 8 -r none --seed 42
-```
-
-**Test across 5+ seeds** (42–46) and average. Single-seed results are noise.
-
-Without LLM (matches tournament conditions):
 ```bash
 ANTHROPIC_API_KEY= PYTHONPATH=src/cogamer cogames play -m machina_1 \
   -p class=cvc.cogamer_policy.CvCPolicy \
   -c 8 -r none --seed 42
 ```
+
+### Four_Score (4+ teams, 8 agents each = 32 total)
+
+**Self-play** (4 copies of your policy):
+```bash
+ANTHROPIC_API_KEY= PYTHONPATH=src/cogamer cogames play -m four_score \
+  -p class=cvc.cogamer_policy.CvCPolicy \
+  -c 32 -r none --seed 42
+```
+
+**Mixed policies** (test vs others):
+```bash
+ANTHROPIC_API_KEY= PYTHONPATH=src/cogamer cogames play -m four_score \
+  -p class=cvc.cogamer_policy.CvCPolicy \
+  -p alpha.0 \
+  -p alpha.0 \
+  -p alpha.0 \
+  -c 32 -r none --seed 42
+```
+
+**Test across 5+ seeds** (42–46) and average. Single-seed results are noise.
 
 ## Deploying
 
@@ -59,13 +70,24 @@ cd src/cogamer && PYTHONPATH=. cogames upload \
 
 ### Validate Before Upload
 
-Always test locally across 5+ seeds before uploading:
+Always test locally across 5+ seeds before uploading.
 
+**For four_score (current focus):**
+```bash
+for seed in 42 43 44 45 46; do
+  echo "=== Seed $seed ==="
+  ANTHROPIC_API_KEY= PYTHONPATH=src/cogamer cogames play -m four_score \
+    -p class=cvc.cogamer_policy.CvCPolicy \
+    -c 32 -r none --seed $seed | grep "per cog"
+done
+```
+
+**For machina_1:**
 ```bash
 for seed in 42 43 44 45 46; do
   ANTHROPIC_API_KEY= PYTHONPATH=src/cogamer cogames play -m machina_1 \
     -p class=cvc.cogamer_policy.CvCPolicy \
-    -c 8 -r none --seed $seed
+    -c 8 -r none --seed $seed | grep "per cog"
 done
 ```
 
@@ -82,12 +104,15 @@ cogames season progress <season>          # stage progression
 
 ## Seasons
 
-| Season | Purpose | Format |
-|--------|---------|--------|
-| `beta-cvc` | **Freeplay** — test against real opponents, low stakes | Self-play qualifier → 20 matches vs random partners |
-| `beta-teams-tiny-fixed` | **Tournament** — ranked competition | Multi-stage elimination, team-based scoring |
+| Season | Mission | Purpose | Format |
+|--------|---------|---------|--------|
+| `beta-four-score` | four_score | **Freeplay** — multi-team testing | Self-play qualifier → matches vs random opponents |
+| `beta-cvc` | machina_1 | **Freeplay** — 2-team testing | Self-play qualifier → 20 matches vs random partners |
+| `beta-teams-tiny-fixed` | machina_1 | **Tournament** — ranked competition | Multi-stage elimination, team-based scoring |
 
-Freeplay policies qualify via self-play, then play 20 matches against random partners. Use this to validate changes against diverse opponents before committing to tournament.
+**Current focus**: `beta-four-score` — validate improvements in 4-team format before tournament.
+
+Freeplay policies qualify via self-play, then play matches against random opponents. Use this to validate changes against diverse opponents before committing to tournament.
 
 Tournament format: multi-stage elimination. Policies qualify via self-play, get seeded into teams, teams compete across progressive stages with culling. Final score based on team rank.
 

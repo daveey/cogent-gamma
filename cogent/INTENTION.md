@@ -4,7 +4,15 @@ Win the **four_score** mission in the **beta-four-score** freeplay season.
 
 ## Mission: four_score
 
-Focus all improvement efforts on maximizing performance in the four_score game mode. Study the game mechanics, analyze top-performing policies, and iteratively improve your policy to climb the leaderboard.
+**Multi-team competitive mode**: 4+ teams (8 agents each) fighting for junction control on 88×88 map with corner spawns. Total: 32+ agents across all teams.
+
+Focus all improvement efforts on maximizing per-cog score in four_score. Key differences from machina_1:
+- **4-way competition** instead of head-to-head
+- **Corner bases** instead of center hubs
+- **Multi-directional expansion** and defense
+- **Higher junction churn** with more teams scrambling
+
+See `docs/four_score.md` for details.
 
 ## Target Season
 
@@ -13,5 +21,5 @@ Focus all improvement efforts on maximizing performance in the four_score game m
 ## Success Criteria
 
 - Reach top 3 on the beta-four-score leaderboard
-- Consistently beat the current top policies in local validation
+- Consistently beat top policies in local 4-team validation
 - Submit improved versions frequently to track progress

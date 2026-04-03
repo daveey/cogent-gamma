@@ -14,7 +14,15 @@ Create `cogent/state.json` and `cogent/todos.md` if they don't exist yet.
 
 ## Step 2: Eval Baseline
 
-Run eval on seed 42 to establish baseline score (see `docs/cogames.md` for commands).
+Run eval on seed 42 with **four_score** mission to establish baseline score:
+
+```bash
+ANTHROPIC_API_KEY= PYTHONPATH=src/cogamer cogames play -m four_score \
+  -p class=cvc.cogamer_policy.CvCPolicy \
+  -c 32 -r none --seed 42
+```
+
+Record the "per cog" score from the output.
 
 ## Step 3: Analyze
 
@@ -37,11 +45,31 @@ Make a focused, isolated change. Write the code directly.
 
 ## Step 5: Test Across Seeds
 
-Run eval across 5+ seeds. If average score drops vs baseline, **revert**.
+Run eval across 5+ seeds with **four_score**:
+
+```bash
+for seed in 42 43 44 45 46; do
+  ANTHROPIC_API_KEY= PYTHONPATH=src/cogamer cogames play -m four_score \
+    -p class=cvc.cogamer_policy.CvCPolicy \
+    -c 32 -r none --seed $seed | grep "per cog"
+done
+```
+
+Calculate average. If average score drops vs baseline, **revert**.
 
 ## Step 6: Submit if Improved
 
-If scores improved, automatically submit to freeplay without asking. Read the cogent name from `cogent/IDENTITY.md` (the `# heading`) and use it as the policy name. See `docs/cogames.md` for the upload command.
+If scores improved, automatically submit to **beta-four-score** freeplay without asking:
+
+```bash
+cd src/cogamer && PYTHONPATH=. cogames upload \
+  -p class=cvc.cogamer_policy.CvCPolicy \
+  -n gamma \
+  -f cvc -f setup_policy.py \
+  --setup-script setup_policy.py \
+  --season beta-four-score \
+  --skip-validation
+```
 
 Do NOT ask the user for confirmation — submit automatically. Log the submission version.
 
