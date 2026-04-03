@@ -9,15 +9,13 @@ At session end, read and follow `cogent/hooks/on-sleep.md`.
 
 ## Skills
 
-Skills are in `cogent/skills/`. Read the SKILL.md file and follow its instructions.
+Skills are in `cogent/skills/`. Read the `.md` file and follow its instructions.
 
-- **improve** — One improvement iteration: analyze code, implement a change, test across seeds, auto-submit if improved.
-- **proximal-cogent-optimize** — PCO cycle: play a game, collect experience, LLM proposes patches, test, submit.
-- **dashboard** — Generate HTML dashboard from cogent state showing experiments, scores, and learnings.
 ## Docs
 
-- [docs/architecture.md](docs/architecture.md) — Policy architecture, program table, PCO, alpha.0 reference
-- [docs/strategy.md](docs/strategy.md) — What works, what to try, dead ends, learnings
-- [docs/rules.md](docs/rules.md) — Game rules, constants, team coordination
+- [src/cogamer/cvc/AGENTS.md](src/cogamer/cvc/AGENTS.md) — Game rules, policy architecture, CLI commands, key insights
+- [docs/architecture.md](docs/architecture.md) — Program table design, PCO loop, alpha.0 reference
+- [docs/strategy.md](docs/strategy.md) — What works, what to try, dead ends
 - [docs/cogames.md](docs/cogames.md) — CLI setup, running, uploading, monitoring
-- [docs/tools.md](docs/tools.md) — Development rules & constraints
+- [docs/rules.md](docs/rules.md) — Game rules, constants, team coordination
+- [docs/tools.md](docs/tools.md) — Development constraints
