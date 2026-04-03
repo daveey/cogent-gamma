@@ -1,7 +1,15 @@
 {
   "approach_stats": {
-    "pco": {"attempts": 0, "improvements": 0, "last_used": null},
-    "design": {"attempts": 12, "improvements": 4, "last_used": "20260403-014-testing"}
+    "pco": {
+      "attempts": 0,
+      "improvements": 0,
+      "last_used": null
+    },
+    "design": {
+      "attempts": 13,
+      "improvements": 4,
+      "last_used": "20260403-015-testing"
+    }
   },
   "last_improvement": {
     "date": "20260403",
@@ -21,15 +29,15 @@
   },
   "testing_in_progress": {
     "date": "20260403",
-    "version": "012",
-    "focus": "Scrambler territorial denial optimization",
-    "description": "Increased scrambler blocked_neutrals bonus from 6.0 to 8.0 (+33%) to prioritize enemy junctions that block multiple neutral junctions",
-    "rationale": "Better territorial denial - scramblers should target high-impact enemy junctions that prevent expansion",
-    "upload": "gamma:v2",
+    "version": "015",
+    "focus": "Corner-safe exploration offsets for four_score",
+    "description": "Fixed out-of-bounds exploration targets for corner spawns. Reduced offset magnitudes (22\u219215 max) and added dynamic flipping based on hub quadrant. Fixes 63% OOB rate for aligners, 75% for miners/scramblers.",
+    "rationale": "Agents waste time pathing to invalid OOB targets in four_score corner spawns. 100% valid exploration improves territory discovery and agent efficiency.",
+    "upload": "gamma_scissors",
     "season": "beta-cvc",
     "status": "uploaded_awaiting_matches",
-    "uploaded_at": "20260403 22:36 UTC",
-    "parallel_test": "gamma_v2:v1 (aligner enemy_aoe 8.0→10.0) also running"
+    "notes": "Includes all previous improvements (004+007+011+012+014). First improvement from scissors cogent.",
+    "uploaded_at": "20260403 23:30 UTC"
   },
   "failed_attempts": [
     {
@@ -38,7 +46,7 @@
       "focus": "LLM stagnation detection enhancement",
       "description": "Enhanced LLM prompt with prescriptive anti-stagnation role-change rules",
       "result": "REGRESSION: 3.52 vs baseline 6.03 (-41.6%)",
-      "analysis": "Too aggressive role switching disrupted team stability. Prescriptive rules (stalled miner→aligner, stalled aligner→miner) caused excessive role churn. May need softer approach or better stall detection threshold."
+      "analysis": "Too aggressive role switching disrupted team stability. Prescriptive rules (stalled miner\u2192aligner, stalled aligner\u2192miner) caused excessive role churn. May need softer approach or better stall detection threshold."
     },
     {
       "date": "20260403",
@@ -60,7 +68,7 @@
       "date": "20260403",
       "version": "006-reverted",
       "focus": "Network bonus increase",
-      "description": "Increased network bonus weight from 0.5 to 1.5 (3×) to prioritize chain-building near existing friendly junctions",
+      "description": "Increased network bonus weight from 0.5 to 1.5 (3\u00d7) to prioritize chain-building near existing friendly junctions",
       "result": "MAJOR REGRESSION: 3.23 vs baseline 9.03 (-64.2%)",
       "analysis": "TOO AGGRESSIVE. Tripling network bonus caused agents to cluster around existing junctions instead of expanding. Leads to stagnant territory and missed opportunities. Expansion bonus (max 30) balanced against network bonus (max 2) for a reason - need both expansion and consolidation."
     },
@@ -86,15 +94,21 @@
       "focus": "Mid-game pressure ramp",
       "description": "Changed pressure_budget=6 threshold from step 3000 to step 2000 to get 5 aligners + 1 scrambler earlier during critical window",
       "result": "MAJOR REGRESSION: 5.15 vs baseline 9.74 (-47.13%)",
-      "analysis": "Ramping to 6 pressure budget 1000 steps earlier caused significant performance drop. Agents likely exhausted hearts/resources before establishing sustainable economy. Similar to failed attempt 003 (30→15 steps, -5.97%). Pattern confirms: premature pressure ramps hurt economy. Critical window 500-2000 refers to when to capitalize on existing resources, not when to ramp resource burn."
+      "analysis": "Ramping to 6 pressure budget 1000 steps earlier caused significant performance drop. Agents likely exhausted hearts/resources before establishing sustainable economy. Similar to failed attempt 003 (30\u219215 steps, -5.97%). Pattern confirms: premature pressure ramps hurt economy. Critical window 500-2000 refers to when to capitalize on existing resources, not when to ramp resource burn."
     },
     {
       "date": "20260403",
       "version": "012-reverted",
       "focus": "Nearby teammate role awareness for LLM",
-      "description": "Added nearby teammate role counts (≤20 tiles) to LLM analysis prompt to detect clustering and suggest role switches",
+      "description": "Added nearby teammate role counts (\u226420 tiles) to LLM analysis prompt to detect clustering and suggest role switches",
       "result": "UNSTABLE: avg 10.11 vs baseline 9.74 (+3.8%), but variance 22.14 with 40% catastrophic failure rate",
-      "scores_by_seed": {"42": 2.43, "43": 10.37, "44": 12.49, "45": 23.71, "46": 1.57},
+      "scores_by_seed": {
+        "42": 2.43,
+        "43": 10.37,
+        "44": 12.49,
+        "45": 23.71,
+        "46": 1.57
+      },
       "analysis": "EXTREME INSTABILITY. Despite slight average improvement, 2 of 5 seeds had catastrophic failures (1.57, 2.43). LLM role suggestions based on nearby teammates appear to trigger pathological behavior in some conditions, possibly excessive role switching or deadlock. 40% failure rate unacceptable for production. Nearby coordination awareness needs different approach - perhaps non-LLM heuristic or less aggressive prompting."
     },
     {
@@ -103,7 +117,13 @@
       "focus": "Softer LLM stagnation detection guidance",
       "description": "Enhanced LLM analysis prompt with explicit Stalled/Oscillating definitions, suggestive examples, and 'STRONGLY PREFER null' emphasis",
       "result": "MAJOR REGRESSION: 5.91 vs baseline 9.74 (-39.4%)",
-      "scores_by_seed": {"42": 6.03, "43": 7.48, "44": 5.98, "45": 4.71, "46": 5.33},
+      "scores_by_seed": {
+        "42": 6.03,
+        "43": 7.48,
+        "44": 5.98,
+        "45": 4.71,
+        "46": 5.33
+      },
       "analysis": "WORSE THAN PRESCRIPTIVE APPROACH. Attempt to soften failed attempt 002's prescriptive rules (-41.6%) resulted in similar magnitude regression (-39.4%). Adding detailed explanations, examples, and strong 'prefer null' bias actually degraded performance vs simpler prompt. LLM may be confused by verbose guidance or 'STRONGLY PREFER null' is too restrictive. Pattern suggests: LLM role guidance itself may be problematic regardless of phrasing - both prescriptive (002: -41.6%) and suggestive (this: -39.4%) approaches fail. Consider abandoning LLM-driven role changes entirely or use only for extreme dysfunction detection with very high threshold."
     }
   ],
