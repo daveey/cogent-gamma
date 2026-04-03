@@ -18,6 +18,7 @@
 - [x] (20260403-008-REVERTED) Scrambler threat_bonus increase: 10.0→15.0 → -17.04% regression. Over-defending existing junctions hurt expansion disruption.
 - [x] (20260403-009-REVERTED) Claim duration reduction: 30→20 steps → -53.0% regression. Too short, caused massive claim duplication and wasted coordination.
 - [x] (20260403-010-REVERTED) Mid-game pressure ramp: step 3000→2000 → -47.13% regression. Premature resource burn, exhausted economy before sustainable.
+- [x] (20260403-012-REVERTED) Nearby teammate role awareness in LLM: +3.8% avg BUT 40% catastrophic failure rate (variance 22.14). Extreme instability, LLM role suggestions trigger pathological behavior.
 
 ## Candidates
 - [ ] Read teammate vibes: Count nearby teammate roles to avoid duplicate aligners heading to same area
