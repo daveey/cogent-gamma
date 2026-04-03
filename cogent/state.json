@@ -1,7 +1,7 @@
 {
   "approach_stats": {
     "pco": {"attempts": 0, "improvements": 0, "last_used": null},
-    "design": {"attempts": 5, "improvements": 4, "last_used": "20260403-007"}
+    "design": {"attempts": 6, "improvements": 4, "last_used": "20260403-007"}
   },
   "last_improvement": {
     "date": "20260403",
@@ -51,6 +51,14 @@
       "description": "Increased network bonus weight from 0.5 to 1.5 (3×) to prioritize chain-building near existing friendly junctions",
       "result": "MAJOR REGRESSION: 3.23 vs baseline 9.03 (-64.2%)",
       "analysis": "TOO AGGRESSIVE. Tripling network bonus caused agents to cluster around existing junctions instead of expanding. Leads to stagnant territory and missed opportunities. Expansion bonus (max 30) balanced against network bonus (max 2) for a reason - need both expansion and consolidation."
+    },
+    {
+      "date": "20260403",
+      "version": "008-reverted",
+      "focus": "Scrambler defensive prioritization",
+      "description": "Increased scrambler threat_bonus weight from 10.0 to 15.0 to better defend friendly junctions in 4-team format",
+      "result": "REGRESSION: 8.08 vs baseline 9.74 (-17.04%)",
+      "analysis": "Increasing defensive priority hurt performance. Scramblers became too focused on protecting existing junctions rather than disrupting enemy expansion. Junction collapse pattern not addressed by over-defending. Current 10.0 weight appears optimal."
     }
   ],
   "mission": "four_score",
