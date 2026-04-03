@@ -1,6 +1,16 @@
 {
   "approach_stats": {
     "pco": {"attempts": 0, "improvements": 0, "last_used": null},
-    "design": {"attempts": 1, "improvements": 1, "last_used": "20260401-001"}
-  }
+    "design": {"attempts": 2, "improvements": 2, "last_used": "20260403-001"}
+  },
+  "last_improvement": {
+    "date": "20260403",
+    "version": "001",
+    "focus": "LLM objective feature bug fix",
+    "description": "Wired up LLM objectives (expand/defend/economy_bootstrap) to pressure budget computation. Feature was broken - LLM could set objectives but they had no effect. Now functional.",
+    "status": "untested_four_score",
+    "notes": "Also documented four_score mission (multi-team format). Need to run full four_score evals to establish baseline."
+  },
+  "mission": "four_score",
+  "season": "beta-four-score"
 }
