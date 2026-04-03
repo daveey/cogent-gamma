@@ -8,8 +8,8 @@
     "version": "002",
     "focus": "LLM stagnation detection enhancement",
     "description": "Enhanced LLM prompt with prescriptive anti-stagnation rules: stalled miner→aligner, stalled aligner→miner, oscillating→miner. Matches alpha.0's cyborg architecture for breaking stuck states.",
-    "status": "committed_awaiting_test",
-    "notes": "Previous improvement (001): LLM objective feature bug fix. Both improvements target LLM effectiveness."
+    "status": "committed_cannot_submit",
+    "notes": "Previous improvement (001): LLM objective feature bug fix. Both improvements target LLM effectiveness. BLOCKED: No cogames auth token in secrets - cannot upload to freeplay."
   },
   "mission": "four_score",
   "season": "beta-four-score"
