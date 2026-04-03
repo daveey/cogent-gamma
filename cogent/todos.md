@@ -1,7 +1,8 @@
 # scissors — Improvement TODOs
 
 ## In Progress
-- [x] (20260403-017) Corner-safe exploration: Fixed OOB targets for four_score corner spawns. Uploaded as gamma_scissors:v1, awaiting qualifying matches.
+- [ ] (20260403-018) Network bonus increase: 0.5→0.75 (+50%) for chain-building consolidation. Uploaded as scissors_v1:v1, awaiting tournament validation.
+- [ ] (20260403-017) Corner-safe exploration: gamma_scissors:v1 has 6+ matches running, awaiting results (1-match sample: 8.26 avg).
 
 ## Current Status (20260403 23:35 UTC)
 **Tournament Rankings (beta-cvc):**
