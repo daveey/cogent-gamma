@@ -6,7 +6,7 @@
       "last_used": null
     },
     "design": {
-      "attempts": 25,
+      "attempts": 26,
       "improvements": 7,
       "last_used": "20260404-026-testing"
     }
@@ -20,7 +20,7 @@
     "upload": "scissors_v1:v10",
     "season": "beta-cvc",
     "uploaded_at": "20260404 UTC",
-    "note": "Building on gamma_v6 baseline (15.84 avg). Attempt 025 still validating (6 matches, 14.50 avg). Running tests in parallel for efficiency."
+    "note": "Building on gamma_v6 baseline (15.84 avg). Attempt 025 failed (-39.0%). Testing 026 in isolation."
   },
   "last_improvement": {
     "date": "20260404",
@@ -231,6 +231,20 @@
         "season": "beta-cvc"
       },
       "analysis": "Significant regression. Increasing expansion cap encouraged agents to pursue exceptional expansion opportunities that may have been riskier or further from optimal paths. Cap of 36 (6 unreachables) appears to be the sweet spot - it rewards good expansion without over-prioritizing extreme cases. Pattern: parameter increases that 'amplify' existing behavior don't always improve - the current calibration is often optimal."
+    },
+    {
+      "date": "20260404",
+      "version": "025-reverted",
+      "focus": "Wider enemy AOE detection range",
+      "description": "Increased _JUNCTION_AOE_RANGE from 10 to 12 (+20%) to align closer to alpha.0's wider enemy detection",
+      "result": "MAJOR REGRESSION: scissors_v1:v9 avg 9.66 vs baseline 15.84 (-39.0%)",
+      "tournament_scores": {
+        "matches": 16,
+        "avg": 9.66,
+        "rank": 58,
+        "season": "beta-cvc"
+      },
+      "analysis": "CATASTROPHIC FAILURE. Increasing AOE detection radius by 20% caused severe performance degradation. Agents likely became too cautious, avoiding too many contested areas or retreating too often. This affected both aligner targeting (enemy_aoe penalty) and scrambler targeting (blocked_neutrals bonus). Pattern: spatial detection parameters are extremely sensitive - even 20% changes can break behavior. Alpha.0's radius 20 may be compensated by other parameters we don't have."
     }
   ],
   "mission": "four_score",

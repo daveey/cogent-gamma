@@ -1,7 +1,6 @@
 # scissors — Improvement TODOs
 
 ## In Progress
-- [ ] (20260404-025) Enemy AOE range increase: 10→12 (+20%) for wider enemy detection. Uploaded as scissors_v1:v9, early results: 14.50 avg (6 matches).
 - [ ] (20260404-026) Scrambler corner pressure: divisor 8.0→7.0 for more aggressive distant targeting. Uploaded as scissors_v1:v10, awaiting tournament validation.
 
 ## Current Status (20260404 UTC)
@@ -50,6 +49,7 @@
 - [x] (022) Hotspot weight mid-tier reduction (6.0→5.5): canceled (built on failed 021)
 - [x] (023) Hub penalty mid-tier reduction (3.0→2.7): -29.0%
 - [x] (024) Expansion cap increase (36→42): -20.7%
+- [x] (025) Enemy AOE range increase (10→12): -39.0%
 
 ## Strategy
 - **Tournament-based validation** works well - continue using beta-cvc for fast feedback
