@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 75,
+      "attempts": 76,
       "improvements": 7,
-      "last_used": "20260404-140-testing"
+      "last_used": "20260404-141-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "140",
-    "focus": "Aligner teammate penalty increase",
-    "description": "Increased teammate_penalty from 9.15 to 9.2 (+0.5%)",
-    "rationale": "Teammate penalty reduces target score when another aligner is closer to same junction. Conservative +0.5% increase builds on validated 011 (6.0→9.0) and attempt 109 (9.0→9.15). Further reduces multi-agent duplication. Failed attempt 020 (9.0→10.0, -42.8%) shows upper limit, but small increment may improve. Stacks with 087-139.",
-    "upload": "scissors_v56:v1",
+    "version": "141",
+    "focus": "Aligner expansion bonus cap increase",
+    "description": "Increased expansion bonus cap from 36.5 to 36.8 (+0.8%)",
+    "rationale": "Expansion bonus cap limits maximum bonus from unlocking new territory. Conservative +0.8% increase builds on validated 016 (expansion weight 5.0→6.0) and attempts 096 (6.0→6.2), 113 (cap 36.0→36.5), 135 (weight 6.2→6.28). Higher cap allows slightly more reward for junctions that unlock 6+ unreachable entities. Stacks with 087-140.",
+    "upload": "scissors_v57:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260404",
-    "note": "Scissors attempt 140. Clean baseline teammate penalty exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 141. Clean baseline expansion cap exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
