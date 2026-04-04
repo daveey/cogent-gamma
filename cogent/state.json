@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 57,
+      "attempts": 58,
       "improvements": 7,
-      "last_used": "20260404-122-testing"
+      "last_used": "20260404-123-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "122",
-    "focus": "Aligner HP threshold reduction",
-    "description": "Reduced aligner HP threshold from 47 to 46.5 (-1%)",
-    "rationale": "Attempt 089 reduced from 50 to 47 (-6%). Conservative -1% further reduction for even safer aligner retreat. Aligners are critical for scoring, so prioritizing survival over aggression. Earlier retreat helps maintain aligner uptime and junction control. Stacks with 087-121.",
-    "upload": "scissors_v38:v1",
+    "version": "123",
+    "focus": "Scrambler HP threshold increase",
+    "description": "Increased scrambler HP threshold from 33 to 33.66 (+2%)",
+    "rationale": "Attempt 088 increased from 30 to 33 (+10%). Conservative +2% further increase for slightly more aggressive enemy disruption before retreat. Scramblers need good uptime for disruption effectiveness in four_score 4-team format. Stacks with 087-122.",
+    "upload": "scissors_v39:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260404",
-    "note": "Scissors attempt 122. Clean baseline aligner HP threshold exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 123. Clean baseline scrambler HP threshold exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
