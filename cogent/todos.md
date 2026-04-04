@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (140) Aligner teammate penalty increase (9.15→9.2): scissors_v56:v1 qualifying - slightly better coordination (+0.5%, stacks with 087-139)
 - [ ] (139) Aligner enemy AOE penalty increase (10.3→10.4): scissors_v55:v1 qualifying - slightly stronger enemy avoidance (+1%, stacks with 087-138)
 - [ ] (138) Scrambler blocked neutrals weight increase (8.5→8.6): scissors_v54:v1 qualifying - stronger expansion-blocking (+1.2%, stacks with 087-137)
 - [ ] (137) Scrambler threat bonus weight increase (10.3→10.4): scissors_v53:v1 qualifying - slightly stronger defensive priority (+1%, stacks with 087-136)
