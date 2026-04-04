@@ -19,7 +19,7 @@
     "rationale": "Attempt 012 (prescriptive LLM role changes) failed catastrophically with 40% failure rate. This is a softer approach: give LLM visibility into hotspot data without prescriptive rules. LLM can detect when stalled+targeting hotspot indicates real stagnation vs temporary blockage. Combined with 030's hotspot decay, enables time-aware stagnation detection.",
     "upload": "scissors_v1_v15:v1",
     "season": "beta-cvc",
-    "uploaded_at": "TBD",
+    "uploaded_at": "20260404 04:08 UTC",
     "note": "Softer LLM enhancement vs failed 012. Provides context rather than prescribing actions. Builds on 030's hotspot decay infrastructure."
   },
   "last_improvement": {
