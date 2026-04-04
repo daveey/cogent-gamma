@@ -135,3 +135,10 @@ Delta's 036-040 are committed but not uploaded (no COGAMES_TOKEN).
 - **Base**: Delta's 036-038 + scissors 039-056
 - **Status**: Awaiting tournament results (need 20+ matches)
 - **Rationale**: Builds on attempt 050 (9.5→9.3). Synergizes with hotspot weight reductions (045, 046, 051) for comprehensive contested junction strategy.
+
+## scissors_v1_v40:v1 (Attempt 058)
+- **Uploaded**: 2026-04-04T08:41:12Z
+- **Change**: Scrambler threat_bonus 10.5→10.6 (+1.0%)
+- **Base**: Delta's 036-038 + scissors 039-057
+- **Status**: Awaiting tournament results (need 20+ matches)
+- **Rationale**: Builds on attempt 043 (10.0→10.5). Synergizes with network bonus increases (039, 042, 052) to protect consolidated junction clusters.
