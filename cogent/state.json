@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 76,
+      "attempts": 77,
       "improvements": 7,
-      "last_used": "20260404-076-pending"
+      "last_used": "20260404-077-pending"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "076",
-    "focus": "Network bonus weight increase for chain-building consolidation",
-    "description": "Increased network_bonus weight from 0.86 to 0.88 (+2.3%) in scoring.py",
-    "rationale": "Builds on attempts 069 (0.84→0.86, +2.4%), 060 (0.82→0.84, +2.4%), 052 (0.8→0.82, +2.5%), 042 (0.75→0.8, +7%), and validated attempt 018 (0.5→0.75, +50%, +3.9%) for continued consolidation optimization. Synergizes with threat_bonus increases (043, 058, 072) to both build and defend junction clusters. Progressive increases in network bonus show sustained improvements in chain-building strategy across the validated baseline and five subsequent attempts.",
-    "upload": "scissors_v1_v58:v1",
+    "version": "077",
+    "focus": "Expansion weight increase for aggressive territory acquisition",
+    "description": "Increased expansion bonus weight from 6.3 to 6.35 (+0.8%) in scoring.py",
+    "rationale": "Builds on attempts 070 (6.25→6.3, +0.8%), 061 (6.2→6.25, +0.8%), 055 (6.15→6.2, +0.8%), 048 (6.1→6.15), and 040 (6.0→6.15, +2.5%) for continued expansion optimization. Synergizes with hub penalty reductions (044, 047, 053, 065, 066, 067) and hotspot weight reductions (045, 046, 051, 062, 063, 064) for comprehensive hub-proximal expansion strategy. Progressive increases in expansion weight show sustained territory acquisition improvements across six optimization attempts.",
+    "upload": "scissors_v1_v59:v1",
     "season": "beta-cvc",
-    "uploaded_at": "2026-04-04T11:04:24Z",
-    "note": "Thirty-eighth scissors improvement. Continues network consolidation optimization (018, 042, 052, 060, 069, 076)."
+    "uploaded_at": "2026-04-04T11:07:42Z",
+    "note": "Thirty-ninth scissors improvement. Continues expansion optimization (040, 048, 055, 061, 070, 077)."
   },
   "last_improvement": {
     "date": "20260404",
