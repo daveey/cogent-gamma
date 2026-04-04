@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 107,
+      "attempts": 108,
       "improvements": 7,
-      "last_used": "20260404-107-pending"
+      "last_used": "20260404-108-pending"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "107",
-    "focus": "Enemy AOE penalty reduction for aggressive contested territory targeting",
-    "description": "Reduced enemy_aoe penalty from 8.8 to 8.7 (-1.1%) in scoring.py",
-    "rationale": "Builds on attempts 097 (8.9→8.8, -1.1%), 084 (9.0→8.9, -1.1%), 078 (9.1→9.0, -1.1%), 071 (9.2→9.1, -1.1%), 057 (9.3→9.2, -1.1%), 050 (9.5→9.3, -2.1%), and validated 038 (10.0→9.5, -5%) for continued enemy AOE penalty optimization. Cumulative -13% reduction from baseline 10.0 to 8.7. Synergizes with hotspot weight reductions (045, 046, 051, 062, 063, 064, 079, 080, 088, 094, 095, 103) for comprehensive contested territory strategy. Progressive enemy AOE penalty reductions enable increasingly aggressive contested junction targeting despite enemy scrambler presence.",
-    "upload": "scissors_v1_v89:v1",
+    "version": "108",
+    "focus": "Scrambler threat bonus increase for network defense",
+    "description": "Increased scrambler threat_bonus from 10.9 to 11.0 (+0.9%) in scoring.py",
+    "rationale": "Builds on attempts 100 (10.8→10.9, +0.9%), 085 (10.7→10.8, +0.9%), 072 (10.6→10.7, +0.9%), 058 (10.5→10.6, +1.0%), 043 (10.0→10.5, +5%), and baseline 10.0 for continued scrambler threat_bonus optimization. Cumulative +10% increase from baseline 10.0 to 11.0. Synergizes with network bonus increases (039, 042, 052, 060, 069, 076, 081, 089, 098, 104) to protect consolidated junction clusters from enemy scramblers. Progressive threat_bonus increases enable increasingly effective defensive scrambler positioning near friendly junction networks.",
+    "upload": "scissors_v1_v90:v1",
     "season": "beta-cvc",
-    "uploaded_at": "2026-04-04T12:13:49Z",
-    "note": "Sixty-ninth scissors improvement. Continues enemy AOE penalty optimization (038, 050, 057, 071, 078, 084, 097, 107)."
+    "uploaded_at": "2026-04-04T12:24:04Z",
+    "note": "Seventieth scissors improvement. Continues scrambler threat_bonus optimization (043, 058, 072, 085, 100, 108)."
   },
   "last_improvement": {
     "date": "20260404",
