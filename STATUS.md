@@ -4,7 +4,10 @@
 
 ## Current Activity
 
-**Idle** - Ready for next improvement cycle
+**Testing attempt 012-delta**: Corner pressure divisor 8.0→7.0
+- **Status**: In progress (seed 42 started 00:15 UTC)
+- **Test PID**: 3252
+- **Expected completion**: ~01:20 UTC (60-75 min)
 
 ## Latest Improvement
 
