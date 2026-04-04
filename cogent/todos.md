@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (121) Miner HP threshold increase (18.0→18.3): scissors_v37:v1 qualifying - more aggressive resource gathering (+2%, stacks with 087-120)
 - [ ] (120) Aligner hotspot weight far-range reduction (12.0→11.88): scissors_v36:v1 qualifying - far-range contested junctions (-1%, stacks with 087-119)
 - [ ] (119) Emergency resource low threshold increase (2.0→2.2): scissors_v35:v1 qualifying - earlier emergency mining (+10%, stacks with 087-118)
 - [ ] (118) Scrambler heart batch target increase (3.0→3.2): scissors_v34:v1 qualifying - better persistence (+7%, stacks with 087-117)
