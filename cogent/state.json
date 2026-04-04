@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 87,
+      "attempts": 88,
       "improvements": 7,
-      "last_used": "20260404-087-pending"
+      "last_used": "20260404-088-pending"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "087",
-    "focus": "Claimed target penalty reduction for flexible claim override",
-    "description": "Reduced _CLAIMED_TARGET_PENALTY from 10.7 to 10.6 (-0.9%) in types.py",
-    "rationale": "Builds on attempts 074 (10.8→10.7, -0.9%), 054 (11.0→10.8, -1.8%), and validated 040 (12.0→11.0, improvement) for continued claim penalty optimization. Cumulative -11.7% reduction from baseline 12.0 to 10.6. Synergizes with teammate penalty reductions (049, 056, 068, 075, 083) for comprehensive multi-agent coordination flexibility. Progressive claim penalty reductions enable increasingly flexible claim override when strategically beneficial while maintaining coordination stability.",
-    "upload": "scissors_v1_v69:v1",
+    "version": "088",
+    "focus": "Far-range hotspot weight reduction for contested junction flexibility",
+    "description": "Reduced far-range hotspot_weight from 10.6 to 10.5 (-0.9%) in scoring.py",
+    "rationale": "Builds on attempts 079 (10.7→10.6, -0.9%), 062 (10.8→10.7, -0.9%), 051 (11.0→10.8, -1.8%), and validated baseline reduction from 12.0 to 11.0 in attempt 021 context for continued far-range hotspot optimization. Cumulative -12.5% reduction from baseline 12.0 to 10.5. Synergizes with enemy AOE penalty reductions (050, 057, 071, 078, 084) and mid-range hotspot reductions (046, 063, 080) for comprehensive contested territory strategy. Progressive far-range hotspot weight reductions enable increasingly aggressive far-range contested junction pursuit.",
+    "upload": "scissors_v1_v70:v1",
     "season": "beta-cvc",
-    "uploaded_at": "2026-04-04T11:44:10Z",
-    "note": "Forty-ninth scissors improvement. Continues claimed penalty optimization (040, 054, 074, 087)."
+    "uploaded_at": "2026-04-04T11:45:04Z",
+    "note": "Fiftieth scissors improvement. Continues far-range hotspot optimization (051, 062, 079, 088)."
   },
   "last_improvement": {
     "date": "20260404",
