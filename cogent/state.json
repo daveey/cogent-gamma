@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 42,
+      "attempts": 43,
       "improvements": 7,
-      "last_used": "20260404-107-testing"
+      "last_used": "20260404-108-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "107",
-    "focus": "Scrambler corner_pressure divisor reduction",
-    "description": "Reduced corner_pressure divisor from 8.0 to 7.8 (-3%)",
-    "rationale": "Faster corner_pressure growth makes far enemies more attractive to scramblers. Attempt 005 showed removing corner_pressure hurt (-0.77%). Attempt 100 increased cap to 10.5. Conservative -3% divisor reduction strengthens far-enemy disruption incentive in four_score 4-team format. Stacks with 087-106.",
-    "upload": "scissors_v23:v1",
+    "version": "108",
+    "focus": "Aligner hub penalty 15-25 base reduction",
+    "description": "Reduced hub penalty base from 10.0 to 9.8 (-2%) for junctions 15-25 distance",
+    "rationale": "Complements attempt 106 (multiplier 3.0→2.94). Conservative -2% base reduction further strengthens mid-far range (15-25) attractiveness. Total penalty at distance 25 now: (25-15)*2.94+9.8=39.2 vs original 40.0 (-2%). Stacks with 087-107.",
+    "upload": "scissors_v24:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260404",
-    "note": "Scissors attempt 107. Clean baseline scrambler corner pressure divisor exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 108. Clean baseline hub penalty 15-25 base exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
