@@ -65,3 +65,10 @@ Delta's 036-040 are committed but not uploaded (no COGAMES_TOKEN).
 - **Base**: Delta's 036-038 + scissors 039-046
 - **Status**: Awaiting tournament results (need 20+ matches)
 - **Rationale**: Completes mid-range optimization with 046. Targets 10-15 distance (safer than failed far/mid attempts 019/023).
+
+## scissors_v1_v30:v1 (Attempt 048)
+- **Uploaded**: 2026-04-04T07:34:41Z
+- **Change**: Expansion weight 6.0→6.15 (+2.5%)
+- **Base**: Delta's 036-038 + scissors 039-047
+- **Status**: Awaiting tournament results (need 20+ matches)
+- **Rationale**: Builds on attempt 016's success (5.0→6.0). More conservative than scissors 040 v22 (+4%).
