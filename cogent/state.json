@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 39,
+      "attempts": 40,
       "improvements": 7,
-      "last_used": "20260404-039-uploaded"
+      "last_used": "20260404-040-pending"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "039",
-    "focus": "Network bonus cap increase for exceptional consolidation (scissors branch)",
-    "description": "Increased network_bonus cap from 4 to 5 nearby friendlies (+25% max bonus: 3.0→3.75) in aligner_target_score. Based on gamma_v6:v1 baseline (e073b3e), NOT stacked with 036-038.",
-    "rationale": "Parallel approach to 036-038 penalty reduction stack. Attempt 018 validated network_bonus 0.5→0.75 (+3.9%). Increasing cap from 4→5 allows +0.75 bonus for 5th nearby friendly, rewarding tighter consolidation without over-clustering. Conservative +25% max increase vs attempt 006's catastrophic 3x failure.",
-    "upload": "scissors_v1_v21:v1",
+    "version": "040",
+    "focus": "Claimed target penalty reduction for flexible coordination (delta stack)",
+    "description": "Reduced _CLAIMED_TARGET_PENALTY from 12.0 to 11.0 (-8%) in types.py",
+    "rationale": "Current 12.0 penalty for teammate-claimed junctions may prevent valid target overrides when one agent is significantly closer. Conservative -8% reduction to 11.0 allows more flexible claim override. Stacks with 036 (teammate_penalty 7.0) + 037 (hotspot_weight 11.0) + 038 (enemy_aoe 9.5). Unified penalty reduction theme. Built on gamma_v6:v1 baseline. Diverges from scissors' 039 (network bonus cap increase).",
+    "upload": "pending_upload",
     "season": "beta-cvc",
-    "uploaded_at": "2026-04-04T06:33:58Z",
-    "note": "Uploaded from scissors branch. Conflicts with delta's 036-038 stack (teammate/hotspot/enemy_aoe reductions). Tournament will test both approaches independently."
+    "uploaded_at": "TBD",
+    "note": "Fourth change in delta's penalty reduction stack (036-038-040). Scissors 039 tests different approach. Tournament will compare both strategies independently. No COGAMES_TOKEN for delta upload."
   },
   "last_improvement": {
     "date": "20260404",
