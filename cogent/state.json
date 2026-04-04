@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 54,
+      "attempts": 55,
       "improvements": 7,
-      "last_used": "20260404-119-testing"
+      "last_used": "20260404-120-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "119",
-    "focus": "Emergency resource low threshold increase",
-    "description": "Increased _EMERGENCY_RESOURCE_LOW from 2 to 2.2 (+10%)",
-    "rationale": "Attempt 095 increased from 1 to 2 (+100%). Conservative +10% further increase to trigger emergency mining slightly earlier when team resources are low. Helps maintain economy and prevent resource starvation in four_score resource-constrained scenarios. Stacks with 087-118.",
-    "upload": "scissors_v35:v1",
+    "version": "120",
+    "focus": "Aligner hotspot weight far-range reduction",
+    "description": "Reduced far-range hotspot_weight from 12.0 to 11.88 (-1%)",
+    "rationale": "Failed attempt 021 tried 12.0→11.0 (-8%) and regressed -9.8%. Much more conservative -1% reduction for far-range contested junctions (>15 distance from hub). Complements attempts 103-104 which reduced near/mid-range tiers. Maintains strong contest avoidance while slightly easing penalty. Stacks with 087-119.",
+    "upload": "scissors_v36:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260404",
-    "note": "Scissors attempt 119. Clean baseline emergency resource threshold exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 120. Clean baseline hotspot weight far-range exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
