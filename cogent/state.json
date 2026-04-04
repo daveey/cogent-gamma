@@ -19,7 +19,7 @@
     "rationale": "Junctions within distance 15 of friendly junctions/hubs are considered part of alignment network. Reducing to 14 creates more conservative network expansion, focusing on closer consolidation. May reduce overextension and improve defensibility. Very conservative 7% reduction to test impact on network topology.",
     "upload": "scissors_v1_v19:v1",
     "season": "beta-cvc",
-    "uploaded_at": "TBD",
+    "uploaded_at": "20260404 04:59 UTC",
     "note": "Untested parameter. Conservative 7% reduction. Seventh parallel experiment (029-035)."
   },
   "last_improvement": {
