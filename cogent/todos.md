@@ -1,10 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
-- [ ] (20260404-036) Teammate penalty reduction: 9.0→7.0 (-22%) [delta branch]. Uploaded as scissors_v1_v20:v1, awaiting results.
-- [ ] (20260404-037) Hotspot weight reduction: 12.0→11.0 (-8%) [delta branch, stacked]. Pending upload.
-- [ ] (20260404-038) Enemy AOE penalty reduction: 10.0→9.5 (-5%) [delta branch, stacked]. Pending upload.
-- [ ] (20260404-039) Network bonus cap increase: 4→5 (+25% max) [scissors branch]. Uploaded as scissors_v1_v21:v1, awaiting results.
+- [ ] (20260404-085) LLM role override removal [delta attempt]. Local testing: +43% avg improvement (5.11 vs 3.57) but HIGH VARIANCE (1.74-7.12 per cog). BLOCKED: Cannot tournament-validate (no COGAMES_TOKEN). Requires external validation before acceptance.
 
 ## Current Status (20260404 UTC)
 **Tournament Rankings (beta-cvc):**

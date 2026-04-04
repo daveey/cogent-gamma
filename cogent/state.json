@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 118,
+      "attempts": 119,
       "improvements": 7,
-      "last_used": "20260404-118-pending"
+      "last_used": "20260404-085-local-only"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "118",
-    "focus": "Claimed target penalty reduction for flexible claim override",
-    "description": "Reduced _CLAIMED_TARGET_PENALTY from 10.4 to 10.3 (-0.9%) in types.py",
-    "rationale": "Builds on attempts 110 (10.5→10.4, -0.9%), 102 (10.6→10.5, -0.9%), 087 (10.7→10.6, -0.9%), 074 (10.8→10.7, -0.9%), 054 (11.0→10.8, -1.8%), and validated 040 (12.0→11.0, improvement) for continued claim penalty optimization. Cumulative -14.2% reduction from baseline 12.0 to 10.3. Synergizes with teammate penalty reductions (049, 056, 068, 075, 083, 096, 106, 114) for comprehensive multi-agent coordination flexibility. Progressive claim penalty reductions enable increasingly flexible claim override when strategically beneficial while maintaining coordination stability.",
-    "upload": "scissors_v1_v100:v1",
+    "version": "085",
+    "focus": "LLM role override removal for stability",
+    "description": "Removed role field from LLM analysis prompt to prevent catastrophic role-switching failures",
+    "rationale": "Historical LLM role override attempts caused major regressions: attempt 002 (-41.6%), attempt 012 (+3.8% avg but 40% catastrophic failure rate), attempt 010-llm-softer (-39.4%). Removed role field entirely, keeping only resource_bias and objective guidance which are safer strategic knobs. Local testing shows +43% improvement but with high variance (1.74 to 7.12 per cog across seeds 42-46). Cannot tournament-validate due to missing COGAMES_TOKEN.",
+    "upload": null,
     "season": "beta-cvc",
-    "uploaded_at": "2026-04-04T13:07:27Z",
-    "note": "Eightieth scissors improvement (attempt 118). Continues claimed penalty optimization (040, 054, 074, 087, 102, 110, 118)."
+    "uploaded_at": null,
+    "note": "Delta attempt 085. Local-only testing: avg 5.11 vs baseline 3.57 (+43%). HIGH VARIANCE: seed range 1.74-7.12. Requires tournament validation before acceptance. BLOCKED: No COGAMES_TOKEN for upload."
   },
   "last_improvement": {
     "date": "20260404",
