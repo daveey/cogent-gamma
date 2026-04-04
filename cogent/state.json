@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 21,
+      "attempts": 22,
       "improvements": 7,
-      "last_used": "20260404-018-validated"
+      "last_used": "20260404-057-reverted"
     }
   },
   "testing_in_progress": null,
@@ -35,7 +35,7 @@
       "focus": "LLM stagnation detection enhancement",
       "description": "Enhanced LLM prompt with prescriptive anti-stagnation role-change rules",
       "result": "REGRESSION: 3.52 vs baseline 6.03 (-41.6%)",
-      "analysis": "Too aggressive role switching disrupted team stability. Prescriptive rules (stalled miner→aligner, stalled aligner→miner) caused excessive role churn. May need softer approach or better stall detection threshold."
+      "analysis": "Too aggressive role switching disrupted team stability. Prescriptive rules (stalled miner\u2192aligner, stalled aligner\u2192miner) caused excessive role churn. May need softer approach or better stall detection threshold."
     },
     {
       "date": "20260403",
@@ -57,7 +57,7 @@
       "date": "20260403",
       "version": "006-reverted",
       "focus": "Network bonus increase",
-      "description": "Increased network bonus weight from 0.5 to 1.5 (3×) to prioritize chain-building near existing friendly junctions",
+      "description": "Increased network bonus weight from 0.5 to 1.5 (3\u00d7) to prioritize chain-building near existing friendly junctions",
       "result": "MAJOR REGRESSION: 3.23 vs baseline 9.03 (-64.2%)",
       "analysis": "TOO AGGRESSIVE. Tripling network bonus caused agents to cluster around existing junctions instead of expanding. Leads to stagnant territory and missed opportunities. Expansion bonus (max 30) balanced against network bonus (max 2) for a reason - need both expansion and consolidation."
     },
@@ -83,7 +83,7 @@
       "focus": "Mid-game pressure ramp",
       "description": "Changed pressure_budget=6 threshold from step 3000 to step 2000 to get 5 aligners + 1 scrambler earlier during critical window",
       "result": "MAJOR REGRESSION: 5.15 vs baseline 9.74 (-47.13%)",
-      "analysis": "Ramping to 6 pressure budget 1000 steps earlier caused significant performance drop. Agents likely exhausted hearts/resources before establishing sustainable economy. Similar to failed attempt 003 (30→15 steps, -5.97%). Pattern confirms: premature pressure ramps hurt economy. Critical window 500-2000 refers to when to capitalize on existing resources, not when to ramp resource burn."
+      "analysis": "Ramping to 6 pressure budget 1000 steps earlier caused significant performance drop. Agents likely exhausted hearts/resources before establishing sustainable economy. Similar to failed attempt 003 (30\u219215 steps, -5.97%). Pattern confirms: premature pressure ramps hurt economy. Critical window 500-2000 refers to when to capitalize on existing resources, not when to ramp resource burn."
     },
     {
       "date": "20260404",
@@ -104,7 +104,7 @@
       "date": "20260403",
       "version": "012-reverted",
       "focus": "Nearby teammate role awareness for LLM",
-      "description": "Added nearby teammate role counts (≤20 tiles) to LLM analysis prompt to detect clustering and suggest role switches",
+      "description": "Added nearby teammate role counts (\u226420 tiles) to LLM analysis prompt to detect clustering and suggest role switches",
       "result": "UNSTABLE: avg 10.11 vs baseline 9.74 (+3.8%), but variance 22.14 with 40% catastrophic failure rate",
       "scores_by_seed": {
         "42": 2.43,
@@ -134,7 +134,7 @@
       "date": "20260403",
       "version": "017-reverted",
       "focus": "Corner-safe exploration",
-      "description": "Fixed out-of-bounds exploration: reduced offset magnitudes (22→15), added dynamic flipping for corner detection. All roles now 100% valid exploration (was 63% OOB for aligners, 75% for miners/scramblers).",
+      "description": "Fixed out-of-bounds exploration: reduced offset magnitudes (22\u219215), added dynamic flipping for corner detection. All roles now 100% valid exploration (was 63% OOB for aligners, 75% for miners/scramblers).",
       "result": "MAJOR REGRESSION: gamma_scissors:v1 avg 6.26 vs baseline 16.84 (-62.8%)",
       "tournament_scores": {
         "matches": 5,
@@ -142,7 +142,7 @@
         "rank": 71,
         "season": "beta-cvc"
       },
-      "analysis": "Despite fixing OOB pathfinding issue, performance collapsed. Agents may have been over-exploring instead of capturing junctions, or reduced exploration range (22→15) limited territory discovery. Original exploration offsets (even with OOB failures) apparently worked better due to sticky targets keeping agents focused on valid junctions most of the time."
+      "analysis": "Despite fixing OOB pathfinding issue, performance collapsed. Agents may have been over-exploring instead of capturing junctions, or reduced exploration range (22\u219215) limited territory discovery. Original exploration offsets (even with OOB failures) apparently worked better due to sticky targets keeping agents focused on valid junctions most of the time."
     },
     {
       "date": "20260404",
@@ -207,6 +207,14 @@
         "season": "beta-cvc"
       },
       "analysis": "Worse than attempt 019 (-48.6%). Even conservative -10% reduction to mid-tier hub penalty hurt badly. Hub-proximal strategy is fundamental to four_score success. All three hub penalty tiers (0.3, 1.5, 3.0, 8.0) are correctly calibrated and should not be reduced."
+    },
+    {
+      "date": "20260404",
+      "version": "057-reverted",
+      "focus": "Pathfinding blocked path retry timing reduction",
+      "description": "Reduced _TEMP_BLOCK_STEPS from 10 to 8 for faster blocked path recovery",
+      "result": "CRITICAL FAILURE: 3/3 seeds timed out (900s limit each). Seeds 42, 43, 44 all exceeded timeout.",
+      "analysis": "Reducing temporary block duration from 10 steps (2.0 sec) to 8 steps (1.6 sec) caused severe performance degradation. Agents likely entered pathfinding loops by retrying blocked paths too aggressively, consuming excessive CPU and never completing games. Current 10-step block duration is correctly calibrated to balance path retry with loop prevention. Pattern: Pathfinding parameters extremely sensitive - conservative values prevent infinite loops."
     }
   ],
   "mission": "four_score",
