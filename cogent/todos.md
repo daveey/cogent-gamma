@@ -60,8 +60,13 @@
 - **Synergistic improvements** (014+015, 016) compound better than isolated changes
 - **LLM role suggestions fundamentally flawed** - avoid this approach
 - **Expansion vs defense balance critical** - over-indexing either way regresses
+- **Parameter tuning exhausted** - 11 consecutive failures (019-028). Current gamma_v6:v1 parameters are optimal for this architecture.
 
 ## Next Session
-- Monitor gamma_scissors:v1 qualifying/match results
-- If 017 validates, consider combining with 016 for ultimate stack
-- Target: break into top 5 (currently #10)
+- **CRITICAL**: Parameter tuning has hit a wall. Need architectural improvements:
+  - LLM stagnation detection (docs/strategy.md "What To Try")
+  - Better junction discovery - agents miss junctions behind walls
+  - Read teammate vibes for better coordination
+  - PCO evolution - run more epochs
+- Current rank: #9 (15.75 avg). Leaders: dinky:v27 at 26.91 (+71% gap)
+- Gap suggests architectural differences, not parameter tuning
