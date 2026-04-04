@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 96,
+      "attempts": 97,
       "improvements": 7,
-      "last_used": "20260404-096-pending"
+      "last_used": "20260404-097-pending"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "096",
-    "focus": "Teammate penalty reduction for multi-agent coordination flexibility",
-    "description": "Reduced teammate_penalty from 6.4 to 6.3 (-1.6%) in scoring.py",
-    "rationale": "Builds on attempts 083 (6.5→6.4, -1.5%), 075 (6.6→6.5, -1.5%), 068 (6.7→6.6, -1.5%), 056 (6.8→6.7, -1.5%), 049 (7.0→6.8, -2.9%), and validated 036 (9.0→7.0, -22%) for continued teammate penalty optimization. Cumulative -30% reduction from baseline 9.0 to 6.3. Synergizes with claim penalty reductions (054, 074, 087) for comprehensive multi-agent coordination flexibility. Progressive teammate penalty reductions enable increasingly flexible multi-agent coordination without excessive duplication while maintaining effective territory coverage.",
-    "upload": "scissors_v1_v78:v1",
+    "version": "097",
+    "focus": "Enemy AOE penalty reduction for aggressive contested territory targeting",
+    "description": "Reduced enemy_aoe penalty from 8.9 to 8.8 (-1.1%) in scoring.py",
+    "rationale": "Builds on attempts 084 (9.0→8.9, -1.1%), 078 (9.1→9.0, -1.1%), 071 (9.2→9.1, -1.1%), 057 (9.3→9.2, -1.1%), 050 (9.5→9.3, -2.1%), and validated 038 (10.0→9.5, -5%) for continued enemy AOE penalty optimization. Cumulative -12% reduction from baseline 10.0 to 8.8. Synergizes with hotspot weight reductions (045, 046, 051, 062, 063, 064, 079, 080, 088, 094, 095) for comprehensive contested territory strategy. Progressive enemy AOE penalty reductions enable increasingly aggressive contested junction targeting despite enemy scrambler presence.",
+    "upload": "scissors_v1_v79:v1",
     "season": "beta-cvc",
-    "uploaded_at": "2026-04-04T11:52:30Z",
-    "note": "Fifty-eighth scissors improvement. Continues teammate penalty optimization (036, 049, 056, 068, 075, 083, 096)."
+    "uploaded_at": "2026-04-04T11:53:25Z",
+    "note": "Fifty-ninth scissors improvement. Continues enemy AOE penalty optimization (038, 050, 057, 071, 078, 084, 097)."
   },
   "last_improvement": {
     "date": "20260404",
