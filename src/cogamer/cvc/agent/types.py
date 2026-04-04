@@ -58,7 +58,7 @@ _GEAR_COSTS = {
 }
 _EMERGENCY_RESOURCE_LOW = 1
 _HEART_BATCH_TARGETS = {"aligner": 3, "scrambler": 2}
-_HUB_ALIGN_DISTANCE = 25
+_HUB_ALIGN_DISTANCE = 26  # Increased from 25 (+4%) for slightly extended hub reach
 _JUNCTION_ALIGN_DISTANCE = 15
 _JUNCTION_AOE_RANGE = 10
 _CLAIMED_TARGET_PENALTY = 11.5  # Reduced from 12.0 (-4%) for more flexible claim override
