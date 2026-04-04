@@ -95,7 +95,7 @@ def aligner_target_score(
             and manhattan(candidate.position, source.position) <= _JUNCTION_ALIGN_DISTANCE
         )
         network_bonus = min(nearby_friendly, 4) * 0.77
-    teammate_penalty = 9.0 if teammate_closer else 0.0
+    teammate_penalty = 9.15 if teammate_closer else 0.0  # Increased from 9.0 to 9.15 (+2%)
     return (
         distance
         - min(expansion * 6.2, 36.0)  # Increased from 6.0 to 6.2 (+3%) for stronger expansion incentive
