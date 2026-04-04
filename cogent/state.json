@@ -6,19 +6,19 @@
       "last_used": null
     },
     "design": {
-      "attempts": 31,
+      "attempts": 32,
       "improvements": 7,
-      "last_used": "20260404-066-testing"
+      "last_used": "20260404-067-testing"
     }
   },
   "testing_in_progress": {
-    "version": "066",
+    "version": "067",
     "date": "20260404",
-    "focus": "No-gear retreat margin reduction",
-    "description": "Reduced no-gear retreat margin from 10 to 9 HP (slightly less conservative for expendable gearless agents)",
-    "upload": "gamma:v10",
+    "focus": "Miner late game retreat margin increase",
+    "description": "Increased miner late game retreat margin from 5 to 6 HP (more protective of economy miners in late game)",
+    "upload": "gamma:v11",
     "status": "qualifying",
-    "previous": "061 (v5), 062 (v6), 063 (v7), 064 (v8), 065 (v9) also qualifying"
+    "previous": "061 (v5), 062 (v6), 063 (v7), 064 (v8), 065 (v9), 066 (v10) also qualifying"
   },
   "local_testing_status": {
     "status": "FAILED",
