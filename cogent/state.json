@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 84,
+      "attempts": 85,
       "improvements": 7,
-      "last_used": "20260404-149-testing"
+      "last_used": "20260404-150-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "149",
-    "focus": "Aligner hub penalty very-close multiplier reduction",
-    "description": "Reduced hub penalty very-close multiplier from 0.277 to 0.274 (-1%)",
-    "rationale": "Hub penalty very-close (≤10 distance) multiplier determines penalty growth for nearest junctions. Conservative -1% reduction builds on attempts 102 (0.3→0.28), 130 (0.28→0.277). Promotes even tighter clustering around hub for better defense and resource cycling. Completes second round of very-close hub penalty tuning. Stacks with 087-148.",
-    "upload": "scissors_v65:v1",
+    "version": "150",
+    "focus": "Aligner hotspot weight far-range reduction",
+    "description": "Reduced hotspot_weight far-range from 11.88 to 11.76 (-1%)",
+    "rationale": "Hotspot weight far-range (>15 distance) controls penalty for contested junctions far from hub. Conservative -1% reduction builds on attempt 120 (12.0→11.88). Makes aligners slightly less cautious about distant contested junctions, allowing more aggressive expansion when multiple enemies present. Balances with near-hub/mid-range reductions (131, 132). Stacks with 087-149.",
+    "upload": "scissors_v66:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260404",
-    "note": "Scissors attempt 149. Clean baseline very-close hub multiplier exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 150. Clean baseline far-range hotspot weight exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
