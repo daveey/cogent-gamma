@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 64,
+      "attempts": 65,
       "improvements": 7,
-      "last_used": "20260404-129-testing"
+      "last_used": "20260404-130-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "129",
-    "focus": "Aligner hub penalty 10-15 multiplier reduction",
-    "description": "Reduced hub penalty multiplier from 1.46 to 1.44 (-1%) for junctions 10-15 distance",
-    "rationale": "Attempt 105 reduced from 1.5 to 1.46 (-3%). Attempt 112 reduced base 2.0→1.96. Conservative -1% multiplier reduction to further favor 10-15 range junctions. Complements other hub penalty reductions across all tiers (0-10, 10-15, 15-25, >25). Stacks with 087-128.",
-    "upload": "scissors_v45:v1",
+    "version": "130",
+    "focus": "Aligner hub penalty very-close multiplier reduction",
+    "description": "Reduced hub penalty multiplier from 0.28 to 0.277 (-1%) for junctions ≤10 distance",
+    "rationale": "Attempt 102 reduced from 0.3 to 0.28 (-7%). Conservative -1% further reduction for very close junctions (≤10 distance from hub). Encourages even tighter hub clustering for safer territory control in four_score corner spawns. Complements hub penalty reductions across all tiers. Stacks with 087-129.",
+    "upload": "scissors_v46:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260404",
-    "note": "Scissors attempt 129. Clean baseline hub penalty 10-15 multiplier exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 130. Clean baseline hub penalty very-close multiplier exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
