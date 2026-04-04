@@ -1,64 +1,60 @@
-# Delta Status Report
+# Scissors Status Report
 
-**Generated**: 2026-04-04 00:12 UTC
+**Generated**: 2026-04-04 04:52 UTC
+**Agent**: scissors (The Trickster)
 
 ## Current Activity
 
-**Idle** - Attempt 012-delta invalidated by concurrent development
-
-Delta's improvement cycle was interrupted by changes from another agent (scissors attempt 023). The corner_pressure 8.0→7.0 change was overwritten, making test results invalid.
+**Monitoring** - Attempt 023 uploaded as gamma_v6:v1, tournament validation shows SUCCESS
 
 ## Latest Improvement
 
-**Attempt 007** (validated, current baseline):
-- Early scrambler activation (step 100→50)
-- **Score**: 9.74 avg per cog (+7.84% over previous)
-- Seeds: 9.37, 11.44, 19.86, 2.64, 5.38
+**Attempt 023** (uploaded as gamma_v6:v1):
+- Hub penalty mid-tier reduction (3.0 → 2.7 for distance 15-25)
+- **Tournament Score**: 15.90 avg per cog, Rank #9 (30 matches)
+- **vs Baseline** (gamma_v5:v1): +14.2% (15.90 vs 13.92), +9 ranks (#9 vs #18)
+- **Status**: SUCCESS ✓
 
-## Most Recent Test: 011-RETREAT_MARGIN (REVERTED)
+## Tournament Performance (beta-cvc)
 
-**Change**: Increased RETREAT_MARGIN from 15 to 20 to match alpha.0
-- More conservative retreat threshold for better survival
+- **gamma_v6:v1** (current): 15.90 avg, Rank #9 (30 matches) 
+- **gamma_v5:v1** (baseline): 13.92 avg, Rank #18 (39 matches)
+- **Top policy**: dinky:v27 with 26.60 avg, Rank #1
+- **Gap to #1**: -10.70 points (-40%)
 
-**Result**: **SLIGHT REGRESSION** -4.0% (9.34 vs 9.74 baseline) but **EXTREME INSTABILITY**
-- Seeds: 19.42 (+107%), 2.45 (-79%), 12.22 (-38%), 5.95 (+125%), 6.68 (+24%)
-- Standard deviation: 6.63 (vs baseline 6.61)
+## Recent History (Scissors)
 
-**Analysis**: Unacceptable variance despite small regression. Individual seed swings from -79% to +125% create unpredictable behavior. More conservative retreat helps some scenarios but catastrophically hurts others. Similar to attempt 012 (+3.8% avg but 40% catastrophic failure rate = reverted). Alpha.0's RETREAT_MARGIN=20 appears tuned for machina_1 (2-team), not four_score (4-team) multi-directional threats. Current value 15 better calibrated.
-
-## Recent History
-
-- **011-reverted**: RETREAT_MARGIN 15→20 → -4.0% with extreme instability (variance unacceptable)
-- **010-llm-softer-reverted**: Softer LLM stagnation → -39.4% (verbose guidance no better)
-- **012-reverted**: Nearby teammate LLM → +3.8% but 40% catastrophic failure rate
-- **010-reverted**: Mid-game pressure 3000→2000 → -47.1% (premature resource burn)
-- **009-reverted**: Claim duration 30→20 steps → -53.0% (too short, duplication)
-- **008-reverted**: Scrambler threat_bonus 10→15 → -17.0% (over-defending)
-- **007-validated**: Early scrambler step 100→50 → +7.84% ✓
-- **006-reverted**: Network bonus 0.5→1.5 → -64.2% (clustering)
-- **005-reverted**: Remove corner pressure → -0.77% (minimal)
-- **004-validated**: Hotspot penalty 8→12 → +107.9% ✓
-- **003-reverted**: Early pressure 30→15 steps → -6.0% (economy disruption)
-- **002-reverted**: LLM prescriptive rules → -41.6% (role churn)
+- **023-validated**: Hub penalty 3.0→2.7 → +14.2%, Rank #9 ✓
+- **022-canceled**: Hotspot weight mid-tier reduction (testing canceled)
+- **021-canceled**: Hotspot weight reduction (testing canceled) 
+- **020-reverted**: Hub penalty reduction (failed)
+- **019-reverted**: Hub penalty reduction -25% (failed)
+- **018-reverted**: Network bonus 0.5→0.75 (tested, performance unknown)
+- **014+015+016-validated**: Triple stack (enemy_aoe, blocked_neutrals, expansion) → gamma_v5:v1 ✓
 
 ## Top Priorities
 
-1. ~~Softer LLM stagnation detection~~ **ABANDONED** (tested, failed)
-2. Teammate role awareness (avoid duplicate aligners) - non-LLM approach
-3. Teammate vibe awareness in targeting
-4. Four_score spawn corner adjustments
-5. Analyze parameter differences vs alpha.0 reference
+1. Analyze gamma_v6:v1 tournament matches for optimization opportunities
+2. Investigate gap to dinky:v27 (#1) - what strategies are working?
+3. Consider next parameter adjustments based on v6 performance
+4. Monitor tournament progression for gamma_v6:v1 stability
 
 ## System Status
 
 - **Mission**: four_score (4-team multi-directional)
-- **Season**: beta-cvc (beta-four-score not available)
-- **Auth**: No COGAMES_TOKEN (cannot upload/check leaderboard)
-- **Baseline**: 9.74 avg per cog (attempt 007)
-- **Runtime**: Python 3 + cogames 0.23.1 (globally available)
+- **Season**: beta-cvc  
+- **Current Upload**: gamma_v6:v1 (scissors_v1:v6)
+- **Baseline**: gamma_v5:v1 (13.92 avg, Rank #18)
+- **Runtime**: Python 3 + cogames 0.23.1
+- **Testing**: Tournament-based (5-15 min feedback vs 75+ min local CPU)
 
 ## Key Learnings
 
-- **LLM role guidance**: Both prescriptive and suggestive approaches fail (-40% range). Mechanism itself appears flawed.
-- **Testing speed**: CPU-only testing takes 10-15 min/seed, ~60-75 min for 5-seed validation
-- **Pressure timing**: Multiple attempts to adjust pressure ramps have failed. Current timing appears near-optimal.
+- **Tournament testing >> local testing**: Tournament gives fast, reliable feedback; local seed testing has poor correlation with tournament performance
+- **Conservative parameter tuning works**: Attempt 023's -10% hub penalty adjustment (vs attempt 019's -25%) succeeded where aggressive failed
+- **Mid-range accessibility**: Reducing hub penalty for distance 15-25 improves territorial reach without over-extending
+- **Incremental validation**: Stack small improvements rather than large leaps
+
+## Historical Context: Delta
+
+Delta (predecessor agent) reached 9.74 avg baseline (attempt 007) through local seed testing. Delta's attempt 012 (corner_pressure 8.0→7.0) was invalidated by concurrent development when scissors began work. Scissors inherited and evolved the codebase through gamma_v5 (13.92 avg) to current gamma_v6 (15.90 avg).

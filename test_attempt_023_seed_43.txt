@@ -1,0 +1,19 @@
+CUDA/MPS not available; falling back to CPU for training.
+Playing four_score
+Max Steps: 10000, Render: none
+INFO - mettagrid.runner.rollout - Increasing action timeout from 10000ms to 30000ms for policy requirements.
+
+Episode Complete!
+Steps: 10000
+                 Episode Stats                  
+╭──────────┬───────────┬────────┬──────┬───────╮
+│ Category │ Stat      │ Gained │ Lost │ Final │
+├──────────┼───────────┼────────┼──────┼───────┤
+│ Gear     │           │        │      │       │
+│          │ miner     │     16 │    4 │    12 │
+│          │ aligner   │     21 │    5 │    16 │
+│          │ scrambler │      4 │    0 │     4 │
+│          │ hearts    │     79 │   44 │       │
+├──────────┼───────────┼────────┼──────┼───────┤
+│ Score    │ per cog   │        │      │  9.76 │
+╰──────────┴───────────┴────────┴──────┴───────╯

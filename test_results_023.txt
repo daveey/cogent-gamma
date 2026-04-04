@@ -1,0 +1,4 @@
+Testing attempt 023: hub penalty mid-tier reduction (2.7 vs 3.0)
+Baseline: 16.84 avg per cog (gamma_v5:v1)
+
+=== Seed 42 ===
