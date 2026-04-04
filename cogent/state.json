@@ -8,20 +8,10 @@
     "design": {
       "attempts": 27,
       "improvements": 7,
-      "last_used": "20260404-027-testing"
+      "last_used": "20260404-027-reverted"
     }
   },
-  "testing_in_progress": {
-    "date": "20260404",
-    "version": "027",
-    "focus": "Target switch threshold reduction for better adaptability",
-    "description": "Reduced _TARGET_SWITCH_THRESHOLD from 3.0 to 2.5 (-17%) to make agents switch targets more readily when better opportunities appear",
-    "rationale": "Sticky targets prevent oscillation (docs/strategy.md lists as 'What Works'), but threshold 3.0 may be too high for dynamic four_score with 4 teams. Reducing to 2.5 allows agents to adapt faster to changing battlefield conditions while still preventing excessive switching. Conservative 17% reduction maintains stability while improving responsiveness.",
-    "upload": "scissors_v1:v11",
-    "season": "beta-cvc",
-    "uploaded_at": "20260404 UTC",
-    "note": "Building on gamma_v6 baseline (15.84 avg). Attempts 025 & 026 both catastrophically failed. Trying behavioral parameter instead of scoring weights."
-  },
+  "testing_in_progress": null,
   "last_improvement": {
     "date": "20260404",
     "version": "018",
@@ -259,6 +249,20 @@
         "season": "beta-cvc"
       },
       "analysis": "CATASTROPHIC FAILURE. Increasing corner pressure bonus caused scramblers to over-prioritize distant targets, likely dying too often or missing nearby high-value targets. The current divisor 8.0 is correctly calibrated - distant targets (70+) getting 8.75-10 bonus vs 7.0-10 is already aggressive enough. Pattern: scrambler targeting extremely sensitive to changes. Both increasing defensive priority (008: -17%) and increasing distant aggression (026: -44%) failed badly."
+    },
+    {
+      "date": "20260404",
+      "version": "027-reverted",
+      "focus": "Target switch threshold reduction for better adaptability",
+      "description": "Reduced _TARGET_SWITCH_THRESHOLD from 3.0 to 2.5 (-17%) to make agents switch targets more readily",
+      "result": "MAJOR REGRESSION: scissors_v1:v11 avg 10.55 vs baseline 15.82 (-33.3%)",
+      "tournament_scores": {
+        "matches": 18,
+        "avg": 10.55,
+        "rank": 45,
+        "season": "beta-cvc"
+      },
+      "analysis": "MAJOR FAILURE. Reducing switch threshold caused agents to switch targets too frequently, likely disrupting the stability that sticky targets provide. Agents probably oscillated between targets or abandoned good targets prematurely. The current threshold 3.0 is correctly calibrated - it prevents oscillation while still allowing adaptation. Pattern: behavioral parameters as sensitive as scoring weights. docs/strategy.md lists 'Sticky targets: threshold 3.0' as 'What Works' for good reason."
     }
   ],
   "mission": "four_score",
