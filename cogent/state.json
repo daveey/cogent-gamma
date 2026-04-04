@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 83,
+      "attempts": 84,
       "improvements": 7,
-      "last_used": "20260404-083-pending"
+      "last_used": "20260404-084-pending"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "083",
-    "focus": "Teammate penalty reduction for multi-agent coordination",
-    "description": "Reduced teammate_penalty from 6.5 to 6.4 (-1.5%) in scoring.py",
-    "rationale": "Builds on attempts 075 (6.6→6.5, -1.5%), 068 (6.7→6.6, -1.5%), 056 (6.8→6.7, -1.5%), 049 (7.0→6.8, -2.9%), and validated 036 (9.0→7.0, -22%) for continued teammate penalty optimization. Cumulative -29% reduction from baseline 9.0 to 6.4. Synergizes with claim penalty reductions (054, 074) for comprehensive multi-agent coordination flexibility. Progressive teammate penalty reductions enable increasingly flexible multi-agent coordination without excessive duplication.",
-    "upload": "scissors_v1_v65:v1",
+    "version": "084",
+    "focus": "Enemy AOE penalty reduction for contested territory aggression",
+    "description": "Reduced enemy_aoe penalty from 9.0 to 8.9 (-1.1%) in scoring.py",
+    "rationale": "Builds on attempts 078 (9.1→9.0, -1.1%), 071 (9.2→9.1, -1.1%), 057 (9.3→9.2, -1.1%), 050 (9.5→9.3, -2.1%), and validated 038 (10.0→9.5, -5%) for continued enemy AOE penalty optimization. Cumulative -11% reduction from baseline 10.0 to 8.9. Synergizes with hotspot weight reductions (045, 046, 051, 062, 063, 064, 079, 080) for comprehensive contested territory strategy. Progressive enemy AOE penalty reductions enable increasingly aggressive contested junction targeting.",
+    "upload": "scissors_v1_v66:v1",
     "season": "beta-cvc",
-    "uploaded_at": "2026-04-04T11:40:06Z",
-    "note": "Forty-fifth scissors improvement. Continues teammate penalty optimization (036, 049, 056, 068, 075, 083)."
+    "uploaded_at": "2026-04-04T11:41:00Z",
+    "note": "Forty-sixth scissors improvement. Continues enemy AOE penalty optimization (038, 050, 057, 071, 078, 084)."
   },
   "last_improvement": {
     "date": "20260404",
