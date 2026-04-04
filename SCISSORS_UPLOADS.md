@@ -72,3 +72,10 @@ Delta's 036-040 are committed but not uploaded (no COGAMES_TOKEN).
 - **Base**: Delta's 036-038 + scissors 039-047
 - **Status**: Awaiting tournament results (need 20+ matches)
 - **Rationale**: Builds on attempt 016's success (5.0→6.0). More conservative than scissors 040 v22 (+4%).
+
+## scissors_v1_v31:v1 (Attempt 049)
+- **Uploaded**: 2026-04-04T07:38:01Z
+- **Change**: Teammate penalty 7.0→6.8 (-2.9%)
+- **Base**: Delta's 036-038 + scissors 039-048
+- **Status**: Awaiting tournament results (need 20+ matches)
+- **Rationale**: Builds on delta's 036 (9.0→7.0). Conservative further reduction for flexible coordination.
