@@ -296,3 +296,10 @@ Delta's 036-040 are committed but not uploaded (no COGAMES_TOKEN).
 - **Base**: Delta's 036-038 + scissors 039-079
 - **Status**: Awaiting tournament results (need 20+ matches)
 - **Rationale**: Builds on attempts 063 (5.8→5.7) and 046 (6.0→5.8). Synergizes with near-hub hotspot reduction (045, 064) and far-range hotspot reductions (051, 062, 079) for comprehensive hotspot weight optimization across all hub distance ranges.
+
+## scissors_v1_v63:v1 (Attempt 081)
+- **Uploaded**: 2026-04-04T11:37:32Z
+- **Change**: Network bonus weight 0.88→0.90 (+2.3%)
+- **Base**: Delta's 036-038 + scissors 039-080
+- **Status**: Awaiting tournament results (need 20+ matches)
+- **Rationale**: Builds on attempts 076 (0.86→0.88), 069 (0.84→0.86), 060 (0.82→0.84), 052 (0.8→0.82), 042 (0.75→0.8), and validated 018 (0.5→0.75, +3.9%). Synergizes with threat_bonus increases (043, 058, 072) for junction cluster defense.
