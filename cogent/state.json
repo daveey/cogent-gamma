@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 67,
+      "attempts": 68,
       "improvements": 7,
-      "last_used": "20260404-067-pending"
+      "last_used": "20260404-068-pending"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "067",
-    "focus": "Mid-far hub penalty reduction for hub-proximal expansion",
-    "description": "Reduced mid-far (15-25 distance) hub_penalty multiplier from 2.95 to 2.93 (-0.7%) in scoring.py",
-    "rationale": "Builds on attempt 053 (3.0→2.95, -1.7%) for continued mid-far hub penalty optimization. Synergizes with near-hub penalty reductions (044, 066), mid-range penalty reductions (047, 065), and all hotspot weight reductions (045, 046, 051, 062, 063, 064) for comprehensive hub-proximal expansion strategy. Attempt 023 showed -10% reduction failed badly (-29%), confirming conservative incremental reductions work better. Progressive hub penalty reductions across all distance ranges.",
-    "upload": "scissors_v1_v49:v1",
+    "version": "068",
+    "focus": "Teammate penalty reduction for coordination flexibility",
+    "description": "Reduced teammate_penalty from 6.7 to 6.6 (-1.5%) in scoring.py",
+    "rationale": "Builds on attempts 056 (6.8→6.7, -1.5%) and 049 (7.0→6.8, -2.9%) for continued coordination flexibility. Synergizes with claim penalty reduction 054 (11.0→10.8) for comprehensive multi-agent coordination. Attempt 020 showed increasing to 10.0 failed badly (-42.8%), confirming lower penalties improve coordination. Progressive teammate penalty reductions enable more flexible multi-agent targeting.",
+    "upload": "scissors_v1_v50:v1",
     "season": "beta-cvc",
-    "uploaded_at": "2026-04-04T09:42:57Z",
-    "note": "Twenty-ninth scissors improvement. Continues mid-far hub penalty optimization (053, 067)."
+    "uploaded_at": "2026-04-04T10:04:15Z",
+    "note": "Thirtieth scissors improvement. Continues coordination optimization (049, 056, 068)."
   },
   "last_improvement": {
     "date": "20260404",
