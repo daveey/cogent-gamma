@@ -6,19 +6,19 @@
       "last_used": null
     },
     "design": {
-      "attempts": 33,
+      "attempts": 34,
       "improvements": 7,
-      "last_used": "20260404-068-testing"
+      "last_used": "20260404-069-testing"
     }
   },
   "testing_in_progress": {
-    "version": "068",
+    "version": "069",
     "date": "20260404",
-    "focus": "Base retreat margin reduction",
-    "description": "Reduced _RETREAT_MARGIN from 15 to 14 (universal slight aggression increase across all agents)",
-    "upload": "gamma:v12",
+    "focus": "In-enemy-AOE retreat margin increase",
+    "description": "Increased in_enemy_aoe retreat margin from 10 to 11 HP (more cautious in direct enemy AOE zones)",
+    "upload": "gamma:v13",
     "status": "qualifying",
-    "previous": "061 (v5), 062 (v6), 063 (v7), 064 (v8), 065 (v9), 066 (v10), 067 (v11) also qualifying"
+    "previous": "061-068 (v5-v12) also qualifying"
   },
   "local_testing_status": {
     "status": "FAILED",
