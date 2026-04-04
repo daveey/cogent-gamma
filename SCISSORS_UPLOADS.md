@@ -184,3 +184,10 @@ Delta's 036-040 are committed but not uploaded (no COGAMES_TOKEN).
 - **Base**: Delta's 036-038 + scissors 039-063
 - **Status**: Awaiting tournament results (need 20+ matches)
 - **Rationale**: Builds on attempt 045 (2.0→1.9). Near-hub junctions are safest and most valuable. Completes comprehensive hotspot weight optimization across all hub distance ranges.
+
+## scissors_v1_v47:v1 (Attempt 065)
+- **Uploaded**: 2026-04-04T09:37:33Z
+- **Change**: Mid-range hub penalty 1.47→1.45 (-1.4%)
+- **Base**: Delta's 036-038 + scissors 039-064
+- **Status**: Awaiting tournament results (need 20+ matches)
+- **Rationale**: Builds on attempt 047 (1.5→1.47). Synergizes with hub penalty reductions across all ranges (044, 047, 053) and hotspot weight reductions for hub-proximal expansion.
