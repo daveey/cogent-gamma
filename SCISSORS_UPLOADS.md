@@ -100,3 +100,10 @@ Delta's 036-040 are committed but not uploaded (no COGAMES_TOKEN).
 - **Base**: Delta's 036-038 + scissors 039-051
 - **Status**: Awaiting tournament results (need 20+ matches)
 - **Rationale**: Builds on attempts 018 (0.5→0.75) and 042 (0.75→0.8). Conservative further increase for chain-building.
+
+## scissors_v1_v35:v1 (Attempt 053)
+- **Uploaded**: 2026-04-04T08:07:44Z
+- **Change**: Mid-far hub penalty 3.0→2.95 (-1.7%)
+- **Base**: Delta's 036-038 + scissors 039-052
+- **Status**: Awaiting tournament results (need 20+ matches)
+- **Rationale**: Much more conservative than failed attempt 023 (3.0→2.7, -10%, -29%). Completes hub penalty optimization.
