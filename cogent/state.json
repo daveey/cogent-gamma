@@ -6,12 +6,22 @@
       "last_used": null
     },
     "design": {
-      "attempts": 21,
+      "attempts": 22,
       "improvements": 7,
-      "last_used": "20260404-018-validated"
+      "last_used": "20260404-024-testing"
     }
   },
-  "testing_in_progress": null,
+  "testing_in_progress": {
+    "date": "20260404",
+    "version": "024",
+    "focus": "Expansion cap increase for high-value junctions",
+    "description": "Increased expansion bonus cap from 36.0 to 42.0 (6→7 junctions) to better value exceptional expansion opportunities",
+    "rationale": "Current cap limits expansion bonus at 6 unreachable junctions (36 points). In dense junction clusters, some positions may unlock 7+ junctions. Increasing cap to 42 allows these exceptional positions to be properly valued. Conservative change - only affects top-tier expansion junctions.",
+    "upload": "scissors_v1:v7",
+    "season": "beta-cvc",
+    "uploaded_at": "20260404 UTC",
+    "note": "Building on validated gamma_v6 baseline. Unlike failed parameter reductions (019-023), this increases reward for already-successful behavior (expansion)."
+  },
   "last_improvement": {
     "date": "20260404",
     "version": "018",

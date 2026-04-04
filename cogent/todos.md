@@ -1,7 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
-(none)
+- [ ] (20260404-024) Expansion cap increase: 36→42 (+17%) for junctions unlocking 7+ unreachables. Uploaded as scissors_v1:v7, awaiting tournament validation.
 
 ## Current Status (20260404 UTC)
 **Tournament Rankings (beta-cvc):**
