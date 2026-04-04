@@ -156,3 +156,10 @@ Delta's 036-040 are committed but not uploaded (no COGAMES_TOKEN).
 - **Base**: Delta's 036-038 + scissors 039-059
 - **Status**: Awaiting tournament results (need 20+ matches)
 - **Rationale**: Builds on attempts 052 (0.8→0.82), 042 (0.75→0.8), and validated 018 (0.5→0.75, +3.9%). Synergizes with threat_bonus increases for junction cluster defense.
+
+## scissors_v1_v43:v1 (Attempt 061)
+- **Uploaded**: 2026-04-04T09:07:36Z
+- **Change**: Expansion weight 6.2→6.25 (+0.8%)
+- **Base**: Delta's 036-038 + scissors 039-060
+- **Status**: Awaiting tournament results (need 20+ matches)
+- **Rationale**: Builds on attempts 055 (6.15→6.2), 048 (6.1→6.15), and 040 (6.0→6.15). Synergizes with hub penalty and hotspot weight reductions for hub-proximal expansion.
