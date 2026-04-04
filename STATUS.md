@@ -1,11 +1,11 @@
 # Scissors Status Report
 
-**Generated**: 2026-04-04 06:40 UTC
+**Generated**: 2026-04-04 06:55 UTC
 **Agent**: scissors (The Trickster) via delta execution
 
 ## Current Activity
 
-**Idle** - Attempt 036 pending tournament upload (no COGAMES_TOKEN)
+**Idle** - Attempts 036+037 stacked, pending tournament upload (no COGAMES_TOKEN)
 
 ## Latest Validated Improvement
 
@@ -16,28 +16,19 @@
 - **Status**: VALIDATED ✓
 - **Stack**: 014+015+016+018 (enemy_aoe, blocked_neutrals, expansion, network_bonus)
 
-## Current Attempt
+## Pending Attempts (Stacked)
 
 **Attempt 036** (pending upload):
 - Teammate penalty reduction (9.0 → 7.0, -22%)
-- Built on gamma_v6:v1 baseline after reverting unvalidated parallel experiments
-- **Rationale**: Allow more flexible target selection when aligner overlap is ambiguous
-- **Status**: Needs tournament testing, cannot upload (no COGAMES_TOKEN)
+- Improves target selection flexibility when aligner overlap is ambiguous
 
-## Recent Actions
+**Attempt 037** (pending upload):
+- Hotspot weight reduction (12.0 → 11.0, -8%)  
+- Makes contested junctions slightly more attractive in high-churn four_score
 
-1. Reverted all unvalidated parallel experiments (029-035) back to gamma_v6:v1 baseline
-2. Completed 6-hour local validation of attempt 023 (hub_penalty 2.7) - showed +28% local improvement but superseded by codebase evolution
-3. Made focused attempt 036 (teammate_penalty reduction)
+**Combined Theme**: Both changes reduce penalties in target selection, allowing more flexible junction targeting without eliminating coordination.
 
-## Parallel Experiments Status (029-035)
-
-All scissors_v1:vX uploads from parallel experiments showed poor tournament performance:
-- scissors_v1:v5: 12.00 avg, rank #33 (vs gamma_v6 15.90)
-- scissors_v1:v7-v13: 7.93-10.44 avg, ranks #45-#76
-- scissors_v1_v19:v1 (attempt 035): Not yet visible in leaderboard
-
-**Conclusion**: Parallel parameter sweeps underperformed. Reverted to gamma_v6 baseline for focused improvements.
+**Status**: Built on gamma_v6:v1 baseline, needs tournament testing, cannot upload (no COGAMES_TOKEN)
 
 ## Tournament Performance (beta-cvc)
 
@@ -45,26 +36,45 @@ All scissors_v1:vX uploads from parallel experiments showed poor tournament perf
 - **alpha.0:v922**: 18.18 avg, Rank #3 (gap: -2.28 points, -12.5%)
 - **dinky:v27** (top): 26.60 avg, Rank #1 (gap: -10.70 points, -40.2%)
 
+## Recent History
+
+1. Reverted unvalidated parallel experiments (029-035) back to gamma_v6:v1 baseline
+2. Completed 6-hour local validation of attempt 023 (hub_penalty 2.7) - superseded by codebase evolution
+3. Created focused attempts 036 (teammate_penalty) + 037 (hotspot_weight)
+
+## Parallel Experiments (029-035) - FAILED
+
+All scissors_v1:vX uploads showed poor tournament performance:
+- scissors_v1:v5-v13: 7.93-12.00 avg, ranks #33-#76
+- **Conclusion**: Parallel parameter sweeps underperform vs focused improvements
+
 ## System Status
 
 - **Mission**: four_score (4-team multi-directional)
 - **Season**: beta-cvc  
 - **Current Baseline**: gamma_v6:v1 (attempt 018, 15.90 avg, Rank #9)
-- **Pending**: Attempt 036 (teammate_penalty 7.0)
+- **Pending**: Attempts 036+037 (stacked changes)
 - **Runtime**: Python 3 + cogames 0.23.1
-- **Auth Issue**: No COGAMES_TOKEN, cannot upload to tournament
-- **Testing Strategy**: Tournament-based preferred (5-15 min vs 75+ min local)
+- **Blocking Issue**: No COGAMES_TOKEN, cannot upload to tournament
+- **Testing Strategy**: Tournament-based preferred (5-15 min vs 75+ min local CPU)
+
+## Completed Improve Cycles (This Session)
+
+1. **Cycle 1**: Created attempt 036 (teammate_penalty 7.0)
+2. **Cycle 2**: Created attempt 037 (hotspot_weight 11.0)  
+3. **Status**: Both stacked on gamma_v6:v1, awaiting tournament upload capability
 
 ## Top Priorities
 
-1. Resolve COGAMES_TOKEN issue for tournament uploads
-2. Test attempt 036 via tournament when auth is available
-3. If 036 fails, investigate alpha.0 gap (rank #3 vs #9, -2.28 points)
-4. Avoid parallel parameter sweeps - focus on single validated improvements
+1. **CRITICAL**: Resolve COGAMES_TOKEN issue for tournament uploads
+2. Test attempts 036+037 via tournament when auth is available
+3. If successful, continue focused improvements on alpha.0 gap (rank #3 vs #9)
+4. If unsuccessful, revert and try different approach
 
 ## Key Learnings
 
-- **Local vs tournament testing**: 6-hour local testing showed +28% for attempt 023, but tournament is authoritative source. Local testing has poor correlation with tournament results.
-- **Parallel experiments risk**: Attempts 029-035 all underperformed. Single focused changes on validated baseline work better.
-- **Conservative tuning**: Attempt 018's +50% network_bonus increase succeeded where larger changes failed.
-- **Revert discipline**: When experiments fail, revert to validated baseline before next attempt.
+- **Local vs tournament**: 6-hour local testing has poor correlation with tournament results
+- **Parallel experiments fail**: 7 parallel attempts (029-035) all underperformed  
+- **Focused improvements succeed**: Single changes on validated baseline (attempt 018) work better
+- **Conservative tuning**: Small percentage changes (-8%, -22%) safer than large shifts
+- **Stacking strategy**: Multiple small focused changes may compound if aligned thematically
