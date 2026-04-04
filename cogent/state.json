@@ -6,12 +6,22 @@
       "last_used": null
     },
     "design": {
-      "attempts": 28,
+      "attempts": 29,
       "improvements": 7,
-      "last_used": "20260404-028-reverted"
+      "last_used": "20260404-029-testing"
     }
   },
-  "testing_in_progress": null,
+  "testing_in_progress": {
+    "date": "20260404",
+    "version": "029",
+    "focus": "Wider enemy AOE for threat detection in all contexts",
+    "description": "Changed _in_enemy_aoe() to use _RETREAT_ENEMY_AOE_RANGE = 20 (instead of _JUNCTION_AOE_RANGE = 10), making threat detection consistent at radius 20 for retreat, deposit, and role decisions",
+    "rationale": "Alpha.0 uses enemy AOE radius 20. We have two-tier system: _in_enemy_aoe (10) and _near_enemy_territory (20). Collapsing to single tier at 20 simplifies logic and matches alpha.0's conservative approach. Affects retreat (+10 margin vs +5), deposit decisions, and role selection.",
+    "upload": "scissors_v1:v13",
+    "season": "beta-cvc",
+    "uploaded_at": "TBD",
+    "note": "After 11 consecutive failures (019-028), testing wider enemy detection as architectural simplification rather than parameter fine-tuning."
+  },
   "last_improvement": {
     "date": "20260404",
     "version": "018",

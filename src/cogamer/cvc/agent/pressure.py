@@ -9,6 +9,7 @@ from mettagrid.sdk.agent import MettagridState
 from cvc.agent import (
     KnownEntity,
     _JUNCTION_AOE_RANGE,
+    _RETREAT_ENEMY_AOE_RANGE,
     absolute_position,
     deposit_threshold,
     has_role_gear,
@@ -113,7 +114,7 @@ class PressureMixin:
             predicate=lambda entity: entity.owner not in {None, "neutral", team_id},
         )
         for enemy in enemies:
-            if manhattan(position, enemy.position) <= _JUNCTION_AOE_RANGE:
+            if manhattan(position, enemy.position) <= _RETREAT_ENEMY_AOE_RANGE:
                 return True
         return False
 

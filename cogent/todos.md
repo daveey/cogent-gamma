@@ -1,7 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
-(none)
+- [ ] (20260404-029) Wider enemy AOE: Change _in_enemy_aoe to use radius 20 (vs 10), matching alpha.0. Uploading as scissors_v1:v13.
 
 ## Current Status (20260404 UTC)
 **Tournament Rankings (beta-cvc):**
