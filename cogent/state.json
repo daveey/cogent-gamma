@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 33,
+      "attempts": 34,
       "improvements": 7,
-      "last_used": "20260404-033-testing"
+      "last_used": "20260404-034-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "033",
-    "focus": "Target claim duration reduction for faster recovery",
-    "description": "Reduced _TARGET_CLAIM_STEPS from 30 to 25 (-17%) so stale claims expire faster",
-    "rationale": "Agents claim targets to prevent duplication, with claims lasting 30 steps. If claiming agent gets stuck/diverted, other agents wait 30 steps before reconsidering the target. Reducing to 25 allows faster recovery from stagnation without being too aggressive. Independent of experiments 029-032.",
-    "upload": "scissors_v1_v17:v1",
+    "version": "034",
+    "focus": "Claimed target penalty reduction for better coordination",
+    "description": "Reduced _CLAIMED_TARGET_PENALTY from 12.0 to 10.0 (-17%) so agents are more willing to pursue claimed targets when beneficial",
+    "rationale": "Agents avoid targets claimed by teammates (penalty 12.0). Previous attempt increased to 25.0 and failed (Dead End). Testing opposite direction: reducing to 10.0 allows agents to pursue claimed targets when they're much closer or have better access, improving flexibility without causing excessive duplication. Independent of experiments 029-033.",
+    "upload": "scissors_v1_v18:v1",
     "season": "beta-cvc",
-    "uploaded_at": "20260404 04:54 UTC",
-    "note": "Conservative 17% reduction. Balances avoiding duplicate work vs recovering from stalled agents. Fifth parallel experiment (029-033) - violates 'one change per session' but tests independent parameters."
+    "uploaded_at": "TBD",
+    "note": "Opposite of failed increase attempt. Conservative 17% reduction. Sixth parallel experiment (029-034)."
   },
   "last_improvement": {
     "date": "20260404",

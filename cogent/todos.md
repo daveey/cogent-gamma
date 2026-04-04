@@ -5,7 +5,8 @@
 - [ ] (20260404-030) Hotspot decay: Time-aware hotspot tracking with decay (1 per 2000 steps). Uploaded as scissors_v1_v14:v1, awaiting results.
 - [ ] (20260404-031) LLM hotspot awareness: Enhanced LLM context to see contested targets for better stagnation detection. Uploaded as scissors_v1_v15:v1, awaiting results.
 - [ ] (20260404-032) Extractor memory reduction: 800→600 steps (-25%) for fresher resource targeting. Uploaded as scissors_v1_v16:v1, awaiting results.
-- [ ] (20260404-033) Claim duration reduction: 30→25 steps (-17%) for faster stale claim recovery. Uploading as scissors_v1_v17:v1.
+- [ ] (20260404-033) Claim duration reduction: 30→25 steps (-17%) for faster stale claim recovery. Uploaded as scissors_v1_v17:v1, awaiting results.
+- [ ] (20260404-034) Claimed target penalty reduction: 12.0→10.0 (-17%) for better coordination flexibility. Uploading as scissors_v1_v18:v1.
 
 ## Current Status (20260404 UTC)
 **Tournament Rankings (beta-cvc):**
