@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (127) Junction align distance increase (16.0→16.16): scissors_v43:v1 qualifying - improved chain-building reach (+1%, stacks with 087-126)
 - [ ] (126) Hub align distance increase (26.0→26.3): scissors_v42:v1 qualifying - extended hub reach (+1%, stacks with 087-125)
 - [ ] (125) Claimed target penalty reduction (11.5→11.38): scissors_v41:v1 qualifying - flexible claim override (-1%, stacks with 087-124)
 - [ ] (124) Target claim steps increase (32.0→32.5): scissors_v40:v1 qualifying - longer claim validity (+2%, stacks with 087-123)

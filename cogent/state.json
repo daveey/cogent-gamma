@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 61,
+      "attempts": 62,
       "improvements": 7,
-      "last_used": "20260404-126-testing"
+      "last_used": "20260404-127-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "126",
-    "focus": "Hub align distance increase",
-    "description": "Increased _HUB_ALIGN_DISTANCE from 26 to 26.3 (+1%)",
-    "rationale": "Attempt 092 increased from 25 to 26 (+4%). Conservative +1% further increase for slightly extended hub reach. Helps agents align junctions slightly farther from hub while maintaining hub-proximal strategy in four_score. Stacks with 087-125.",
-    "upload": "scissors_v42:v1",
+    "version": "127",
+    "focus": "Junction align distance increase",
+    "description": "Increased _JUNCTION_ALIGN_DISTANCE from 16 to 16.16 (+1%)",
+    "rationale": "Attempt 093 increased from 15 to 16 (+7%). Conservative +1% further increase for improved chain-building reach. Helps agents build networks slightly farther from friendly junctions while maintaining consolidation strategy in four_score. Stacks with 087-126.",
+    "upload": "scissors_v43:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260404",
-    "note": "Scissors attempt 126. Clean baseline hub align distance exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 127. Clean baseline junction align distance exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
