@@ -144,7 +144,7 @@ class PressureMixin:
             heart_count=int(state.self_state.inventory.get("heart", 0)),
             resource_cargo=resource_total(state),
             has_gear=has_role_gear(state, role),
-            late_game=(state.step or 0) >= 2_500,
+            late_game=(state.step or 0) >= 2_200,
             role=role,
         )
 

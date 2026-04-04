@@ -90,7 +90,7 @@ def role_vibe(role: str) -> str:
 def retreat_threshold(state: MettagridState, role: str) -> int:
     threshold = _HP_THRESHOLDS[role]
     step = state.step or 0
-    if step >= 2_500:
+    if step >= 2_200:
         if role in {"aligner", "scrambler"}:
             threshold += 15
         elif role == "miner":

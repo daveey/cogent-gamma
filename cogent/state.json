@@ -6,19 +6,19 @@
       "last_used": null
     },
     "design": {
-      "attempts": 27,
+      "attempts": 28,
       "improvements": 7,
-      "last_used": "20260404-062-testing"
+      "last_used": "20260404-063-testing"
     }
   },
   "testing_in_progress": {
-    "version": "062",
+    "version": "063",
     "date": "20260404",
-    "focus": "Early phase duration extension",
-    "description": "Increased early bootstrap phase from 30 to 35 steps (pressure_budget=2) for more economy stability before pressure ramp",
-    "upload": "gamma:v6",
+    "focus": "Late game threshold reduction",
+    "description": "Reduced late game threshold from 2500 to 2200 steps (earlier conservative behavior during critical window end)",
+    "upload": "gamma:v7",
     "status": "qualifying",
-    "previous": "061 (gamma:v5) also qualifying"
+    "previous": "061 (gamma:v5), 062 (gamma:v6) also qualifying"
   },
   "local_testing_status": {
     "status": "FAILED",
