@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 36,
+      "attempts": 37,
       "improvements": 7,
-      "last_used": "20260404-036-pending"
+      "last_used": "20260404-037-pending"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "036",
-    "focus": "Teammate penalty reduction for better target selection",
-    "description": "Reduced teammate_penalty from 9.0 to 7.0 (-22%) in aligner_target_score",
-    "rationale": "Current 9.0 penalty may be too harsh when multiple aligners are at similar distances to a junction. Reducing to 7.0 allows slightly more flexible target selection when overlap ambiguity exists, potentially reducing idle time. Built on gamma_v6:v1 baseline after reverting unvalidated parallel experiments (029-035).",
+    "version": "037",
+    "focus": "Hotspot weight reduction for contested junctions",
+    "description": "Reduced base hotspot_weight from 12.0 to 11.0 (-8%) in aligner_target_score",
+    "rationale": "Four_score has 4 teams = 3x more scramblers causing high junction churn. Current 12.0 weight may over-penalize contested junctions, causing agents to avoid valuable targets. Conservative -8% reduction to 11.0 makes contested junctions slightly more attractive without eliminating contest avoidance. Stacks with 036 (teammate_penalty 7.0). Built on gamma_v6:v1 baseline.",
     "upload": "pending_upload",
     "season": "beta-cvc",
     "uploaded_at": "TBD",
-    "note": "Single focused change on validated gamma_v6 baseline. Requires tournament testing. No COGAMES_TOKEN for upload."
+    "note": "Second focused change after 036. Both changes improve target selection flexibility. No COGAMES_TOKEN for tournament upload."
   },
   "last_improvement": {
     "date": "20260404",
