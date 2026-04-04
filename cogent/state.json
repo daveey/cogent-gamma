@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 58,
+      "attempts": 59,
       "improvements": 7,
-      "last_used": "20260404-058-pending"
+      "last_used": "20260404-059-pending"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "058",
-    "focus": "Scrambler threat bonus increase for network defense",
-    "description": "Increased scrambler threat_bonus from 10.5 to 10.6 (+1.0%) in scoring.py",
-    "rationale": "Builds on attempt 043 (10.0→10.5, +5%) for continued network defense optimization. Synergizes with network bonus increases (039, 042, 052) to protect consolidated friendly junction clusters. Attempt 008 showed +50% increase failed badly (-17%), confirming conservative incremental increases work better.",
-    "upload": "scissors_v1_v40:v1",
+    "version": "059",
+    "focus": "Scrambler blocked neutrals weight increase for expansion blocking",
+    "description": "Increased scrambler blocked_neutrals weight from 8.4 to 8.5 (+1.2%) in scoring.py",
+    "rationale": "Builds on attempt 041 (8.0→8.4, +5%) and attempt 015 (6.0→8.0, +33%, validated) for continued expansion blocking optimization. Prioritizes scramblers disrupting enemy neutral junction captures. Synergizes with threat_bonus increases (043, 058) for balanced offense/defense scrambler strategy.",
+    "upload": "scissors_v1_v41:v1",
     "season": "beta-cvc",
-    "uploaded_at": "2026-04-04T08:41:12Z",
-    "note": "Twentieth scissors improvement. Continues scrambler defensive optimization (043, 058)."
+    "uploaded_at": "2026-04-04T08:42:51Z",
+    "note": "Twenty-first scissors improvement. Continues scrambler offensive optimization (041, 059)."
   },
   "last_improvement": {
     "date": "20260404",

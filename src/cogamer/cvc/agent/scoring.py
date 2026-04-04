@@ -149,7 +149,7 @@ def scramble_target_score(
         )
         threat_bonus = threatened * 10.6  # Increased from 10.5 for stronger network defense
     return (
-        distance - blocked_neutrals * 8.4 - corner_pressure - threat_bonus,  # Increased from 8.0 for stronger expansion blocking
+        distance - blocked_neutrals * 8.5 - corner_pressure - threat_bonus,  # Increased from 8.4 for stronger expansion blocking
         -float(blocked_neutrals),
     )
 
