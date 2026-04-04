@@ -84,7 +84,7 @@ def aligner_target_score(
             hotspot_weight = 6.0
     hotspot_penalty = min(hotspot_count, 3) * hotspot_weight
     # Network bonus for chain-building near friendly junctions
-    # Increased from alpha.0's 0.5 to 0.75 for better consolidation (gamma_v6 validated)
+    # Increased from alpha.0's 0.5 to 0.75 (+50%) for better consolidation synergy
     network_bonus = 0.0
     if friendly_sources:
         nearby_friendly = sum(
@@ -94,7 +94,7 @@ def aligner_target_score(
             and manhattan(candidate.position, source.position) <= _JUNCTION_ALIGN_DISTANCE
         )
         network_bonus = min(nearby_friendly, 4) * 0.75
-    teammate_penalty = 9.0 if teammate_closer else 0.0
+    teammate_penalty = 7.0 if teammate_closer else 0.0  # Reduced from 9.0 for less harsh overlap avoidance
     return (
         distance
         - min(expansion * 6.0, 36.0)

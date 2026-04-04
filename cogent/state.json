@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 35,
+      "attempts": 36,
       "improvements": 7,
-      "last_used": "20260404-035-testing"
+      "last_used": "20260404-036-pending"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "035",
-    "focus": "Junction alignment distance reduction for tighter networks",
-    "description": "Reduced _JUNCTION_ALIGN_DISTANCE from 15 to 14 (-7%) to create tighter alignment networks",
-    "rationale": "Junctions within distance 15 of friendly junctions/hubs are considered part of alignment network. Reducing to 14 creates more conservative network expansion, focusing on closer consolidation. May reduce overextension and improve defensibility. Very conservative 7% reduction to test impact on network topology.",
-    "upload": "scissors_v1_v19:v1",
+    "version": "036",
+    "focus": "Teammate penalty reduction for better target selection",
+    "description": "Reduced teammate_penalty from 9.0 to 7.0 (-22%) in aligner_target_score",
+    "rationale": "Current 9.0 penalty may be too harsh when multiple aligners are at similar distances to a junction. Reducing to 7.0 allows slightly more flexible target selection when overlap ambiguity exists, potentially reducing idle time. Built on gamma_v6:v1 baseline after reverting unvalidated parallel experiments (029-035).",
+    "upload": "pending_upload",
     "season": "beta-cvc",
-    "uploaded_at": "20260404 04:59 UTC",
-    "note": "Untested parameter. Conservative 7% reduction. Seventh parallel experiment (029-035)."
+    "uploaded_at": "TBD",
+    "note": "Single focused change on validated gamma_v6 baseline. Requires tournament testing. No COGAMES_TOKEN for upload."
   },
   "last_improvement": {
     "date": "20260404",
