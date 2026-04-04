@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 27,
+      "attempts": 28,
       "improvements": 7,
-      "last_used": "20260404-092-testing"
+      "last_used": "20260404-093-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "092",
-    "focus": "Hub alignment distance increase for extended reach",
-    "description": "Increased _HUB_ALIGN_DISTANCE from 25 to 26 (+4%)",
-    "rationale": "Hub alignment distance determines how far from hub agents can capture junctions while maintaining alignment network. Modest increase to 26 could allow slightly more distant junction captures while preserving hub-proximal strategy. Stacks with 087-091.",
-    "upload": "scissors:v8",
+    "version": "093",
+    "focus": "Junction alignment distance increase for chain-building",
+    "description": "Increased _JUNCTION_ALIGN_DISTANCE from 15 to 16 (+7%)",
+    "rationale": "Junction alignment distance determines how far from friendly junctions agents can capture new junctions (chain-building). Modest increase to 16 could improve expansion reach and chain-building efficiency without overextending. Stacks with 087-092.",
+    "upload": "scissors:v9",
     "season": "beta-four-score",
     "uploaded_at": "20260404",
-    "note": "Scissors attempt 092. Clean baseline spatial parameter exploration continuing. Awaiting tournament validation."
+    "note": "Scissors attempt 093. Clean baseline spatial parameter exploration continuing. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
