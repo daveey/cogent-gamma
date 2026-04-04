@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 43,
+      "attempts": 44,
       "improvements": 7,
-      "last_used": "20260404-108-testing"
+      "last_used": "20260404-109-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260404",
-    "version": "108",
-    "focus": "Aligner hub penalty 15-25 base reduction",
-    "description": "Reduced hub penalty base from 10.0 to 9.8 (-2%) for junctions 15-25 distance",
-    "rationale": "Complements attempt 106 (multiplier 3.0→2.94). Conservative -2% base reduction further strengthens mid-far range (15-25) attractiveness. Total penalty at distance 25 now: (25-15)*2.94+9.8=39.2 vs original 40.0 (-2%). Stacks with 087-107.",
-    "upload": "scissors_v24:v1",
+    "version": "109",
+    "focus": "Aligner teammate penalty increase",
+    "description": "Increased teammate_penalty from 9.0 to 9.15 (+2%)",
+    "rationale": "Validated in attempt 011 (6.0→9.0, +50%). Failed attempt 020 tried 9.0→10.0 (+11%) and regressed -42.8%. Much more conservative +2% increase to modestly strengthen teammate coordination and reduce multi-agent duplication without major disruption. Stacks with 087-108.",
+    "upload": "scissors_v25:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260404",
-    "note": "Scissors attempt 108. Clean baseline hub penalty 15-25 base exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 109. Clean baseline teammate coordination weight exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
