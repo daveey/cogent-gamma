@@ -6,7 +6,7 @@
       "last_used": null
     },
     "design": {
-      "attempts": 159,
+      "attempts": 160,
       "improvements": 13,
       "last_used": "20260405-hub-camp-dist-2"
     }
@@ -674,6 +674,21 @@
         "46": 6.48
       },
       "analysis": "Seed 46 collapsed (6.48, -58%). Reducing distant HP threshold from 50 to 45 makes agents too aggressive when far from hub, likely dying more often. The condition 'hp < 50 and hub_distance > 15' is precisely tuned - agents need that extra safety margin (HP 45-50) to survive when far from hub. All early game safety parameters exhaustively tested."
+    },
+    {
+      "date": "20260405",
+      "version": "distant-retreat-dist-14-reverted",
+      "focus": "Early game survival - distant retreat distance threshold",
+      "description": "Reduced distant retreat distance threshold from 15 to 14 (-6.7%) to trigger retreat sooner for moderately distant agents",
+      "result": "MAJOR REGRESSION: avg 13.47 vs baseline 15.52 (-13.2%)",
+      "scores_by_seed": {
+        "42": 14.25,
+        "43": 14.3,
+        "44": 6.73,
+        "45": 14.7,
+        "46": 17.38
+      },
+      "analysis": "Seed 44 collapsed (6.73, -57%). Reducing distance threshold from 15 to 14 makes agents retreat too conservatively when moderately far from hub. The precise condition 'hp < 50 and hub_distance > 15' allows agents at distance 14-15 with medium HP to continue operating, which is optimal. All distant retreat parameters exhaustively tested."
     }
   ],
   "mission": "arena",
