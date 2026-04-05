@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 371,
+      "attempts": 372,
       "improvements": 7,
-      "last_used": "20260405-436-testing"
+      "last_used": "20260405-437-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "436",
-    "focus": "Hotspot weight far-range reduction",
-    "description": "Reduced hotspot weight far-range from 11.60 to 11.58 (-0.17%)",
-    "rationale": "Hotspot weight far-range affects contested junctions beyond 15 steps from hub. Lower value reduces avoidance of contested far junctions, encouraging expansion into contested areas. Conservative -0.17% reduction builds on validated improvements. Stacks with 087-435.",
-    "upload": "scissors_v352:v1",
+    "version": "437",
+    "focus": "Hotspot weight mid-range reduction",
+    "description": "Reduced hotspot weight mid-range from 5.54 to 5.52 (-0.36%)",
+    "rationale": "Hotspot weight mid-range affects contested junctions 10-15 steps from hub. Lower value reduces avoidance of contested mid-range junctions, encouraging recapture attempts near hub. Conservative -0.36% reduction builds on validated improvements. Stacks with 087-436.",
+    "upload": "scissors_v353:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 436. Clean baseline far-range contested junction tuning. Awaiting tournament validation."
+    "note": "Scissors attempt 437. Clean baseline mid-range contested junction tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
