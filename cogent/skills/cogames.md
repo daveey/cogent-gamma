@@ -24,8 +24,8 @@ Install the cogames CLI, authenticate, and verify everything works.
    uv run cogames auth set-token $SOFTMAX_TOKEN
    ```
 
-4. **Validate auth** — run a lightweight command that requires auth:
+4. **Validate auth** — read your cogent name from `cogent/IDENTITY.md`, then run:
    ```bash
-   uv run cogames leaderboard beta-cvc --mine
+   uv run cogames leaderboard beta-cvc --policy <your-cogent-name>
    ```
-   If this succeeds, auth is working. If it fails with an auth error, repeat step 3.
+   If this succeeds, auth is working. If it fails with an auth error, repeat step 3. Always use `--policy <name>` instead of `--mine`.

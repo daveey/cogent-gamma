@@ -10,12 +10,12 @@ Memory lives in `memory/` (repo root). See `memory/memory.md` for what to rememb
 
 2. **Read approach state** — Read `cogent/state.json` to understand PCO vs design attempt history.
 
-3. **Check tournament standing** — Run:
+3. **Check tournament standing** — Read your cogent name from `cogent/IDENTITY.md` (the `# heading`), then run:
    ```bash
-   uv run cogames leaderboard beta-cvc --mine
+   uv run cogames leaderboard beta-cvc --policy <your-cogent-name>
    uv run cogames matches --season beta-cvc
    ```
-   **Important**: Only pay attention to policies whose name starts with your cogent name (from `cogent/IDENTITY.md`). Other policies (e.g. `gamma`, `alpha`) belong to other cogents — ignore them even if `--mine` lists them.
+   Always use `--policy <your-cogent-name>` to filter to only YOUR policies. Never use `--mine` — it shows all policies from the shared account including other cogents.
 
 4. **Report status** — Brief summary:
    - Current scores / ranking

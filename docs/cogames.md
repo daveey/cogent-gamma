@@ -63,11 +63,13 @@ If average score drops vs baseline, do NOT upload — revert the change first.
 ## Monitoring
 
 ```bash
-cogames leaderboard <season> --mine       # standings
-cogames matches --season <season>         # recent matches
-cogames match-artifacts <match-id>        # logs from a match
-cogames season progress <season>          # stage progression
+cogames leaderboard <season> --policy <your-cogent-name>  # YOUR standings only
+cogames matches --season <season>                         # recent matches
+cogames match-artifacts <match-id>                        # logs from a match
+cogames season progress <season>                          # stage progression
 ```
+
+**Always use `--policy <your-cogent-name>`** (from `cogent/IDENTITY.md`) instead of `--mine`. The `--mine` flag shows all policies from the shared account, including other cogents.
 
 ## Seasons
 
