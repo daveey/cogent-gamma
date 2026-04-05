@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 192,
+      "attempts": 193,
       "improvements": 14,
-      "last_used": "20260405-oscillation-5"
+      "last_used": "20260405-stall-15"
     }
   },
   "testing_in_progress": null,
@@ -1514,6 +1514,33 @@
       },
       "status": "reverted",
       "notes": "Delta Cycle 69 - Allowing more oscillation before unstick reduced effectiveness. Confirms threshold of 4 steps is optimal for breaking oscillation loops."
+    },
+    {
+      "date": "20260405",
+      "version": "stall-15-reverted",
+      "focus": "Stall unstick threshold",
+      "description": "Increased _STALL_UNSTICK_STEPS from 14 to 15 (+7.1%) to allow more patience before triggering unstick",
+      "result": "REGRESSION: avg 14.94 vs baseline 15.73 (-5.0%)",
+      "local_scores": {
+        "seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "scores": [
+          14.56,
+          14.46,
+          12.83,
+          16.16,
+          16.69
+        ],
+        "avg": 14.94,
+        "baseline": 15.73
+      },
+      "status": "reverted",
+      "notes": "Delta Cycle 70 - Allowing agents to stay stalled longer before unsticking reduced performance. Confirms threshold of 14 steps is optimal for detecting and breaking stalls."
     }
   ],
   "mission": "arena",
