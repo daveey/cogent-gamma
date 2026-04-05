@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (450) Aligner HP threshold reduction (45.76→45.74): scissors_v366:v1 qualifying - continued aligner retreat tuning (-0.044%, stacks with 087-449) [MILESTONE: 450 attempts]
 - [ ] (449) Scrambler blocked neutrals weight increase (8.72→8.74): scissors_v365:v1 qualifying - continued expansion-blocking (+0.23%, stacks with 087-448)
 - [ ] (448) Scrambler threat bonus increase (10.52→10.54): scissors_v364:v1 qualifying - continued defensive priority tuning (+0.19%, stacks with 087-447)
 - [ ] (447) Scrambler corner pressure divisor reduction (7.58→7.56): scissors_v363:v1 qualifying - continued faster pressure growth (-0.26%, stacks with 087-446)
