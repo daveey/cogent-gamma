@@ -6,7 +6,7 @@
       "last_used": null
     },
     "design": {
-      "attempts": 159,
+      "attempts": 160,
       "improvements": 13,
       "last_used": "20260405-hub-camp-dist-2"
     }
@@ -644,6 +644,21 @@
         "46": 16.88
       },
       "analysis": "Modest regression. Increasing step limit from 20 to 22 delays agent activation without sufficient benefit. Pattern: Cycle 15 (20\u219215, reverted), this cycle (20\u219222, reverted) confirm 20 steps is optimal hub camp duration. Any deviation in either direction causes regression."
+    },
+    {
+      "date": "20260405",
+      "version": "hub-camp-hp-80-reverted",
+      "focus": "Early game efficiency - hub camp HP threshold",
+      "description": "Reduced hub camp HP threshold from 85 to 80 (-5.9%) following Cycle 10's successful pattern",
+      "result": "REGRESSION: avg 14.39 vs baseline 15.52 (-7.3%)",
+      "scores_by_seed": {
+        "42": 8.69,
+        "43": 14.35,
+        "44": 14.58,
+        "45": 16.97,
+        "46": 17.35
+      },
+      "analysis": "Seed 42 collapsed (8.69, -44%). Reducing hub camp HP from 85 to 80 makes agents leave hub too early without sufficient healing. Pattern: 100\u219285 (+7.2%, Cycle 10), 85\u219290 (-21.4%, Cycle 20), 85\u219280 (-7.3%, this cycle). Confirms 85 HP is optimal hub camp threshold - bidirectionally tested and confirmed as sweet spot."
     }
   ],
   "mission": "arena",
