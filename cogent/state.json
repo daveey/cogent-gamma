@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 194,
-      "improvements": 14,
-      "last_used": "20260405-stall-13"
+      "attempts": 195,
+      "improvements": 15,
+      "last_used": "20260405-oscillation-3"
     }
   },
   "testing_in_progress": null,
@@ -20,10 +20,10 @@
   },
   "last_improvement": {
     "date": "20260405",
-    "version": "expansion-067",
-    "focus": "Expansion incentive - aligner targeting weight",
-    "description": "Increased aligner expansion weight from 6.6 to 6.7 (+1.5%) to more strongly prioritize junctions that expand reach to new unreachable entities",
-    "result": "IMPROVEMENT: avg 15.73 vs baseline 15.52 (+1.4%)",
+    "version": "oscillation-3",
+    "focus": "Oscillation unstick threshold reduction",
+    "description": "Reduced _OSCILLATION_UNSTICK_STEPS from 4 to 3 (-25%) to trigger oscillation detection faster, breaking loops earlier",
+    "result": "IMPROVEMENT: avg 15.87 vs baseline 15.73 (+0.9%)",
     "local_scores": {
       "seeds": [
         42,
@@ -33,17 +33,17 @@
         46
       ],
       "scores": [
-        16.56,
-        14.72,
-        12.54,
-        16.67,
-        18.17
+        15.62,
+        13.61,
+        14.58,
+        18.17,
+        17.38
       ],
-      "avg": 15.73,
-      "baseline": 15.52
+      "avg": 15.87,
+      "baseline": 15.73
     },
     "status": "local-only",
-    "notes": "Delta Cycle 43 - First successful scoring weight improvement. Expansion weight increase from 6.6 to 6.7 improved performance across most seeds, particularly seed 46 (18.17). Cumulative improvement: 21.4% from arena start (12.96\u219215.73)."
+    "notes": "Delta Cycle 72 - Faster oscillation detection improved performance. Agents break oscillation loops earlier, leading to better positioning. Cumulative improvement: 22.5% from arena start (12.96\u219215.87)."
   },
   "failed_attempts": [
     {
