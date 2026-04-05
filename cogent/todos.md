@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (270) Aligner hub penalty 10-15 multiplier reduction (1.42→1.41): scissors_v186:v1 qualifying - 10-15 range multiplier (-0.70%, stacks with 087-269) [MILESTONE: 270 attempts]
 - [ ] (269) Aligner hub penalty 10-15 base reduction (1.92→1.91): scissors_v185:v1 qualifying - 10-15 range base penalty (-0.52%, stacks with 087-268)
 - [ ] (268) Aligner hub penalty very-close multiplier reduction (0.272→0.271): scissors_v184:v1 qualifying - further tighter hub clustering (-0.37%, stacks with 087-267)
 - [ ] (267) Extractor memory steps increase (834→836): scissors_v183:v1 qualifying - further longer extractor memory (+0.24%, stacks with 087-266)
