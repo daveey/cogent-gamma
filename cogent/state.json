@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 450,
+      "attempts": 451,
       "improvements": 7,
-      "last_used": "20260405-516-testing"
+      "last_used": "20260405-517-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "516",
-    "focus": "Aligner HP threshold reduction",
-    "description": "Reduced aligner HP threshold from 45.72 to 45.70 (-0.044%)",
-    "rationale": "HP threshold controls when aligners retreat to safety. Lower threshold allows slightly more aggressive alignment before retreating. Conservative -0.044% reduction builds on validated improvements. Stacks with 087-515.",
-    "upload": "scissors_v433:v1",
+    "version": "517",
+    "focus": "Miner HP threshold increase",
+    "description": "Increased miner HP threshold from 18.60 to 18.62 (+0.11%)",
+    "rationale": "HP threshold controls when miners retreat to safety. Higher threshold enables more aggressive resource gathering before retreating. Conservative +0.11% increase builds on validated improvements. Stacks with 087-516.",
+    "upload": "scissors_v434:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 516. Clean baseline more aggressive aligner. Awaiting tournament validation."
+    "note": "Scissors attempt 517. Clean baseline more aggressive miner. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
