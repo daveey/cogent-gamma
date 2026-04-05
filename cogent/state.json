@@ -6,7 +6,7 @@
       "last_used": null
     },
     "design": {
-      "attempts": 144,
+      "attempts": 145,
       "improvements": 10,
       "last_used": "20260405-early-retreat-120"
     }
@@ -466,6 +466,21 @@
         "46": 17.33
       },
       "analysis": "Marginal +0.6% improvement came with high variance (seed 42: -32%, seed 45: +34%). Subsequent Cycle 17 testing showed continued instability (seed 44: 6.46). Reverted to Cycle 14 stable baseline. Pattern: pushing hub camp duration below 20 steps destabilizes performance."
+    },
+    {
+      "date": "20260405",
+      "version": "oscillation-5-reverted",
+      "focus": "Behavioral stability - oscillation threshold",
+      "description": "Increased oscillation unstick threshold from 4 to 5 steps (+25%) to reduce premature target switching",
+      "result": "MAJOR REGRESSION: avg 10.86 vs baseline 14.19 (-23.4%)",
+      "scores_by_seed": {
+        "42": 13.95,
+        "43": 13.37,
+        "44": 7.02,
+        "45": 13.56,
+        "46": 6.42
+      },
+      "analysis": "CATASTROPHIC on seeds 44 & 46 (7.02, 6.42, -50%). Opposite direction from Cycle 12 failure (4\u21923, timeouts). Both increasing (4\u21925) and decreasing (4\u21923) oscillation threshold cause major failures. Pattern: oscillation threshold at 4 steps is optimal - any change in either direction destabilizes behavior. Agents need exactly 4 steps of oscillation before taking corrective action."
     }
   ],
   "mission": "arena",
