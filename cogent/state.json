@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 214,
+      "attempts": 215,
       "improvements": 7,
-      "last_used": "20260405-279-testing"
+      "last_used": "20260405-280-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "279",
-    "focus": "Aligner teammate penalty increase",
-    "description": "Increased teammate_penalty from 9.33 to 9.35 (+0.21%)",
-    "rationale": "Teammate penalty reduces duplication when another aligner is closer. Conservative +0.21% increase builds on validated improvements 250. Higher penalty improves coordination. Stacks with 087-278.",
-    "upload": "scissors_v195:v1",
+    "version": "280",
+    "focus": "Aligner enemy AOE penalty increase",
+    "description": "Increased enemy_aoe penalty from 10.58 to 10.6 (+0.19%)",
+    "rationale": "Enemy AOE penalty increases avoidance of junctions near enemy scramblers. Conservative +0.19% increase builds on validated improvements 251. Higher penalty strengthens enemy avoidance. Stacks with 087-279.",
+    "upload": "scissors_v196:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 279. Clean baseline coordination tuning. Awaiting tournament validation."
+    "note": "Scissors attempt 280. Clean baseline enemy avoidance tuning. MILESTONE: 280 attempts. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
