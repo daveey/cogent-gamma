@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 221,
+      "attempts": 222,
       "improvements": 7,
-      "last_used": "20260405-286-testing"
+      "last_used": "20260405-287-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "286",
-    "focus": "Miner HP threshold increase",
-    "description": "Increased miner HP threshold from 18.46 to 18.48 (+0.11%)",
-    "rationale": "Miner HP threshold determines retreat point. Conservative +0.11% increase builds on validated improvements 257. Higher threshold enables more aggressive resource gathering. Stacks with 087-285.",
-    "upload": "scissors_v202:v1",
+    "version": "287",
+    "focus": "Scrambler HP threshold increase",
+    "description": "Increased scrambler HP threshold from 34.09 to 34.11 (+0.059%)",
+    "rationale": "Scrambler HP threshold determines retreat point. Conservative +0.059% increase builds on validated improvements 258. Higher threshold enables more aggressive disruption. Stacks with 087-286.",
+    "upload": "scissors_v203:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 286. Clean baseline miner aggression tuning. Awaiting tournament validation."
+    "note": "Scissors attempt 287. Clean baseline scrambler aggression tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
