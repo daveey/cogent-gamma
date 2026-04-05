@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 193,
+      "attempts": 194,
       "improvements": 14,
-      "last_used": "20260405-stall-15"
+      "last_used": "20260405-stall-13"
     }
   },
   "testing_in_progress": null,
@@ -1541,6 +1541,33 @@
       },
       "status": "reverted",
       "notes": "Delta Cycle 70 - Allowing agents to stay stalled longer before unsticking reduced performance. Confirms threshold of 14 steps is optimal for detecting and breaking stalls."
+    },
+    {
+      "date": "20260405",
+      "version": "stall-13-reverted",
+      "focus": "Stall unstick threshold reduction",
+      "description": "Reduced _STALL_UNSTICK_STEPS from 14 to 13 (-7.1%) to trigger unstick faster",
+      "result": "MAJOR REGRESSION: avg 11.86 vs baseline 15.73 (-24.6%)",
+      "local_scores": {
+        "seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "scores": [
+          7.51,
+          12.53,
+          6.08,
+          16.16,
+          17.03
+        ],
+        "avg": 11.86,
+        "baseline": 15.73
+      },
+      "status": "reverted",
+      "notes": "Delta Cycle 71 - Triggering unstick too early caused catastrophic failures on seeds 42 and 44. Agents need full 14 steps to determine if truly stalled. Bidirectional validation confirms 14 is optimal."
     }
   ],
   "mission": "arena",
