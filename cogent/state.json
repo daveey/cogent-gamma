@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 186,
+      "attempts": 187,
       "improvements": 14,
-      "last_used": "20260405-claim-steps-29"
+      "last_used": "20260405-hub-align-24"
     }
   },
   "testing_in_progress": null,
@@ -1352,6 +1352,33 @@
       },
       "status": "reverted",
       "notes": "Delta Cycle 63 - Shorter claim duration caused coordination conflicts. Agents overrode claims too quickly, particularly damaging on seed 44 (5.62). Confirms 30 steps is optimal claim duration."
+    },
+    {
+      "date": "20260405",
+      "version": "hub-align-24-reverted",
+      "focus": "Hub alignment distance",
+      "description": "Reduced _HUB_ALIGN_DISTANCE from 25 to 24 (-4.0%) to test if tighter hub alignment network improves coordination",
+      "result": "MAJOR REGRESSION: avg 11.92 vs baseline 15.73 (-24.2%)",
+      "local_scores": {
+        "seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "scores": [
+          8.17,
+          13.73,
+          7.27,
+          15.61,
+          14.8
+        ],
+        "avg": 11.92,
+        "baseline": 15.73
+      },
+      "status": "reverted",
+      "notes": "Delta Cycle 64 - Tighter hub alignment distance catastrophically reduced network flexibility. Agents couldn't expand effectively from hub. Particularly damaging on seeds 42 and 44. Confirms 25 is optimal."
     }
   ],
   "mission": "arena",
