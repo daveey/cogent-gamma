@@ -6,7 +6,7 @@
       "last_used": null
     },
     "design": {
-      "attempts": 159,
+      "attempts": 160,
       "improvements": 13,
       "last_used": "20260405-hub-camp-dist-2"
     }
@@ -704,6 +704,21 @@
         "46": 5.58
       },
       "analysis": "Seed 46 collapsed (5.58, -64%). Increasing close distance from 8 to 9 exempts more agents from early retreat checks, allowing low-HP agents at distance 9 to remain vulnerable. Distance 8 is optimal - agents within 8 tiles are close enough to hub for safety. Combined with Cycle 22 (8\u219210 failed), confirms 8 as optimal close distance."
+    },
+    {
+      "date": "20260405",
+      "version": "wipeout-recovery-6-reverted",
+      "focus": "Wipeout recovery - hub distance threshold increase",
+      "description": "Increased wipeout recovery distance threshold from 5 to 6 (+20%) to allow dead agents to mine at slightly greater distance",
+      "result": "REGRESSION: avg 14.20 vs baseline 15.52 (-8.5%)",
+      "scores_by_seed": {
+        "42": 14.25,
+        "43": 12.12,
+        "44": 14.58,
+        "45": 13.03,
+        "46": 17.03
+      },
+      "analysis": "Modest regression across most seeds. Increasing wipeout distance from 5 to 6 allows dead agents to remain too far from hub before returning, reducing recovery efficiency. Combined with Cycle 30 (5\u21924 failed), confirms 5 as optimal wipeout recovery distance. Bidirectionally tested and validated."
     }
   ],
   "mission": "arena",
