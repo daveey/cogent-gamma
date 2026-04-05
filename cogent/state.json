@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 475,
+      "attempts": 476,
       "improvements": 7,
-      "last_used": "20260405-541-testing"
+      "last_used": "20260405-542-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "541",
-    "focus": "Teammate penalty increase",
-    "description": "Increased teammate penalty from 9.49 to 9.51 (+0.21%)",
-    "rationale": "Teammate penalty discourages agents from targeting junctions when teammates are closer. Higher penalty improves coordination. Conservative +0.21% increase builds on validated improvements. Stacks with 087-540.",
-    "upload": "scissors_v458:v1",
+    "version": "542",
+    "focus": "Expansion bonus weight increase",
+    "description": "Increased expansion bonus weight from 6.60 to 6.62 (+0.30%)",
+    "rationale": "Expansion bonus weight rewards junctions that unlock unreachable targets. Higher weight increases expansion emphasis. Conservative +0.30% increase builds on validated improvements. Stacks with 087-541.",
+    "upload": "scissors_v459:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 541. Clean baseline improved coordination. Awaiting tournament validation."
+    "note": "Scissors attempt 542. Clean baseline stronger expansion emphasis. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
