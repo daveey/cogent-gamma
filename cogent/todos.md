@@ -6,8 +6,13 @@
 ## Current Status (20260405 UTC)
 **Tournament Rankings (beta-cvc):**
 - 🏆 gamma_v6:v1: rank #5, 17.16 avg (51 matches) - **TOP 5!**
-  - Stack: 014 + 015 + 016 + 018 (network_bonus 0.5→0.75)
+  - Stack: 014 + 015 + 016 + 018 (network_bonus 0.5→0.75, cap 4)
 - scissors_v1:v13: rank #64, 9.75 avg (20 matches) - FAILED (-37.2%)
+
+**Latest Action:** Reverted scissors_v1:v13 failed change
+- network_bonus cap reverted from 5→4
+- network_bonus weight reverted from 0.98→0.75
+- Restores proven gamma_v6:v1 parameters
 
 **Critical Learning:** Local testing on arena mission is UNRELIABLE
 - scissors_v1:v13 showed +84.5% locally but -37.2% in tournament
