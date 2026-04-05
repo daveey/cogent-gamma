@@ -46,7 +46,7 @@ _ELEMENTS = ("carbon", "oxygen", "germanium", "silicon")
 _HP_THRESHOLDS = {
     "miner": 15,
     "aligner": 50,
-    "scrambler": 25,  # Reduced from 30 for more aggressive disruption (-17%)
+    "scrambler": 30,
     "scout": 30,
     "unknown": 30,
 }

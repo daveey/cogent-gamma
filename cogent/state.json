@@ -6,20 +6,12 @@
       "last_used": null
     },
     "design": {
-      "attempts": 123,
+      "attempts": 124,
       "improvements": 7,
-      "last_used": "20260405-miner-hp-18-cycle2-failure"
+      "last_used": "20260405-scrambler-hp-25-cycle3-failure"
     }
   },
-  "testing_in_progress": {
-    "date": "20260405",
-    "version": "scrambler-hp-25",
-    "focus": "Scrambler HP threshold reduction",
-    "description": "Reduced scrambler retreat threshold from 30 to 25 HP (-17%)",
-    "baseline": 9.74,
-    "seeds": "42-46",
-    "started": "05:12 UTC"
-  },
+  "testing_in_progress": null,
   "last_improvement": {
     "date": "20260404",
     "version": "018",
@@ -368,6 +360,14 @@
         "46": "ERROR: No score found"
       },
       "analysis": "Fixed test harness (capture full output, then parse) ran successfully for 57 minutes (04:12-05:09 UTC), but cogames failed to produce 'per cog' score output for all 5 seeds. Same infrastructure issue affecting baseline evals. Seeds 42-43 completed in ~5-6 min each (normal), but seed 44 ran 10+ minutes suggesting hanging/timeout. Root cause: cogames not producing expected output format, not test harness design. Change reverted conservatively. Cannot evaluate miner HP change without working cogames output. May need different evaluation approach or cogames environment fix."
+    },
+    {
+      "date": "20260405",
+      "version": "scrambler-hp-25-cycle3-reverted",
+      "focus": "Scrambler HP threshold reduction",
+      "description": "Reduced scrambler retreat threshold from 30 to 25 HP (-17%) for more aggressive disruption",
+      "result": "TEST INFRASTRUCTURE FAILURE: Script timeout on seed 42 (0/5 seeds)",
+      "analysis": "Test script started seed 42 at 05:11:54, hit 600-second timeout around 05:22, exited due to 'set -e'. Only captured 4 lines of header output, no game completion. Seed 42 either hung or took >10 minutes (normal is 5-6 min). Script exit code handling flaw: timeout returns 124/143, triggers 'set -e' exit. Same root cause as Cycle 2: cogames unreliable in local testing - hangs, doesn't produce output, or times out. Change reverted conservatively. Local testing infrastructure fundamentally broken. Need tournament validation or different test environment."
     }
   ],
   "mission": "four_score",
