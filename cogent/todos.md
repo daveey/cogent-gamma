@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (257) Miner HP threshold increase (18.44→18.46): scissors_v173:v1 qualifying - further aggressive resource gathering (+0.11%, stacks with 087-256)
 - [ ] (256) Aligner HP threshold reduction (45.88→45.86): scissors_v172:v1 qualifying - further aligner retreat tuning (-0.044%, stacks with 087-255)
 - [ ] (255) Aligner hotspot weight near-hub reduction (1.84→1.82): scissors_v171:v1 qualifying - further near-hub recapture (-1.09%, stacks with 087-254)
 - [ ] (254) Aligner hotspot weight mid-range reduction (5.66→5.64): scissors_v170:v1 qualifying - further mid-range contested tuning (-0.35%, stacks with 087-253)
