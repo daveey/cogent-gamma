@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 163,
+      "attempts": 164,
       "improvements": 7,
-      "last_used": "20260405-228-testing"
+      "last_used": "20260405-229-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "228",
-    "focus": "Aligner enemy AOE penalty increase",
-    "description": "Increased enemy AOE penalty from 10.54 to 10.56 (+0.19%)",
-    "rationale": "Enemy AOE penalty determines how strongly aligners avoid junctions within AOE range of enemy junctions. Conservative +0.19% increase builds on validated improvements 014, 101, 139, 170, 176, 209. Higher penalty encourages safer junction selection. Stacks with 087-227.",
-    "upload": "scissors_v144:v1",
+    "version": "229",
+    "focus": "Aligner teammate penalty increase",
+    "description": "Increased teammate penalty from 9.29 to 9.31 (+0.22%)",
+    "rationale": "Teammate penalty determines how strongly aligners avoid junctions when teammates are closer. Conservative +0.22% increase builds on validated improvements 011, 109, 140, 171, 191, 210. Higher penalty improves multi-agent coordination. Stacks with 087-228.",
+    "upload": "scissors_v145:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 228. Clean baseline enemy avoidance exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 229. Clean baseline teammate coordination exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
