@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 394,
+      "attempts": 399,
       "improvements": 7,
-      "last_used": "20260405-460-testing"
+      "last_used": "20260405-465-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "460",
-    "focus": "Target claim steps increase",
-    "description": "Increased target claim steps from 33.20 to 33.25 (+0.15%)",
-    "rationale": "Target claim steps controls how long claims remain valid before expiring. Longer validity gives agents more time to reach claimed targets before teammates can override. Conservative +0.15% increase builds on validated improvements. Stacks with 087-459.",
-    "upload": "scissors_v376:v1",
+    "version": "465",
+    "focus": "Hub penalty 15-25 range base reduction",
+    "description": "Reduced hub penalty 15-25 range base from 9.59 to 9.58 (-0.10%)",
+    "rationale": "Hub penalty 15-25 range base controls baseline penalty for mid-range junctions. Lower value encourages slightly more mid-range expansion. Conservative -0.10% reduction builds on validated improvements. Stacks with 087-464.",
+    "upload": "scissors_v381:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 460. Clean baseline longer claim validity tuning. Awaiting tournament validation. [MILESTONE: 460 attempts]"
+    "note": "Scissors attempt 465. Clean baseline 15-25 range base tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
