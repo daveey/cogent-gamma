@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 438,
+      "attempts": 442,
       "improvements": 7,
-      "last_used": "20260405-504-testing"
+      "last_used": "20260405-508-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "504",
-    "focus": "Hotspot weight near-hub reduction",
-    "description": "Reduced near-hub hotspot weight from 1.68 to 1.66 (-1.19%)",
-    "rationale": "Near-hub hotspot weight controls penalty for contested junctions very close to hub (≤10 distance). Lower value encourages recapturing near-hub contested territory. Conservative -1.19% reduction builds on validated improvements. Stacks with 087-503.",
-    "upload": "scissors_v421:v1",
+    "version": "508",
+    "focus": "Teammate penalty increase",
+    "description": "Increased teammate penalty from 9.47 to 9.49 (+0.21%)",
+    "rationale": "Teammate penalty discourages multiple aligners from targeting the same junction when a teammate is closer. Higher value improves coordination. Conservative +0.21% increase builds on validated improvements. Stacks with 087-507.",
+    "upload": "scissors_v425:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 504. Clean baseline near-hub recapture tuning. Awaiting tournament validation."
+    "note": "Scissors attempt 508. Clean baseline coordination tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",

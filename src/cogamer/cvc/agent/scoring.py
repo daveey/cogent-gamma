@@ -82,7 +82,7 @@ def aligner_target_score(
             hotspot_weight = 1.66  # Reduced from 1.68 to 1.66 (-1.19%) for continued near-hub recapture tuning
         elif hub_dist <= 15:
             hotspot_weight = 5.48  # Reduced from 5.50 to 5.48 (-0.36%) for continued mid-range contested junction tuning
-    hotspot_penalty = min(hotspot_count, 3.28) * hotspot_weight  # Increased cap from 3.26 to 3.28 (+0.61%) for continued contested junction penalty cap tuning
+    hotspot_penalty = min(hotspot_count, 3.30) * hotspot_weight  # Increased cap from 3.28 to 3.30 (+0.61%) for continued contested junction penalty cap tuning
     # Network bonus for chain-building near friendly junctions
     # Increased from alpha.0's 0.5 to 0.75 for better consolidation (gamma_v6 validated)
     # Further increased to 0.77 (+3%) for stronger chain-building incentive
@@ -95,8 +95,8 @@ def aligner_target_score(
             if source.entity_type != "hub"
             and manhattan(candidate.position, source.position) <= _JUNCTION_ALIGN_DISTANCE
         )
-        network_bonus = min(nearby_friendly, 4.52) * 0.91  # Increased cap from 4.50 to 4.52 (+0.44%) for continued denser network clustering
-    teammate_penalty = 9.47 if teammate_closer else 0.0  # Increased from 9.45 to 9.47 (+0.21%) for continued coordination tuning
+        network_bonus = min(nearby_friendly, 4.54) * 0.92  # Increased cap from 4.52 to 4.54 (+0.44%) for continued denser network clustering
+    teammate_penalty = 9.49 if teammate_closer else 0.0  # Increased from 9.47 to 9.49 (+0.21%) for continued coordination tuning
     return (
         distance
         - min(expansion * 6.58, 37.65)  # Increased cap from 37.60 to 37.65 (+0.13%) for continued higher expansion bonus ceiling
