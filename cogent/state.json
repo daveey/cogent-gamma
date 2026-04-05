@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 209,
+      "attempts": 210,
       "improvements": 7,
-      "last_used": "20260405-274-testing"
+      "last_used": "20260405-275-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "274",
-    "focus": "Aligner hub penalty far-range base reduction",
-    "description": "Reduced hub penalty far-range base from 48.94 to 48.93 (-0.02%)",
-    "rationale": "Hub penalty far-range base determines starting penalty for junctions >25 from hub. Conservative -0.02% reduction builds on validated improvements 241. Lower base reduces penalty floor at far range. Stacks with 087-273.",
-    "upload": "scissors_v190:v1",
+    "version": "275",
+    "focus": "Aligner network bonus weight increase",
+    "description": "Increased network_bonus weight from 0.84 to 0.85 (+1.19%)",
+    "rationale": "Network bonus weight determines chain-building priority near friendly junctions. Conservative +1.19% increase builds on validated improvements 246. Higher weight strengthens network consolidation. Stacks with 087-274.",
+    "upload": "scissors_v191:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 274. Clean baseline far-range base exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 275. Clean baseline network consolidation tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
