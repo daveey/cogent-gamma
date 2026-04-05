@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 442,
+      "attempts": 444,
       "improvements": 7,
-      "last_used": "20260405-508-testing"
+      "last_used": "20260405-510-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "508",
-    "focus": "Teammate penalty increase",
-    "description": "Increased teammate penalty from 9.47 to 9.49 (+0.21%)",
-    "rationale": "Teammate penalty discourages multiple aligners from targeting the same junction when a teammate is closer. Higher value improves coordination. Conservative +0.21% increase builds on validated improvements. Stacks with 087-507.",
-    "upload": "scissors_v425:v1",
+    "version": "510",
+    "focus": "Expansion bonus cap increase",
+    "description": "Increased expansion bonus cap from 37.65 to 37.70 (+0.13%)",
+    "rationale": "Expansion bonus cap limits maximum expansion bonus for junctions that unlock many unreachable targets. Higher ceiling rewards extremely valuable expansion junctions. Conservative +0.13% increase builds on validated improvements. Stacks with 087-509.",
+    "upload": "scissors_v427:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 508. Clean baseline coordination tuning. Awaiting tournament validation."
+    "note": "Scissors attempt 510. Clean baseline higher expansion bonus ceiling. Awaiting tournament validation. [MILESTONE: 510 attempts]"
   },
   "last_improvement": {
     "date": "20260404",
