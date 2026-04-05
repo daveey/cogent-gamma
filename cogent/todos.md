@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (204) Scrambler blocked neutrals weight increase (8.6→8.62): scissors_v120:v1 qualifying - stronger expansion-blocking (+0.23%, stacks with 087-203)
 - [ ] (203) Scrambler threat bonus weight increase (10.4→10.42): scissors_v119:v1 qualifying - continued defensive priority (+0.19%, stacks with 087-202)
 - [ ] (202) Aligner hub penalty far-range multiplier reduction (7.92→7.91): scissors_v118:v1 qualifying - far-range multiplier penalty (-0.13%, stacks with 087-201)
 - [ ] (201) Aligner hub penalty far-range base reduction (49.0→48.95): scissors_v117:v1 qualifying - far-range base penalty (-0.10%, stacks with 087-200)

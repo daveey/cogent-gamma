@@ -151,7 +151,7 @@ def scramble_target_score(
         )
         threat_bonus = threatened * 10.42  # Increased from 10.4 to 10.42 (+0.19%) for continued defensive priority
     return (
-        distance - blocked_neutrals * 8.6 - corner_pressure - threat_bonus,  # Increased from 8.5 to 8.6 (+1.2%) for stronger expansion-blocking
+        distance - blocked_neutrals * 8.62 - corner_pressure - threat_bonus,  # Increased from 8.6 to 8.62 (+0.23%) for stronger expansion-blocking
         -float(blocked_neutrals),
     )
 
