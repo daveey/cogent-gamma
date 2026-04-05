@@ -92,6 +92,24 @@ ANTHROPIC_API_KEY= PYTHONPATH=src/cogamer cogames play -m four_score \
 4. **Provide COGAMES_TOKEN** - Enable tournament validation as alternative
 5. **Reduce game complexity** - Test with fewer agents per team or shorter max steps
 
+## Update: Cycle 9 (machina_1 test)
+
+**Date:** 2026-04-05 07:39-07:45 UTC
+
+Tested machina_1 (2 teams, 16 agents) instead of four_score (4 teams, 32 agents) to isolate complexity:
+
+**Result:** FAILED identically (exit 143 timeout, 4 header lines only)
+
+**Conclusion:** Issue is NOT complexity/resource-related. Both simple (16 agents) and complex (32 agents) missions fail the same way. This eliminates the "32 agent memory exhaustion" hypothesis.
+
+**9 consecutive failures** across all variations:
+- Different missions (four_score, machina_1)
+- Different timeouts (2-6 minutes)
+- Different test harnesses
+- Different seeds
+
+**Consistent pattern:** Only 4 header lines captured, process times out, no score output.
+
 ## Workaround: Tournament Validation
 
 If local testing cannot be fixed, provide `COGAMES_TOKEN` to enable:
