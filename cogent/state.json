@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 167,
+      "attempts": 168,
       "improvements": 14,
-      "last_used": "20260405-expansion-068"
+      "last_used": "20260405-enemy-aoe-085"
     }
   },
   "testing_in_progress": null,
@@ -839,6 +839,33 @@
       },
       "status": "reverted",
       "notes": "Delta Cycle 44 - Bidirectional validation of expansion weight. Increasing beyond 6.7 caused over-expansion at expense of other factors, particularly damaging on seed 44 (6.42). Confirms 6.7 is optimal."
+    },
+    {
+      "date": "20260405",
+      "version": "enemy-aoe-085-reverted",
+      "focus": "Enemy AOE penalty reduction",
+      "description": "Reduced aligner enemy_aoe weight from 8.6 to 8.5 (-1.2%) to test if slightly more aggressive contested territory targeting improves",
+      "result": "REGRESSION: avg 13.16 vs baseline 15.73 (-16.4%)",
+      "local_scores": {
+        "seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "scores": [
+          14.72,
+          6.73,
+          12.65,
+          15.0,
+          16.69
+        ],
+        "avg": 13.16,
+        "baseline": 15.73
+      },
+      "status": "reverted",
+      "notes": "Delta Cycle 45 - Testing more aggressive targeting in enemy-controlled areas backfired. Lower penalty led agents into dangerous positions, particularly damaging on seed 43 (6.73). Confirms 8.6 is optimal."
     }
   ],
   "mission": "arena",
