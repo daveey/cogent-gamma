@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 190,
+      "attempts": 191,
       "improvements": 7,
-      "last_used": "20260405-255-testing"
+      "last_used": "20260405-256-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "255",
-    "focus": "Aligner hotspot weight near-hub reduction",
-    "description": "Reduced hotspot_weight near-hub from 1.84 to 1.82 (-1.09%)",
-    "rationale": "Hotspot weight near-hub determines penalty for contested junctions \u226410 from hub. Conservative -1.09% reduction builds on validated improvements 235. Lower weight encourages near-hub recapture. Stacks with 087-254.",
-    "upload": "scissors_v171:v1",
+    "version": "256",
+    "focus": "Aligner HP threshold reduction",
+    "description": "Reduced aligner HP threshold from 45.88 to 45.86 (-0.044%)",
+    "rationale": "Aligner HP threshold determines retreat point. Conservative -0.044% reduction builds on validated improvements 214. Lower threshold triggers earlier retreat. Stacks with 087-255.",
+    "upload": "scissors_v172:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 255. Clean baseline near-hub hotspot tuning. Awaiting tournament validation."
+    "note": "Scissors attempt 256. Clean baseline aligner retreat timing tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
