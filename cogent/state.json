@@ -12,6 +12,12 @@
     }
   },
   "testing_in_progress": null,
+  "testing_blocker": {
+    "date": "20260405",
+    "issue": "Local testing infrastructure blocked - four_score takes 10+ minutes per seed (50+ min for 5-seed validation). Arena mission hits observation token budget errors. Cannot complete improve.md Step 5 (testing) with current infrastructure.",
+    "workaround": "Tournament-based validation - submit changes directly to beta-cvc for fast feedback (5-15 min per match)",
+    "status": "improve.md workflow suspended - 30min loop frequency incompatible with 50+ min test duration"
+  },
   "last_improvement": {
     "date": "20260405",
     "version": "hub-camp-dist-2",

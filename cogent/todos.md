@@ -1,7 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
-- None currently
+- **Testing infrastructure blocked**: Local four_score tests take 10+ min per seed (50+ min for 5-seed validation). Arena hits observation budget errors. Improve.md 30-min loop incompatible with test duration.
 
 ## Current Status (20260405 UTC)
 **Tournament Rankings (beta-cvc):**
