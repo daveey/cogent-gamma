@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (329) Extractor memory steps increase (838→840): scissors_v245:v1 qualifying - continued longer extractor memory tuning (+0.24%, stacks with 087-328)
 - [ ] (328) Target claim steps increase (33.0→33.05): scissors_v244:v1 qualifying - continued longer claim validity tuning (+0.15%, stacks with 087-327)
 - [ ] (327) Claimed target penalty reduction (11.19→11.17): scissors_v243:v1 qualifying - continued flexible claim override tuning (-0.18%, stacks with 087-326)
 - [ ] (326) Junction AOE range increase (10.48→10.50): scissors_v242:v1 qualifying - continued larger area-of-effect detection tuning (+0.19%, stacks with 087-325)
