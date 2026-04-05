@@ -1,6 +1,10 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (496) Hub penalty 10-15 range base reduction (1.85→1.84): scissors_v413:v1 qualifying - continued 10-15 range base penalty tuning (-0.54%, stacks with 087-495)
+- [ ] (495) Hub penalty very-close multiplier reduction (0.265→0.264): scissors_v412:v1 qualifying - continued tighter hub clustering tuning (-0.38%, stacks with 087-494)
+- [ ] (494) Extractor memory steps increase (848→850): scissors_v411:v1 qualifying - continued longer extractor memory tuning (+0.24%, stacks with 087-493)
+- [ ] (493) Target claim steps increase (33.25→33.30): scissors_v410:v1 qualifying - continued longer claim validity tuning (+0.15%, stacks with 087-492)
 - [ ] (492) Claimed target penalty reduction (11.09→11.07): scissors_v409:v1 qualifying - continued flexible claim override tuning (-0.18%, stacks with 087-491)
 - [ ] (491) Junction AOE range increase (10.58→10.60): scissors_v408:v1 qualifying - continued larger area-of-effect detection tuning (+0.19%, stacks with 087-490)
 - [ ] (490) Junction align distance increase (16.38→16.40): scissors_v407:v1 qualifying - continued chain-building reach tuning (+0.12%, stacks with 087-489) [MILESTONE: 490 attempts]
