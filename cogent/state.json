@@ -6,7 +6,7 @@
       "last_used": null
     },
     "design": {
-      "attempts": 146,
+      "attempts": 147,
       "improvements": 11,
       "last_used": "20260405-stall-unstick-13"
     }
@@ -481,6 +481,21 @@
         "46": 6.42
       },
       "analysis": "CATASTROPHIC on seeds 44 & 46 (7.02, 6.42, -50%). Opposite direction from Cycle 12 failure (4\u21923, timeouts). Both increasing (4\u21925) and decreasing (4\u21923) oscillation threshold cause major failures. Pattern: oscillation threshold at 4 steps is optimal - any change in either direction destabilizes behavior. Agents need exactly 4 steps of oscillation before taking corrective action."
+    },
+    {
+      "date": "20260405",
+      "version": "hub-camp-90-reverted",
+      "focus": "Early game survival - hub camp HP",
+      "description": "Increased hub camp HP threshold from 85 to 90 (+5.9%) to allow more early healing",
+      "result": "MAJOR REGRESSION: avg 11.92 vs baseline 15.16 (-21.4%)",
+      "scores_by_seed": {
+        "42": 14.66,
+        "43": 14.62,
+        "44": 10.16,
+        "45": 13.53,
+        "46": 6.64
+      },
+      "analysis": "CATASTROPHIC on seed 46 (6.64, -56%). Increasing hub camp HP from 85 to 90 causes agents to wait too long at hub, missing critical early opportunities. Cycle 10's reduction from 100\u219285 was successful (+7.2%). Pattern: 85 HP is optimal hub camp threshold - higher values cause excessive waiting, lower values insufficient healing. Both Cycle 10 (100\u219285, success) and this cycle (85\u219290, failure) confirm 85 as sweet spot."
     }
   ],
   "mission": "arena",
