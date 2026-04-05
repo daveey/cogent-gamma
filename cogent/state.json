@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 190,
+      "attempts": 191,
       "improvements": 14,
-      "last_used": "20260405-emergency-resource-2"
+      "last_used": "20260405-aligner-hearts-2"
     }
   },
   "testing_in_progress": null,
@@ -1460,6 +1460,33 @@
       },
       "status": "reverted",
       "notes": "Delta Cycle 67 - Earlier emergency mining trigger caused non-miners to mine prematurely, reducing role effectiveness. Confirms threshold of 1 is optimal for emergency balance."
+    },
+    {
+      "date": "20260405",
+      "version": "aligner-hearts-2-reverted",
+      "focus": "Aligner heart batch target",
+      "description": "Reduced aligner heart batch target from 3 to 2 (-33%) to test if smaller heart batches improve resource efficiency",
+      "result": "MAJOR REGRESSION: avg 11.62 vs baseline 15.73 (-26.1%)",
+      "local_scores": {
+        "seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "scores": [
+          15.44,
+          13.55,
+          6.91,
+          15.71,
+          6.51
+        ],
+        "avg": 11.62,
+        "baseline": 15.73
+      },
+      "status": "reverted",
+      "notes": "Delta Cycle 68 - Smaller heart batches reduced aligner survivability and effectiveness. Catastrophic failures on seeds 44 and 46. Confirms batch target of 3 is optimal for aligner HP management."
     }
   ],
   "mission": "arena",
