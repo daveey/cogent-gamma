@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (315) Scrambler corner pressure divisor reduction (7.66→7.64): scissors_v231:v1 qualifying - continued faster pressure growth (-0.26%, stacks with 087-314)
 - [ ] (314) Scrambler corner pressure cap increase (10.74→10.76): scissors_v230:v1 qualifying - continued corner pressure tuning (+0.19%, stacks with 087-313)
 - [ ] (313) Network bonus cap increase (4.4→4.42): scissors_v229:v1 qualifying - continued denser network clustering (+0.45%, stacks with 087-312)
 - [ ] (312) Network bonus weight increase (0.85→0.86): scissors_v228:v1 qualifying - continued stronger network consolidation (+1.18%, stacks with 087-311)
