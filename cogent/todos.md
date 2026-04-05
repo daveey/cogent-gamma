@@ -1,6 +1,11 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (470) Hotspot weight mid-range reduction (5.52→5.50): scissors_v386:v1 qualifying - continued mid-range contested junction tuning (-0.36%, stacks with 087-469) [MILESTONE: 470 attempts]
+- [ ] (469) Hotspot weight far-range reduction (11.58→11.56): scissors_v385:v1 qualifying - continued far-range contested junction tuning (-0.17%, stacks with 087-468)
+- [ ] (468) Hub penalty far-range base reduction (48.88→48.87): scissors_v384:v1 qualifying - continued far-range base tuning (-0.02%, stacks with 087-467)
+- [ ] (467) Hub penalty far-range multiplier reduction (7.85→7.84): scissors_v383:v1 qualifying - continued far-range multiplier tuning (-0.13%, stacks with 087-466)
+- [ ] (466) Hub penalty 15-25 range multiplier reduction (2.83→2.82): scissors_v382:v1 qualifying - continued 15-25 range multiplier tuning (-0.35%, stacks with 087-465)
 - [ ] (465) Hub penalty 15-25 range base reduction (9.59→9.58): scissors_v381:v1 qualifying - continued 15-25 range base tuning (-0.10%, stacks with 087-464)
 - [ ] (464) Hub penalty 10-15 range multiplier reduction (1.36→1.35): scissors_v380:v1 qualifying - continued 10-15 range multiplier tuning (-0.74%, stacks with 087-463)
 - [ ] (463) Hub penalty 10-15 range base reduction (1.86→1.85): scissors_v379:v1 qualifying - continued 10-15 range base penalty tuning (-0.54%, stacks with 087-462)
