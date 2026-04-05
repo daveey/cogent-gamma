@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (171) Aligner teammate penalty increase (9.2→9.25): scissors_v87:v1 qualifying - continued better coordination (+0.5%, stacks with 087-170)
 - [ ] (170) Aligner enemy AOE penalty increase (10.4→10.5): scissors_v86:v1 qualifying - continued stronger enemy avoidance (+1%, stacks with 087-169)
 - [ ] (169) Aligner network bonus cap increase (4.25→4.3): scissors_v85:v1 qualifying - denser network clustering (+1.2%, stacks with 087-168)
 - [ ] (168) Aligner expansion bonus cap increase (36.8→37.1): scissors_v84:v1 qualifying - higher expansion bonus ceiling (+0.8%, stacks with 087-167)

@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 105,
+      "attempts": 106,
       "improvements": 7,
-      "last_used": "20260405-170-testing"
+      "last_used": "20260405-171-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "170",
-    "focus": "Aligner enemy AOE penalty increase",
-    "description": "Increased enemy AOE penalty from 10.4 to 10.5 (+1%)",
-    "rationale": "Enemy AOE penalty discourages aligners from targeting junctions within enemy scrambler AOE range. Conservative +1% increase builds on validated 014 (8.0→10.0) and attempts 101 (10.0→10.3), 139 (10.3→10.4). Makes aligners slightly more cautious about contested territory. Stacks with 087-169.",
-    "upload": "scissors_v86:v1",
+    "version": "171",
+    "focus": "Aligner teammate penalty increase",
+    "description": "Increased teammate penalty from 9.2 to 9.25 (+0.5%)",
+    "rationale": "Teammate penalty reduces target score when another aligner is closer. Conservative +0.5% increase builds on validated 011 (6.0→9.0) and attempts 109 (9.0→9.15), 140 (9.15→9.2). Further reduces multi-agent duplication and improves coordination. Failed attempt 020 (9.0→10.0) shows upper limit exists. Stacks with 087-170.",
+    "upload": "scissors_v87:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 170. Clean baseline enemy AOE penalty exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 171. Clean baseline teammate penalty exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
