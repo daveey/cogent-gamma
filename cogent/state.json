@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 341,
+      "attempts": 342,
       "improvements": 7,
-      "last_used": "20260405-406-testing"
+      "last_used": "20260405-407-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "406",
-    "focus": "Hotspot penalty cap increase",
-    "description": "Increased hotspot penalty cap from 3.22 to 3.24 (+0.62%)",
-    "rationale": "Hotspot penalty cap limits maximum contested junction penalty. Higher value allows stronger avoidance of heavily contested junctions (3+ scramblers). Conservative +0.62% increase builds on validated improvements. Stacks with 087-405.",
-    "upload": "scissors_v322:v1",
+    "version": "407",
+    "focus": "Network bonus weight increase",
+    "description": "Increased network bonus weight from 0.88 to 0.89 (+1.14%)",
+    "rationale": "Network bonus weight encourages aligners to build chains near friendly junctions. Higher value strengthens consolidation incentive for denser networks. Conservative +1.14% increase builds on validated improvements. Stacks with 087-406.",
+    "upload": "scissors_v323:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 406. Clean baseline contested junction penalty cap tuning. Awaiting tournament validation."
+    "note": "Scissors attempt 407. Clean baseline stronger network consolidation tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
