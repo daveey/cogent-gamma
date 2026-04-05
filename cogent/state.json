@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 145,
+      "attempts": 146,
       "improvements": 7,
-      "last_used": "20260405-210-testing"
+      "last_used": "20260405-211-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "210",
-    "focus": "Aligner teammate penalty increase",
-    "description": "Increased teammate penalty from 9.27 to 9.29 (+0.22%)",
-    "rationale": "Teammate penalty determines how strongly aligners avoid junctions when teammates are closer. Conservative +0.22% increase builds on validated improvements 011, 109, 140, 171, 191. Higher penalty improves multi-agent coordination. Stacks with 087-209.",
-    "upload": "scissors_v126:v1",
+    "version": "211",
+    "focus": "Aligner expansion bonus cap increase",
+    "description": "Increased expansion bonus cap from 37.15 to 37.2 (+0.13%)",
+    "rationale": "Expansion bonus cap determines maximum bonus for extreme expansion scenarios. Conservative +0.13% increase builds on validated improvements 113, 141, 168, 189. Higher cap allows better rewards in dense unreachable junction scenarios. Stacks with 087-210.",
+    "upload": "scissors_v127:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 210. Clean baseline teammate coordination exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 211. Clean baseline expansion cap exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
