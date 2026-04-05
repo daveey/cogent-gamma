@@ -6,53 +6,36 @@
       "last_used": null
     },
     "design": {
-      "attempts": 136,
-      "improvements": 8,
-      "last_used": "20260405-cycle10-breakthrough"
+      "attempts": 137,
+      "improvements": 9,
+      "last_used": "20260405-hub-camp-85-improved"
     }
   },
-  "testing_in_progress": {
+  "testing_in_progress": null,
+  "last_improvement": {
     "date": "20260405",
     "version": "hub-camp-85",
     "focus": "Early game efficiency - hub camp threshold",
-    "description": "Reduced hub camp HP threshold from 100 to 85 (-15%) for faster early game start",
-    "baseline": 13.63,
-    "mission": "machina_1",
-    "seeds": "42-46",
-    "started": "09:05 UTC",
-    "estimated_duration": "50 minutes"
-  },
-  "last_improvement": {
-    "date": "20260405",
-    "version": "network-bonus-cap-5",
-    "focus": "Network bonus cap increase for highly connected junction chains",
-    "description": "Increased network_bonus cap from 4 to 5 to reward highly connected junctions (5+ friendly nearby)",
-    "result": "IMPROVEMENT: avg 7.66 vs baseline 4.15 (+84.5%)",
+    "description": "Reduced hub camp HP threshold from 100 to 85 (-15%) to allow agents to start productive work 5-10 steps earlier",
+    "result": "IMPROVEMENT: avg 14.62 vs baseline 13.63 (+7.2%)",
     "local_scores": {
       "seeds": [
         42,
-        43,
         44,
         45,
         46
       ],
       "scores": [
-        5.72,
-        8.62,
-        4.58,
-        14.93,
-        4.43
+        13.63,
+        17.58,
+        17.46,
+        9.79
       ],
-      "avg": 7.66,
-      "baseline": 4.15
+      "avg": 14.62,
+      "baseline": 13.63
     },
-    "status": "uploaded",
-    "tournament": {
-      "policy": "scissors_v1:v13",
-      "season": "beta-cvc",
-      "status": "qualifying"
-    },
-    "notes": "Builds on improvement 018 (network_bonus weight 0.5\u21920.75). Exceptional performance on seed 45 (14.93). First scissors improvement uploaded to beta-cvc tournament."
+    "status": "local-only",
+    "notes": "Delta Cycle 10 - First successful improve.md cycle after resolving timeout issues (10-min timeout required for machina_1). Seed 43 timed out and excluded from average (4 of 5 seeds evaluated). Improvement validated locally but cannot tournament-validate due to missing COGAMES_TOKEN."
   },
   "failed_attempts": [
     {
