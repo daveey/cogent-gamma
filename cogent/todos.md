@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (383) Scrambler blocked neutrals weight increase (8.68→8.70): scissors_v299:v1 qualifying - continued expansion-blocking (+0.23%, stacks with 087-382)
 - [ ] (382) Scrambler threat bonus increase (10.48→10.50): scissors_v298:v1 qualifying - continued defensive priority tuning (+0.19%, stacks with 087-381)
 - [ ] (381) Scrambler corner pressure divisor reduction (7.62→7.60): scissors_v297:v1 qualifying - continued faster pressure growth (-0.26%, stacks with 087-380)
 - [ ] (380) Scrambler corner pressure cap increase (10.78→10.80): scissors_v296:v1 qualifying - continued corner pressure tuning (+0.19%, stacks with 087-379) [MILESTONE: 380 attempts]
