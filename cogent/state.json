@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 184,
+      "attempts": 185,
       "improvements": 14,
-      "last_used": "20260405-corner-pressure-79"
+      "last_used": "20260405-corner-cap-101"
     }
   },
   "testing_in_progress": null,
@@ -1298,6 +1298,33 @@
       },
       "status": "reverted",
       "notes": "Delta Cycle 61 - Stronger corner pressure caused scramblers to over-prioritize far corners at expense of effective blocking. Particularly damaging on seeds 43-44. Confirms 8.0 is optimal divisor."
+    },
+    {
+      "date": "20260405",
+      "version": "corner-cap-101-reverted",
+      "focus": "Scrambler corner pressure cap",
+      "description": "Increased corner_pressure cap from 10.0 to 10.1 (+1.0%) to allow slightly stronger corner pressure in extreme cases",
+      "result": "MAJOR REGRESSION: avg 11.93 vs baseline 15.73 (-24.2%)",
+      "local_scores": {
+        "seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "scores": [
+          15.35,
+          13.3,
+          7.74,
+          16.67,
+          6.59
+        ],
+        "avg": 11.93,
+        "baseline": 15.73
+      },
+      "status": "reverted",
+      "notes": "Delta Cycle 62 - Higher corner pressure cap caused catastrophic failures on seeds 44 and 46. Scramblers over-extended to far corners. Confirms cap of 10.0 is critical for preventing over-aggression."
     }
   ],
   "mission": "arena",
