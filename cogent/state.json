@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 169,
+      "attempts": 170,
       "improvements": 14,
-      "last_used": "20260405-teammate-penalty-060"
+      "last_used": "20260405-threat-bonus-112"
     }
   },
   "testing_in_progress": null,
@@ -893,6 +893,33 @@
       },
       "status": "reverted",
       "notes": "Delta Cycle 46 - Major coordination breakdown. Lower teammate penalty caused agents to compete for same targets, leading to massive efficiency loss across most seeds. Confirms 6.1 is optimal for preventing target contention."
+    },
+    {
+      "date": "20260405",
+      "version": "threat-bonus-112-reverted",
+      "focus": "Scrambler threat bonus increase",
+      "description": "Increased scrambler threat_bonus from 11.1 to 11.2 (+0.9%) to test if stronger network defense priority improves",
+      "result": "REGRESSION: avg 14.89 vs baseline 15.73 (-5.4%)",
+      "local_scores": {
+        "seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "scores": [
+          15.62,
+          13.67,
+          12.65,
+          14.32,
+          18.17
+        ],
+        "avg": 14.89,
+        "baseline": 15.73
+      },
+      "status": "reverted",
+      "notes": "Delta Cycle 47 - Over-defensive scrambler positioning. Stronger threat bonus caused scramblers to over-prioritize network defense at expense of blocking enemy expansion. Confirms 11.1 is optimal balance."
     }
   ],
   "mission": "arena",
