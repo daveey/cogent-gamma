@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 91,
+      "attempts": 92,
       "improvements": 7,
-      "last_used": "20260405-156-testing"
+      "last_used": "20260405-157-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "156",
-    "focus": "Scrambler HP threshold increase",
-    "description": "Increased scrambler HP threshold from 33.66 to 34.0 (+1%)",
-    "rationale": "Scrambler HP threshold determines when scramblers retreat for safety. Conservative +1% increase builds on attempts 088 (30→33), 123 (33→33.66). Allows scramblers to stay in enemy territory slightly longer for more disruption before retreating, accepting marginally higher risk for valuable scrambler role. Stacks with 087-155.",
-    "upload": "scissors_v72:v1",
+    "version": "157",
+    "focus": "Emergency resource low threshold increase",
+    "description": "Increased emergency resource low threshold from 2.2 to 2.3 (+5%)",
+    "rationale": "Emergency resource low threshold triggers emergency mining when any resource drops below this level. Conservative +5% increase builds on attempts 095 (1→2), 119 (2→2.2). Triggers emergency mining slightly earlier to prevent resource starvation, ensuring agents can afford critical gear changes. Stacks with 087-156.",
+    "upload": "scissors_v73:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 156. Clean baseline scrambler HP threshold exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 157. Clean baseline emergency resource threshold exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
