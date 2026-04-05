@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 93,
+      "attempts": 94,
       "improvements": 7,
-      "last_used": "20260405-158-testing"
+      "last_used": "20260405-159-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "158",
-    "focus": "Aligner heart batch target increase",
-    "description": "Increased aligner heart batch target from 3.2 to 3.3 (+3%)",
-    "rationale": "Aligner heart batch target determines when aligners return to hub for hearts. Conservative +3% increase builds on attempts 094 (2→3), 116 (3→3.2). Allows aligners to capture one more junction before returning, improving persistence in field. Valuable for expensive aligner role. Stacks with 087-157.",
-    "upload": "scissors_v74:v1",
+    "version": "159",
+    "focus": "Scrambler heart batch target increase",
+    "description": "Increased scrambler heart batch target from 3.2 to 3.3 (+3%)",
+    "rationale": "Scrambler heart batch target determines when scramblers return to hub for hearts. Conservative +3% increase builds on attempts 094 (2→3), 118 (3→3.2). Allows scramblers to disrupt one more enemy junction before returning, improving field persistence and disruption effectiveness. Stacks with 087-158.",
+    "upload": "scissors_v75:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 158. Clean baseline aligner heart batch target exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 159. Clean baseline scrambler heart batch target exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
