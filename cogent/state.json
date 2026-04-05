@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 85,
+      "attempts": 86,
       "improvements": 7,
-      "last_used": "20260404-150-testing"
+      "last_used": "20260405-151-testing"
     }
   },
   "testing_in_progress": {
-    "date": "20260404",
-    "version": "150",
-    "focus": "Aligner hotspot weight far-range reduction",
-    "description": "Reduced hotspot_weight far-range from 11.88 to 11.76 (-1%)",
-    "rationale": "Hotspot weight far-range (>15 distance) controls penalty for contested junctions far from hub. Conservative -1% reduction builds on attempt 120 (12.0→11.88). Makes aligners slightly less cautious about distant contested junctions, allowing more aggressive expansion when multiple enemies present. Balances with near-hub/mid-range reductions (131, 132). Stacks with 087-149.",
-    "upload": "scissors_v66:v1",
+    "date": "20260405",
+    "version": "151",
+    "focus": "Aligner hotspot weight near-hub reduction",
+    "description": "Reduced hotspot_weight near-hub from 1.88 to 1.86 (-1%)",
+    "rationale": "Hotspot weight near-hub (≤10 distance) controls penalty for contested junctions close to hub. Conservative -1% reduction builds on attempts 103 (2.0→1.9), 131 (1.9→1.88). Makes aligners even less cautious about recapturing near-hub contested junctions, prioritizing defense of core territory. Stacks with 087-150.",
+    "upload": "scissors_v67:v1",
     "season": "beta-four-score",
-    "uploaded_at": "20260404",
-    "note": "Scissors attempt 150. Clean baseline far-range hotspot weight exploration. Awaiting tournament validation."
+    "uploaded_at": "20260405",
+    "note": "Scissors attempt 151. Clean baseline near-hub hotspot weight exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
