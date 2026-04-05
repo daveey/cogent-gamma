@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (380) Scrambler corner pressure cap increase (10.78→10.80): scissors_v296:v1 qualifying - continued corner pressure tuning (+0.19%, stacks with 087-379) [MILESTONE: 380 attempts]
 - [ ] (379) Network bonus cap increase (4.44→4.46): scissors_v295:v1 qualifying - continued denser network clustering (+0.45%, stacks with 087-378)
 - [ ] (378) Network bonus weight increase (0.87→0.88): scissors_v294:v1 qualifying - continued stronger network consolidation (+1.15%, stacks with 087-377)
 - [ ] (377) Teammate penalty increase (9.39→9.41): scissors_v293:v1 qualifying - continued coordination tuning (+0.21%, stacks with 087-376)
