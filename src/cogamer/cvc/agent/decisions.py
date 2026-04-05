@@ -29,8 +29,8 @@ def check_hub_camp_heal(ctx: TickContext, role: str, engine: CvcEngine) -> tuple
 
 
 def check_early_retreat(ctx: TickContext, role: str, engine: CvcEngine) -> tuple[Action, str] | None:
-    """Rush back to hub if low HP in first 150 steps."""
-    if ctx.step >= 150 or ctx.hub is None or ctx.hub_distance <= 8:
+    """Rush back to hub if low HP in first 120 steps."""
+    if ctx.step >= 120 or ctx.hub is None or ctx.hub_distance <= 8:
         return None
     if ctx.hp < 40 or (ctx.hp < 50 and ctx.hub_distance > 15):
         return engine._move_to_known(ctx.state, ctx.hub, summary="survival_retreat")

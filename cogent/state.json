@@ -6,36 +6,38 @@
       "last_used": null
     },
     "design": {
-      "attempts": 140,
-      "improvements": 9,
-      "last_used": "20260405-hub-camp-85-improved"
+      "attempts": 141,
+      "improvements": 10,
+      "last_used": "20260405-early-retreat-120"
     }
   },
   "testing_in_progress": null,
   "last_improvement": {
     "date": "20260405",
-    "version": "hub-camp-85",
-    "focus": "Early game efficiency - hub camp threshold",
-    "description": "Reduced hub camp HP threshold from 100 to 85 (-15%) to allow agents to start productive work 5-10 steps earlier",
-    "result": "IMPROVEMENT: avg 14.62 vs baseline 13.63 (+7.2%)",
+    "version": "early-retreat-120",
+    "focus": "Early game timing - early retreat window",
+    "description": "Reduced early retreat window from 150 steps to 120 steps (-20%) to transition agents from survival mode to productive operation earlier",
+    "result": "IMPROVEMENT: avg 14.19 vs baseline 12.96 (+9.5%)",
     "local_scores": {
       "seeds": [
         42,
+        43,
         44,
         45,
         46
       ],
       "scores": [
-        13.63,
-        17.58,
-        17.46,
-        9.79
+        16.01,
+        13.95,
+        12.54,
+        11.76,
+        16.67
       ],
-      "avg": 14.62,
-      "baseline": 13.63
+      "avg": 14.19,
+      "baseline": 12.96
     },
     "status": "local-only",
-    "notes": "Delta Cycle 10 - First successful improve.md cycle after resolving timeout issues (10-min timeout required for machina_1). Seed 43 timed out and excluded from average (4 of 5 seeds evaluated). Improvement validated locally but cannot tournament-validate due to missing COGAMES_TOKEN."
+    "notes": "Delta Cycle 14 - Second successful improve.md cycle on arena mission. Follows Cycle 10 pattern of 'earlier productive work'. All 5 seeds completed successfully. Cannot tournament-validate due to missing COGAMES_TOKEN."
   },
   "failed_attempts": [
     {
@@ -436,9 +438,9 @@
       "analysis": "Despite following Cycle 10 early-game timing pattern, multiple timeouts observed (2). Pattern differs from Cycle 10 (1 timeout, 4 scores = viable). If this follows Cycles 11-12 catastrophic pattern (multiple consecutive timeouts), suggests infrastructure or environmental issue rather than code-specific problem. Reverted conservatively."
     }
   ],
-  "mission": "machina_1",
+  "mission": "arena",
   "season": "beta-cvc",
-  "mission_note": "Switched from four_score to machina_1 due to delta-specific timeout issues (four_score >20min per seed, machina_1 ~10min)",
+  "mission_note": "Switched from machina_1 to arena due to observation token budget errors (machina_1) and timeouts (four_score). Arena is stable and suitable for iterative testing.",
   "baseline_four_score": {
     "old_avg": 6.03,
     "new_avg": 9.74,
@@ -452,5 +454,24 @@
     "seed": "42",
     "date": "20260405",
     "notes": "Delta Cycle 10 breakthrough baseline. Established after resolving timeout issues (10-min timeout required). 2-team format, 16 agents. Target mission for delta improve.md cycles due to four_score timeout issues (>20 min per seed)."
+  },
+  "baseline_arena": {
+    "avg": 14.19,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "scores": [
+      16.01,
+      13.95,
+      12.54,
+      11.76,
+      16.67
+    ],
+    "date": "20260405",
+    "notes": "Updated after Cycle 14 early retreat window improvement."
   }
 }
