@@ -6,7 +6,7 @@
       "last_used": null
     },
     "design": {
-      "attempts": 151,
+      "attempts": 152,
       "improvements": 12,
       "last_used": "20260405-stall-unstick-14"
     }
@@ -541,6 +541,21 @@
         "46": 17.75
       },
       "analysis": "Seed 45 collapsed (5.64, -63%). The hp > 0 check is NOT redundant despite wipeout_recovery existing - pipeline order matters. hub_camp_heal runs BEFORE wipeout_recovery in DECISION_PIPELINE. Without hp > 0 check, agents with HP=0 match hub_camp_heal (if within step 20, distance 3) and hold instead of returning to hub via wipeout_recovery. This blocks recovery behavior. Learning: seemingly redundant conditions may be essential for correct pipeline interaction."
+    },
+    {
+      "date": "20260405",
+      "version": "stall-unstick-15-reverted",
+      "focus": "Behavioral stability - stall threshold final increment",
+      "description": "Increased stall unstick threshold from 14 to 15 steps (+7.1%), continuing successful pattern",
+      "result": "REGRESSION: avg 13.78 vs baseline 15.26 (-9.7%)",
+      "scores_by_seed": {
+        "42": 8.37,
+        "43": 11.58,
+        "44": 14.3,
+        "45": 16.89,
+        "46": 17.75
+      },
+      "analysis": "Seeds 42-43 collapsed (8.37, 11.58). Pattern: 12\u219213 (+6.9%), 13\u219214 (+0.6%), 14\u219215 (-9.7%). Optimal stall unstick threshold is 14 steps. Increasing beyond 14 allows agents to stall too long before taking corrective action. Diminishing returns (12\u219213 big gain, 13\u219214 marginal) followed by regression (14\u219215) confirms 14 as peak. Similar to parameter tuning patterns where optimal value exists with degradation in both directions."
     }
   ],
   "mission": "arena",
