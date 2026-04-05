@@ -6,21 +6,12 @@
       "last_used": null
     },
     "design": {
-      "attempts": 124,
+      "attempts": 125,
       "improvements": 7,
-      "last_used": "20260405-scrambler-hp-25-cycle3-failure"
+      "last_used": "20260405-hub-camp-80-cycle4-blocked"
     }
   },
-  "testing_in_progress": {
-    "date": "20260405",
-    "version": "hub-camp-80",
-    "focus": "Early game efficiency - hub camp threshold",
-    "description": "Reduced hub camp HP threshold from 100 to 80 to start productive work 10-15 steps earlier",
-    "baseline": 9.74,
-    "validation_method": "tournament",
-    "reason": "Local cogames testing broken (3 consecutive cycles failed). Using tournament validation.",
-    "started": "05:40 UTC"
-  },
+  "testing_in_progress": null,
   "last_improvement": {
     "date": "20260404",
     "version": "018",
@@ -377,6 +368,14 @@
       "description": "Reduced scrambler retreat threshold from 30 to 25 HP (-17%) for more aggressive disruption",
       "result": "TEST INFRASTRUCTURE FAILURE: Script timeout on seed 42 (0/5 seeds)",
       "analysis": "Test script started seed 42 at 05:11:54, hit 600-second timeout around 05:22, exited due to 'set -e'. Only captured 4 lines of header output, no game completion. Seed 42 either hung or took >10 minutes (normal is 5-6 min). Script exit code handling flaw: timeout returns 124/143, triggers 'set -e' exit. Same root cause as Cycle 2: cogames unreliable in local testing - hangs, doesn't produce output, or times out. Change reverted conservatively. Local testing infrastructure fundamentally broken. Need tournament validation or different test environment."
+    },
+    {
+      "date": "20260405",
+      "version": "hub-camp-80-cycle4-blocked",
+      "focus": "Early game efficiency - hub camp threshold",
+      "description": "Reduced hub camp HP threshold from 100 to 80 (-20%) to start productive work 10-15 steps earlier",
+      "result": "BLOCKED: No validation method available",
+      "analysis": "Cannot test locally (cogames broken for 3 cycles). Cannot validate via tournament (no COGAMES_TOKEN). No way to evaluate if change improves vs regresses. Reverted conservatively per improve.md principle. BLOCKER: improve.md workflow requires either local testing OR tournament upload capability. Neither available. Cycles 1-4 all failed. Need operator intervention to either: (1) fix local cogames output issue, or (2) provide COGAMES_TOKEN for tournament validation."
     }
   ],
   "mission": "four_score",
