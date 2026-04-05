@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (376) Expansion bonus cap increase (37.45→37.50): scissors_v292:v1 qualifying - continued higher expansion bonus ceiling (+0.13%, stacks with 087-375)
 - [ ] (375) Expansion bonus weight increase (6.50→6.52): scissors_v291:v1 qualifying - continued expansion emphasis (+0.31%, stacks with 087-374)
 - [ ] (374) Enemy AOE penalty increase (10.64→10.66): scissors_v290:v1 qualifying - continued enemy avoidance tuning (+0.19%, stacks with 087-373)
 - [ ] (373) Hotspot penalty cap increase (3.20→3.22): scissors_v289:v1 qualifying - continued contested junction penalty cap tuning (+0.63%, stacks with 087-372)

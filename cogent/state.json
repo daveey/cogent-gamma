@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 310,
+      "attempts": 311,
       "improvements": 7,
-      "last_used": "20260405-375-testing"
+      "last_used": "20260405-376-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "375",
-    "focus": "Expansion bonus weight increase",
-    "description": "Increased expansion bonus weight from 6.50 to 6.52 (+0.31%)",
-    "rationale": "Higher expansion weight prioritizes junctions that unlock more unreachable junctions. Conservative +0.31% increase builds on validated improvements. Stacks with 087-374.",
-    "upload": "scissors_v291:v1",
+    "version": "376",
+    "focus": "Expansion bonus cap increase",
+    "description": "Increased expansion bonus cap from 37.45 to 37.50 (+0.13%)",
+    "rationale": "Higher cap allows expansion bonus to scale further with unreachable junction count. Conservative +0.13% increase builds on validated improvements. Stacks with 087-375.",
+    "upload": "scissors_v292:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 375. Clean baseline expansion emphasis tuning. Awaiting tournament validation."
+    "note": "Scissors attempt 376. Clean baseline expansion bonus ceiling tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
