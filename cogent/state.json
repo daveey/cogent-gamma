@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 96,
+      "attempts": 97,
       "improvements": 7,
-      "last_used": "20260405-161-testing"
+      "last_used": "20260405-162-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "161",
-    "focus": "Junction align distance increase",
-    "description": "Increased junction align distance from 16.16 to 16.2 (+0.25%)",
-    "rationale": "Junction align distance determines maximum distance between junctions for chain-building. Conservative +0.25% increase builds on attempts 093 (15→16), 127 (16→16.16). Extends chain-building reach slightly, allowing aligners to connect junctions that are marginally farther apart. Stacks with 087-160.",
-    "upload": "scissors_v77:v1",
+    "version": "162",
+    "focus": "Junction AOE range increase",
+    "description": "Increased junction AOE range from 10.3 to 10.4 (+1%)",
+    "rationale": "Junction AOE range determines detection radius for enemy scramblers and neutral junctions near targets. Conservative +1% increase builds on attempt 115 (10→10.3). Larger detection radius improves awareness of nearby threats and expansion opportunities. Stacks with 087-161.",
+    "upload": "scissors_v78:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 161. Clean baseline junction align distance exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 162. Clean baseline junction AOE range exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
