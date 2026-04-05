@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 137,
+      "attempts": 138,
       "improvements": 7,
-      "last_used": "20260405-202-testing"
+      "last_used": "20260405-203-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "202",
-    "focus": "Aligner hub penalty far-range multiplier reduction",
-    "description": "Reduced hub penalty far-range multiplier from 7.92 to 7.91 (-0.13%)",
-    "rationale": "Hub penalty far-range multiplier determines penalty rate for junctions >25 from hub. Conservative -0.13% reduction builds on validated improvements 111 (8.0\u21927.92). Lower multiplier reduces penalty growth in far-range. Stacks with 087-201.",
-    "upload": "scissors_v118:v1",
+    "version": "203",
+    "focus": "Scrambler threat bonus weight increase",
+    "description": "Increased threat bonus weight from 10.4 to 10.42 (+0.19%)",
+    "rationale": "Threat bonus weight determines how strongly scramblers prioritize enemy junctions near friendly junctions. Conservative +0.19% increase builds on validated improvements 099 (10.0\u219210.3), 137 (10.3\u219210.4). Higher weight improves defensive priority. Stacks with 087-202.",
+    "upload": "scissors_v119:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 202. Clean baseline far-range multiplier exploration. Awaiting tournament validation."
+    "note": "Scissors attempt 203. Clean baseline threat bonus weight exploration. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
