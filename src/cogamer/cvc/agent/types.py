@@ -46,7 +46,7 @@ _ELEMENTS = ("carbon", "oxygen", "germanium", "silicon")
 _HP_THRESHOLDS = {
     "miner": 18.60,  # Increased from 18.58 to 18.60 (+0.11%) for continued aggressive resource gathering
     "aligner": 45.72,  # Reduced from 45.74 to 45.72 (-0.044%) for continued aligner retreat tuning
-    "scrambler": 34.21,  # Increased from 34.19 to 34.21 (+0.059%) for continued aggressive disruption
+    "scrambler": 34.23,  # Increased from 34.21 to 34.23 (+0.059%) for continued aggressive disruption
     "scout": 30,
     "unknown": 30,
 }
@@ -56,8 +56,8 @@ _GEAR_COSTS = {
     "scrambler": {"carbon": 1, "oxygen": 3, "germanium": 1, "silicon": 1},
     "scout": {"carbon": 1, "oxygen": 1, "germanium": 1, "silicon": 3},
 }
-_EMERGENCY_RESOURCE_LOW = 2.48  # Increased from 2.46 to 2.48 (+0.81%) for continued earlier emergency mining trigger tuning
-_HEART_BATCH_TARGETS = {"aligner": 3.48, "scrambler": 3.48}  # Increased scrambler from 3.46 to 3.48 (+0.58%) for continued scrambler persistence tuning
+_EMERGENCY_RESOURCE_LOW = 2.50  # Increased from 2.48 to 2.50 (+0.81%) for continued earlier emergency mining trigger tuning
+_HEART_BATCH_TARGETS = {"aligner": 3.50, "scrambler": 3.50}  # Increased scrambler from 3.48 to 3.50 (+0.57%) for continued scrambler persistence tuning
 _HUB_ALIGN_DISTANCE = 26.58  # Increased from 26.56 to 26.58 (+0.08%) for continued extended hub reach tuning
 _JUNCTION_ALIGN_DISTANCE = 16.38  # Increased from 16.36 to 16.38 (+0.12%) for continued chain-building reach tuning
 _JUNCTION_AOE_RANGE = 10.58  # Increased from 10.56 to 10.58 (+0.19%) for continued larger area-of-effect detection tuning
