@@ -6,7 +6,7 @@
       "last_used": null
     },
     "design": {
-      "attempts": 163,
+      "attempts": 164,
       "improvements": 13,
       "last_used": "20260405-hub-camp-dist-2"
     }
@@ -764,6 +764,21 @@
         "46": 17.7
       },
       "analysis": "Seed 45 collapsed (5.65, -64%). Reducing retreat distance from 2 to 1 forces agents to get extremely close to hub (distance \u22641) before holding, causing agents at distance 2 to continue moving when they should hold and heal. Combined with Cycle 31 (2\u21923 failed), confirms 2 as optimal retreat distance through bidirectional testing."
+    },
+    {
+      "date": "20260405",
+      "version": "hub-camp-dist-3-reverted",
+      "focus": "Early game efficiency - hub camp distance increase",
+      "description": "Increased hub camp distance threshold from 2 to 3 (+50%) to allow farther agents to camp and heal",
+      "result": "MAJOR REGRESSION: avg 12.87 vs baseline 15.52 (-17.1%)",
+      "scores_by_seed": {
+        "42": 15.82,
+        "43": 12.86,
+        "44": 7.07,
+        "45": 11.76,
+        "46": 16.83
+      },
+      "analysis": "Seed 44 collapsed (7.07, -54%). Reverting Cycle 27's successful 3\u21922 change confirms 2 as optimal hub camp distance. Agents at distance 3 camping unnecessarily delays activation. Combined with Cycle 28 (2\u21921 failed), exhaustively validates 2 as optimal through three-way testing (1\u21922\u21923)."
     }
   ],
   "mission": "arena",
