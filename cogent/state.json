@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 183,
+      "attempts": 184,
       "improvements": 14,
-      "last_used": "20260405-aoe-range-10"
+      "last_used": "20260405-corner-pressure-79"
     }
   },
   "testing_in_progress": null,
@@ -1271,6 +1271,33 @@
       },
       "status": "reverted",
       "notes": "Delta Cycle 60 - Narrower AOE range reduced both enemy detection for aligners and scrambler blocking effectiveness. Particularly damaging on seed 43 (7.71). Confirms 11 is optimal range."
+    },
+    {
+      "date": "20260405",
+      "version": "corner-pressure-79-reverted",
+      "focus": "Scrambler corner pressure divisor",
+      "description": "Reduced corner_pressure divisor from 8.0 to 7.9 (-1.25%) to test if slightly stronger corner pressure improves scrambler aggression",
+      "result": "REGRESSION: avg 12.85 vs baseline 15.73 (-18.3%)",
+      "local_scores": {
+        "seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "scores": [
+          14.04,
+          8.39,
+          6.61,
+          18.17,
+          17.03
+        ],
+        "avg": 12.85,
+        "baseline": 15.73
+      },
+      "status": "reverted",
+      "notes": "Delta Cycle 61 - Stronger corner pressure caused scramblers to over-prioritize far corners at expense of effective blocking. Particularly damaging on seeds 43-44. Confirms 8.0 is optimal divisor."
     }
   ],
   "mission": "arena",
