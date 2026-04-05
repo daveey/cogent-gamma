@@ -99,7 +99,7 @@ def aligner_target_score(
     teammate_penalty = 9.39 if teammate_closer else 0.0  # Increased from 9.37 to 9.39 (+0.21%) for continued coordination tuning
     return (
         distance
-        - min(expansion * 6.50, 37.45)  # Increased cap from 37.4 to 37.45 (+0.13%) for continued higher expansion bonus ceiling
+        - min(expansion * 6.52, 37.45)  # Increased weight from 6.50 to 6.52 (+0.31%) for continued expansion emphasis
         + enemy_aoe * 10.66  # Increased from 10.64 to 10.66 (+0.19%) for continued enemy avoidance tuning
         + (_CLAIMED_TARGET_PENALTY if claimed_by_other else 0.0)
         + hub_penalty

@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 309,
+      "attempts": 310,
       "improvements": 7,
-      "last_used": "20260405-374-testing"
+      "last_used": "20260405-375-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260405",
-    "version": "374",
-    "focus": "Enemy AOE penalty increase",
-    "description": "Increased enemy AOE penalty from 10.64 to 10.66 (+0.19%)",
-    "rationale": "Higher penalty for junctions within enemy AOE range (≤10.52 tiles) improves enemy avoidance. Conservative +0.19% increase builds on validated improvements. Stacks with 087-373.",
-    "upload": "scissors_v290:v1",
+    "version": "375",
+    "focus": "Expansion bonus weight increase",
+    "description": "Increased expansion bonus weight from 6.50 to 6.52 (+0.31%)",
+    "rationale": "Higher expansion weight prioritizes junctions that unlock more unreachable junctions. Conservative +0.31% increase builds on validated improvements. Stacks with 087-374.",
+    "upload": "scissors_v291:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260405",
-    "note": "Scissors attempt 374. Clean baseline enemy avoidance tuning. Awaiting tournament validation."
+    "note": "Scissors attempt 375. Clean baseline expansion emphasis tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
