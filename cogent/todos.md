@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (304) Hotspot weight far-range reduction (11.68→11.66): scissors_v220:v1 qualifying - continued far-range contested junction tuning (-0.17%, stacks with 087-303)
 - [ ] (303) Hub penalty far-range base reduction (48.93→48.92): scissors_v219:v1 qualifying - continued far-range base tuning (-0.02%, stacks with 087-302)
 - [ ] (302) Hub penalty far-range multiplier reduction (7.9→7.89): scissors_v218:v1 qualifying - continued far-range multiplier tuning (-0.13%, stacks with 087-301)
 - [ ] (301) Hub penalty 15-25 range multiplier reduction (2.88→2.87): scissors_v217:v1 qualifying - continued 15-25 range multiplier tuning (-0.35%, stacks with 087-300)
