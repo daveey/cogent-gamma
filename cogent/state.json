@@ -11,7 +11,15 @@
       "last_used": "20260405-miner-hp-18-cycle2-failure"
     }
   },
-  "testing_in_progress": null,
+  "testing_in_progress": {
+    "date": "20260405",
+    "version": "scrambler-hp-25",
+    "focus": "Scrambler HP threshold reduction",
+    "description": "Reduced scrambler retreat threshold from 30 to 25 HP (-17%)",
+    "baseline": 9.74,
+    "seeds": "42-46",
+    "started": "05:12 UTC"
+  },
   "last_improvement": {
     "date": "20260404",
     "version": "018",
