@@ -826,3 +826,4 @@
 - [ ] (851) Enemy AOE penalty increase (10.78→10.79): gamma_v300_v1 qualifying - bidirectional enemy avoidance tuning (+0.09%, stacks with 087-850)
 - [ ] (852) Teammate penalty increase (9.53→9.54): gamma_v301_v1 qualifying - bidirectional coordination tuning (+0.10%, stacks with 087-851)
 - [ ] (853) Corner pressure divisor increase (7.51→7.52): gamma_v302_v1 qualifying - bidirectional corner pressure divisor tuning (+0.13%, stacks with 087-852)
+- [ ] (854) Threat bonus weight increase (10.63→10.64): gamma_v303_v1 qualifying - bidirectional defensive priority tuning (+0.09%, stacks with 087-853)
