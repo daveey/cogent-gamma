@@ -62,7 +62,7 @@ _HUB_ALIGN_DISTANCE = 26.64  # Reduced from 26.66 to 26.64 (-0.08%) for continue
 _JUNCTION_ALIGN_DISTANCE = 16.44  # Reduced from 16.46 to 16.44 (-0.12%) for continued chain-building reach tuning
 _JUNCTION_AOE_RANGE = 10.64  # Reduced from 10.66 to 10.64 (-0.19%) for continued larger area-of-effect detection tuning
 _CLAIMED_TARGET_PENALTY = 11.03  # Increased from 11.01 to 11.03 (+0.18%) for continued flexible claim override tuning
-_TARGET_CLAIM_STEPS = 33.45  # Increased from 33.40 to 33.45 (+0.15%) for continued longer claim validity tuning
+_TARGET_CLAIM_STEPS = 33.40  # Reduced from 33.45 to 33.40 (-0.15%) for continued claim validity tuning
 _EXTRACTOR_MEMORY_STEPS = 856  # Increased from 854 to 856 (+0.23%) for continued longer extractor memory tuning
 _STATION_TARGETS_BY_AGENT = {
     "aligner": {
