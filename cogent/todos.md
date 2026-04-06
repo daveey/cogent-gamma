@@ -769,3 +769,4 @@
 - [ ] (794) Hub penalty 15-25 range base increase (9.53→9.54): gamma_v243_v1 qualifying - bidirectional 15-25 range base tuning (+0.10%, stacks with 087-793)
 - [ ] (795) Hub penalty 10-15 range base increase (1.80→1.81): gamma_v244_v1 qualifying - bidirectional 10-15 range base tuning (+0.56%, stacks with 087-794)
 - [ ] (796) Scrambler corner pressure divisor increase (7.49→7.50): gamma_v245_v1 qualifying - bidirectional corner pressure divisor tuning (+0.13%, stacks with 087-795)
+- [ ] (797) Scrambler threat bonus increase (10.61→10.62): gamma_v246_v1 qualifying - bidirectional defensive priority tuning (+0.09%, stacks with 087-796)
