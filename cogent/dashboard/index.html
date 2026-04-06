@@ -1,199 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>scissors Dashboard</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #1e1e2e;
-      color: #cdd6f4;
-      padding: 20px;
-      line-height: 1.6;
-    }
-    .container { max-width: 1400px; margin: 0 auto; }
-    .heartbeat-banner {
-      padding: 15px 20px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .heartbeat-banner.status-idle, .heartbeat-banner.status-active, .heartbeat-banner.status-working { background: #a6e3a1; color: #1e1e2e; }
-    .heartbeat-banner.status-sleeping { background: #f9e2af; color: #1e1e2e; }
-    .heartbeat-banner.status-stopping { background: #f38ba8; color: #1e1e2e; }
-    .heartbeat-banner.status-unknown { background: #45475a; color: #cdd6f4; }
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .panel {
-      background: #313244;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .panel h2 {
-      color: #89b4fa;
-      margin-bottom: 15px;
-      font-size: 1.3em;
-      border-bottom: 2px solid #45475a;
-      padding-bottom: 8px;
-    }
-    .kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-    .kpi {
-      background: #45475a;
-      padding: 15px;
-      border-radius: 6px;
-      text-align: center;
-    }
-    .kpi-value {
-      font-size: 2em;
-      font-weight: bold;
-      color: #89b4fa;
-      display: block;
-    }
-    .kpi-label {
-      font-size: 0.9em;
-      color: #a6adc8;
-      margin-top: 5px;
-    }
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px;
-      background: #45475a;
-      border-radius: 4px;
-      margin-bottom: 8px;
-    }
-    .stat-label { color: #a6adc8; }
-    .stat-value { color: #cdd6f4; font-weight: 600; }
-    .todo-item {
-      padding: 8px 0;
-      border-bottom: 1px solid #45475a;
-    }
-    .todo-item:last-child { border-bottom: none; }
-    .experiment {
-      background: #45475a;
-      padding: 12px;
-      border-radius: 6px;
-      margin-bottom: 10px;
-      border-left: 4px solid #f9e2af;
-    }
-    .experiment.regression { border-left-color: #f38ba8; }
-    .experiment-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-    .experiment-badge {
-      background: #f9e2af;
-      color: #1e1e2e;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.85em;
-      font-weight: 600;
-    }
-    .experiment-badge.testing { background: #89dceb; }
-    .experiment-badge.regression { background: #f38ba8; }
-    .conversation-empty {
-      text-align: center;
-      color: #6c7086;
-      padding: 30px;
-      font-style: italic;
-    }
-    .footer {
-      text-align: center;
-      margin-top: 30px;
-      padding: 20px;
-      color: #6c7086;
-      font-size: 0.9em;
-    }
-    .footer button {
-      background: #89b4fa;
-      color: #1e1e2e;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      margin-top: 10px;
-    }
-    .footer button:hover { background: #b4befe; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scissors | CoGames Dashboard</title>
+    <style>
+        :root {
+            --ctp-base: #1e1e2e;
+            --ctp-mantle: #181825;
+            --ctp-crust: #11111b;
+            --ctp-surface0: #313244;
+            --ctp-surface1: #45475a;
+            --ctp-surface2: #585b70;
+            --ctp-text: #cdd6f4;
+            --ctp-subtext0: #a6adc8;
+            --ctp-subtext1: #bac2de;
+            --ctp-lavender: #b4befe;
+            --ctp-blue: #89b4fa;
+            --ctp-sapphire: #74c7ec;
+            --ctp-sky: #89dceb;
+            --ctp-teal: #94e2d5;
+            --ctp-green: #a6e3a1;
+            --ctp-yellow: #f9e2af;
+            --ctp-peach: #fab387;
+            --ctp-maroon: #eba0ac;
+            --ctp-red: #f38ba8;
+            --ctp-mauve: #cba6f7;
+            --ctp-pink: #f5c2e7;
+            --ctp-flamingo: #f2cdcd;
+            --ctp-rosewater: #f5e0dc;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--ctp-base);
+            color: var(--ctp-text);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: var(--ctp-lavender);
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: var(--ctp-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-bottom: 2px solid var(--ctp-surface1);
+            padding-bottom: 8px;
+        }
+        h3 {
+            color: var(--ctp-sapphire);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        .heartbeat-banner {
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+        .status-idle, .status-active, .status-working { background: var(--ctp-green); color: var(--ctp-crust); }
+        .status-sleeping { background: var(--ctp-yellow); color: var(--ctp-crust); }
+        .status-stopping { background: var(--ctp-red); color: var(--ctp-crust); }
+        .status-unknown { background: var(--ctp-surface1); color: var(--ctp-text); }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: var(--ctp-mantle);
+            border: 1px solid var(--ctp-surface0);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .card-title {
+            color: var(--ctp-mauve);
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+        .kpi {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--ctp-surface0);
+        }
+        .kpi:last-child {
+            border-bottom: none;
+        }
+        .kpi-label {
+            color: var(--ctp-subtext0);
+        }
+        .kpi-value {
+            font-weight: 600;
+            color: var(--ctp-text);
+            font-size: 1.1em;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        .badge-improvement { background: var(--ctp-green); color: var(--ctp-crust); }
+        .badge-regression { background: var(--ctp-red); color: var(--ctp-crust); }
+        .badge-design { background: var(--ctp-blue); color: var(--ctp-crust); }
+        .badge-pco { background: var(--ctp-mauve); color: var(--ctp-crust); }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--ctp-surface0);
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .todo-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .todo-checkbox {
+            color: var(--ctp-green);
+            font-size: 1.2em;
+        }
+        .todo-checkbox.unchecked {
+            color: var(--ctp-surface2);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        thead {
+            background: var(--ctp-surface0);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--ctp-surface0);
+        }
+        th {
+            color: var(--ctp-lavender);
+            font-weight: 600;
+        }
+        tr:hover {
+            background: var(--ctp-surface0);
+        }
+        .score-positive {
+            color: var(--ctp-green);
+            font-weight: 600;
+        }
+        .score-negative {
+            color: var(--ctp-red);
+            font-weight: 600;
+        }
+        .match-completed {
+            color: var(--ctp-green);
+        }
+        .match-failed {
+            color: var(--ctp-red);
+        }
+        .conversations {
+            background: var(--ctp-mantle);
+            border: 1px solid var(--ctp-surface0);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .empty-state {
+            color: var(--ctp-subtext0);
+            font-style: italic;
+            text-align: center;
+            padding: 40px;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid var(--ctp-surface0);
+            text-align: center;
+            color: var(--ctp-subtext0);
+            font-size: 0.9em;
+        }
+        button {
+            background: var(--ctp-blue);
+            color: var(--ctp-crust);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: var(--ctp-sapphire);
+        }
+        code {
+            background: var(--ctp-surface0);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div id="heartbeat-banner" class="heartbeat-banner status-unknown">Loading status...</div>
+    <div class="container">
+        <h1>scissors</h1>
+        <p style="color: var(--ctp-subtext0); margin-bottom: 20px;">Autonomous CvC Policy Optimizer</p>
 
-    <div class="dashboard-grid">
-      <div class="panel">
-        <h2>🏆 Tournament Status</h2>
-        <div class="kpi-grid">
-          <div class="kpi"><span class="kpi-value">35</span><span class="kpi-label">Best Rank</span></div>
-          <div class="kpi"><span class="kpi-value">12.00</span><span class="kpi-label">Best Score</span></div>
-          <div class="kpi"><span class="kpi-value">97</span><span class="kpi-label">Total Policies</span></div>
-          <div class="kpi"><span class="kpi-value">-0.09</span><span class="kpi-label">Gap to #34</span></div>
+        <div id="heartbeat-banner" class="heartbeat-banner status-unknown">Loading status...</div>
+
+        <h2>Current Status</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">Approach Stats</div>
+                <div class="kpi">
+                    <span class="kpi-label">Design Attempts</span>
+                    <span class="kpi-value">6</span>
+                </div>
+                <div class="kpi">
+                    <span class="kpi-label">Design Improvements</span>
+                    <span class="kpi-value">3 (50%)</span>
+                </div>
+                <div class="kpi">
+                    <span class="kpi-label">PCO Attempts</span>
+                    <span class="kpi-value">0</span>
+                </div>
+                <div class="kpi">
+                    <span class="kpi-label">Last Approach</span>
+                    <span class="kpi-value"><span class="badge badge-design">DESIGN</span></span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Current Best</div>
+                <div class="kpi">
+                    <span class="kpi-label">Version</span>
+                    <span class="kpi-value">hub-camp-85</span>
+                </div>
+                <div class="kpi">
+                    <span class="kpi-label">Avg Score</span>
+                    <span class="kpi-value score-positive">16.37</span>
+                </div>
+                <div class="kpi">
+                    <span class="kpi-label">Delta from Baseline</span>
+                    <span class="kpi-value score-positive">+7.2%</span>
+                </div>
+                <div class="kpi">
+                    <span class="kpi-label">Status</span>
+                    <span class="kpi-value">local-only</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Tournament</div>
+                <div class="kpi">
+                    <span class="kpi-label">Season</span>
+                    <span class="kpi-value">beta-cvc</span>
+                </div>
+                <div class="kpi">
+                    <span class="kpi-label">Leaderboard</span>
+                    <span class="kpi-value">Not entered</span>
+                </div>
+                <div class="kpi">
+                    <span class="kpi-label">Recent Matches</span>
+                    <span class="kpi-value">18 completed, 5 failed</span>
+                </div>
+            </div>
         </div>
-        <p style="margin-top:15px;color:#a6e3a1;font-size:0.9em;text-align:center">✓ scissors_v1:v5 @ rank 35 (22 matches)</p>
-      </div>
 
-      <div class="panel">
-        <h2>📊 Approach Stats</h2>
-        <div class="stat-row"><span class="stat-label">PCO Attempts</span><span class="stat-value">0</span></div>
-        <div class="stat-row"><span class="stat-label">PCO Improvements</span><span class="stat-value">0 (—)</span></div>
-        <div class="stat-row"><span class="stat-label">Design Attempts</span><span class="stat-value">2</span></div>
-        <div class="stat-row"><span class="stat-label">Design Improvements</span><span class="stat-value">1 (50%)</span></div>
-        <div class="stat-row"><span class="stat-label">Last Approach</span><span class="stat-value">stall-14-reverted</span></div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h2>✓ Active TODOs</h2>
-      <div class="todo-item">☑ Hotspot tracking (implemented in junctions.py, scoring.py)</div>
-      <div class="todo-item">☑ Wider enemy AOE for retreat (+458% avg score documented)</div>
-      <div class="todo-item">⏳ RETREAT_MARGIN 15→20 (testing alpha.0 parity)</div>
-      <div class="todo-item">☐ LLM stagnation detection: detect stuck agents</div>
-      <div class="todo-item">☐ Read teammate vibes for coordination</div>
-    </div>
-
-    <div class="panel">
-      <h2>🧪 Recent Experiments</h2>
-      <div class="experiment regression">
-        <div class="experiment-header">
-          <span style="color:#a6adc8;font-size:0.9em">2026-04-06 (Cycle 80)</span>
-          <span class="experiment-badge regression">REGRESSION</span>
+        <h2>Active TODOs</h2>
+        <div class="card">
+            <ul>
+                <li class="todo-item">
+                    <span class="todo-checkbox">✓</span>
+                    <span>Hotspot tracking: track scramble events per junction, deprioritize frequently-scrambled junctions</span>
+                </li>
+                <li class="todo-item">
+                    <span class="todo-checkbox">✓</span>
+                    <span>Wider enemy AOE for retreat: wired _near_enemy_territory (radius 20) into _should_retreat — +458% avg score</span>
+                </li>
+                <li class="todo-item">
+                    <span class="todo-checkbox unchecked">☐</span>
+                    <span><code>RETREAT_MARGIN 15→20</code>: match alpha.0's more conservative survival threshold (testing)</span>
+                </li>
+                <li class="todo-item">
+                    <span class="todo-checkbox unchecked">☐</span>
+                    <span>LLM stagnation detection: detect stuck agents and adjust directives</span>
+                </li>
+                <li class="todo-item">
+                    <span class="todo-checkbox unchecked">☐</span>
+                    <span>Read teammate vibes for coordination</span>
+                </li>
+            </ul>
         </div>
-        <div style="font-weight:600;color:#fab387;margin-bottom:5px">Stall unstick threshold (Design)</div>
-        <div style="color:#cdd6f4;font-size:0.95em;margin-bottom:5px">_STALL_UNSTICK_STEPS 12→14 (+16.7%)</div>
-        <div style="color:#f38ba8;font-size:0.9em">Avg 13.06 vs baseline 13.65 (-4.3%) — REVERTED</div>
-        <div style="color:#6c7086;font-size:0.85em;margin-top:5px">Testing after codebase reset. Threshold 14 regressed in new context.</div>
-      </div>
+
+        <h2>Experiment History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Version</th>
+                    <th>Focus</th>
+                    <th>Result</th>
+                    <th>Delta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2026-04-06</td>
+                    <td>hub-camp-85</td>
+                    <td>Hub camp HP threshold reduction</td>
+                    <td><span class="badge badge-improvement">IMPROVED</span></td>
+                    <td class="score-positive">+7.2%</td>
+                </tr>
+                <tr>
+                    <td>2026-04-06</td>
+                    <td>early-retreat-120</td>
+                    <td>Early retreat window duration</td>
+                    <td><span class="badge badge-regression">REVERTED</span></td>
+                    <td class="score-negative">-11.0%</td>
+                </tr>
+                <tr>
+                    <td>2026-04-06</td>
+                    <td>hub-camp-dist-2</td>
+                    <td>Hub camp distance threshold</td>
+                    <td><span class="badge badge-regression">REVERTED</span></td>
+                    <td class="score-negative">-16.3%</td>
+                </tr>
+                <tr>
+                    <td>2026-04-06</td>
+                    <td>stall-14</td>
+                    <td>Stall unstick threshold</td>
+                    <td><span class="badge badge-regression">REVERTED</span></td>
+                    <td class="score-negative">-4.3%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Recent Tournament Matches</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Pool</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>00:39</td>
+                    <td class="match-failed">failed</td>
+                    <td>qualifying</td>
+                    <td>—</td>
+                </tr>
+                <tr>
+                    <td>00:28</td>
+                    <td class="match-completed">completed</td>
+                    <td>competitive</td>
+                    <td>2.04</td>
+                </tr>
+                <tr>
+                    <td>00:23</td>
+                    <td class="match-completed">completed</td>
+                    <td>competitive</td>
+                    <td>8.17</td>
+                </tr>
+                <tr>
+                    <td>00:23</td>
+                    <td class="match-completed">completed</td>
+                    <td>competitive</td>
+                    <td>5.21</td>
+                </tr>
+                <tr>
+                    <td>00:22</td>
+                    <td class="match-completed">completed</td>
+                    <td>class="match-completed">completed</td>
+                    <td>18.42</td>
+                </tr>
+                <tr>
+                    <td>00:22</td>
+                    <td class="match-completed">completed</td>
+                    <td>competitive</td>
+                    <td>9.62</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Recent Conversations</h2>
+        <div class="conversations">
+            <div class="empty-state">No conversations yet</div>
+        </div>
+
+        <h2>Recent Commits</h2>
+        <div class="card">
+            <ul>
+                <li><code>ed796f6</code> Dashboard: Update tournament stats and approach stats</li>
+                <li><code>0a15524</code> Dashboard: Update with Cycle 81 testing status and match failures</li>
+                <li><code>c379df6</code> Cycle 84: Early retreat window 150→120 reverted (-11.0%)</li>
+                <li><code>cac8e71</code> Cycle 81: Test RETREAT_MARGIN 15→20 (alpha.0 parity)</li>
+                <li><code>3cd9c29</code> Cycle 83: Hub camp distance 3→2 reverted (-16.3%)</li>
+                <li><code>4a3901e</code> Cycle 82: Hub camp HP 100→85 improvement (+7.2%)</li>
+                <li><code>835c64a</code> Wake up: restore state, generate dashboard, start tick loop</li>
+                <li><code>49bd96c</code> Cycle 81: Oscillation unstick 4→3 improvement (+11.9%)</li>
+                <li><code>4a9b2cd</code> Cycle 80: Stall unstick 12→14 reverted (-4.3%)</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            Generated: 2026-04-06 02:24 UTC
+            <br>
+            <button onclick="fetch('/regenerate',{method:'POST'}).then(()=>{this.textContent='Regenerating...';setTimeout(()=>location.reload(),30000)})">Regenerate</button>
+        </div>
     </div>
 
-    <div class="panel">
-      <h2>💬 Recent Conversations</h2>
-      <div class="conversation-empty">No conversations yet</div>
-    </div>
-
-    <div class="footer">
-      Generated <span id="genTime"></span><br>
-      <button onclick="fetch('/regenerate',{method:'POST'}).then(()=>{this.textContent='Regenerating...';setTimeout(()=>location.reload(),30000)})">Regenerate</button>
-    </div>
-  </div>
-
-  <script>
+    <script>
     function updateHeartbeat(){
       fetch('/heartbeat.json').then(r=>r.json()).then(hb=>{
         const el=document.getElementById('heartbeat-banner');
@@ -205,10 +449,7 @@
         el.className='heartbeat-banner status-'+(hb.status||'unknown');
       }).catch(()=>{});
     }
-    updateHeartbeat();
-    setInterval(updateHeartbeat,10000);
-
-    document.getElementById('genTime').textContent = new Date().toISOString().slice(0,19).replace('T',' ')+' UTC';
-  </script>
+    updateHeartbeat();setInterval(updateHeartbeat,10000);
+    </script>
 </body>
 </html>

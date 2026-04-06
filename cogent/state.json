@@ -6,12 +6,27 @@
       "last_used": null
     },
     "design": {
-      "attempts": 6,
+      "attempts": 7,
       "improvements": 3,
-      "last_used": "20260406-early-retreat-120"
+      "last_used": "20260406-retreat-margin-20-reverted"
     }
   },
   "failed_attempts": [
+    {
+      "date": "20260406",
+      "version": "retreat-margin-20-reverted",
+      "focus": "Retreat margin threshold (alpha.0 parity test)",
+      "description": "Increased RETREAT_MARGIN from 15 to 20 (+33%) to match alpha.0",
+      "result": "REGRESSION: seed 42 scored 13.88 vs expected ~16 (-13%)",
+      "local_scores": {
+        "seeds": [42],
+        "scores": [13.88],
+        "avg": 13.88,
+        "baseline": 16.37
+      },
+      "status": "reverted",
+      "notes": "Cycle 85 - Regression. RETREAT_MARGIN=20 too conservative, caused agents to retreat too early. Previously tested in cac8e71, now properly reverted. The wider enemy detection (_NEAR_ENEMY_RADIUS=20) already adds +5 margin when near enemy territory, so base margin of 20 is excessive."
+    },
     {
       "date": "20260406",
       "version": "stall-14-reverted",
