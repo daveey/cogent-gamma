@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 709,
+      "attempts": 710,
       "improvements": 7,
-      "last_used": "20260406-775-testing"
+      "last_used": "20260406-776-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "775",
-    "focus": "Scrambler HP threshold increase",
-    "description": "Increased scrambler HP threshold from 34.31 to 34.32 (+0.03%)",
-    "rationale": "Scrambler HP threshold controls retreat timing for disruptors. Higher threshold enables more aggressive disruption before retreating. Conservative +0.03% increase for bidirectional disruption tuning. Stacks with 087-774.",
-    "upload": "gamma_v224_v1:v1",
+    "version": "776",
+    "focus": "Emergency resource low threshold increase",
+    "description": "Increased emergency resource low from 2.58 to 2.59 (+0.39%)",
+    "rationale": "Emergency resource low controls threshold for emergency mining mode. Higher threshold triggers emergency mining earlier to prevent resource starvation. Conservative +0.39% increase for bidirectional emergency mining trigger tuning. Stacks with 087-775.",
+    "upload": "gamma_v225_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 775. Increased scrambler HP threshold for bidirectional disruption tuning. Awaiting tournament validation."
+    "note": "Attempt 776. Increased emergency resource low for bidirectional emergency mining trigger tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
