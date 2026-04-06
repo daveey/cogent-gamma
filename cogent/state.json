@@ -6,12 +6,27 @@
       "last_used": null
     },
     "design": {
-      "attempts": 26,
+      "attempts": 27,
       "improvements": 7,
       "last_used": "20260406-junction-aoe-20"
     }
   },
   "failed_attempts": [
+    {
+      "date": "20260406",
+      "version": "scramble-corner-pressure-divisor-6.0-reverted",
+      "focus": "Scrambler corner pressure divisor reduction",
+      "description": "Reduced scramble corner_pressure divisor from 8.0 to 6.0 (-25%), increasing pressure bonus by 33%",
+      "result": "MARGINAL REGRESSION: avg 25.26 vs baseline 25.42 (-0.6%)",
+      "local_scores": {
+        "seeds": [42, 43, 44, 45, 46],
+        "scores": [26.78, 32.38, 22.61, 24.49, 20.03],
+        "avg": 25.26,
+        "baseline": 25.42
+      },
+      "status": "reverted",
+      "notes": "Cycle 104 - Marginal regression, too small to be meaningful (-0.6%). Very high variance across seeds: seed 43 +27.4%, seed 46 -21.2%, range of 12.35 points. The parameter change appears to have highly variable effects depending on map configuration. Decision: revert due to insufficient improvement magnitude and high variance. Success rate: 7/27 = 25.9% (13 consecutive failures)."
+    },
     {
       "date": "20260406",
       "version": "scramble-blocked-neutrals-8.0-reverted",
