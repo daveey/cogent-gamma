@@ -43,7 +43,7 @@ Run `cogent/skills/cogames.md` if not already done.
 
 ### Upload to Season
 
-Upload a policy to a season. Use the cogent name from `cogent/IDENTITY.md` as the policy name (`-n`). Must run from `src/cogamer/`:
+Upload a policy to a season. The policy name (`-n`) **MUST start with your cogent name** from `cogent/IDENTITY.md` (e.g. if you're "scissors", use "scissors" or "scissors_v2"). Never use another cogent's name. Must run from `src/cogamer/`:
 
 ```bash
 cd src/cogamer && PYTHONPATH=. cogames upload \
@@ -85,11 +85,13 @@ If average score drops vs baseline, do NOT upload — revert the change first.
 ## Monitoring
 
 ```bash
-cogames leaderboard <season> --mine       # standings
-cogames matches --season <season>         # recent matches
-cogames match-artifacts <match-id>        # logs from a match
-cogames season progress <season>          # stage progression
+cogames leaderboard <season> --policy <your-cogent-name>  # YOUR standings only
+cogames matches --season <season>                         # recent matches
+cogames match-artifacts <match-id>                        # logs from a match
+cogames season progress <season>                          # stage progression
 ```
+
+**Always use `--policy <your-cogent-name>`** (from `cogent/IDENTITY.md`) instead of `--mine`. The `--mine` flag shows all policies from the shared account, including other cogents.
 
 ## Seasons
 

@@ -4,10 +4,11 @@ Additional panels for the cogent dashboard, specific to CoGames.
 
 ## Data to Collect
 
-1. **Tournament status** — Run leaderboard/match commands from `docs/cogames.md`:
+1. **Tournament status** — Read your cogent name from `cogent/IDENTITY.md`, then run leaderboard with `--policy <your-cogent-name>` (never `--mine`):
    - Current rank and score per season
    - Recent match results
    - Gap to next rank
+   - Only show YOUR policies. Other policies belong to other cogents.
 
 2. **Approach stats** — From `cogent/state.json`:
    - PCO vs design attempt counts and improvement rates
