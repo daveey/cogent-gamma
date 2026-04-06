@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (678) Scrambler corner pressure divisor increase (7.48→7.50): gamma_v127:v1 qualifying - continued faster pressure growth (+0.27%, stacks with 087-677)
 - [ ] (677) Scrambler corner pressure cap reduction (10.92→10.90): gamma_v126:v1 qualifying - continued corner pressure tuning (-0.18%, stacks with 087-676)
 - [ ] (676) Enemy AOE penalty reduction (10.78→10.76): gamma_v125:v1 qualifying - continued enemy avoidance tuning (-0.19%, stacks with 087-675)
 - [ ] (675) Expansion bonus cap reduction (37.80→37.75): gamma_v124:v1 qualifying - continued higher expansion bonus ceiling (-0.13%, stacks with 087-674)
