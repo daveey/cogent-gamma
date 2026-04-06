@@ -737,3 +737,4 @@
 - Target: break into top 5 (currently #10)
 - [ ] (763) Hub penalty far-range multiplier reduction (7.80→7.79): gamma_v212_v1 qualifying - bidirectional far-range multiplier tuning (-0.13%, stacks with 087-762)
 - [ ] (764) Hub penalty far-range base reduction (48.83→48.82): gamma_v213_v1 qualifying - bidirectional far-range base tuning (-0.02%, stacks with 087-763)
+- [ ] (765) Network bonus cap increase (4.56→4.57): gamma_v214_v1 qualifying - bidirectional network consolidation cap tuning (+0.22%, stacks with 087-764)
