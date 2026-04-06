@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 526,
+      "attempts": 527,
       "improvements": 7,
-      "last_used": "20260406-592-testing"
+      "last_used": "20260406-593-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "592",
-    "focus": "Target claim steps increase",
-    "description": "Increased target claim steps from 33.40 to 33.45 (+0.15%)",
-    "rationale": "Target claim steps defines how long junction claims remain valid. Higher value extends claim duration for better coordination. Conservative +0.15% increase builds on validated improvements. Stacks with 087-591.",
-    "upload": "gamma:v41",
+    "version": "593",
+    "focus": "Extractor memory steps increase",
+    "description": "Increased extractor memory steps from 854 to 856 (+0.23%)",
+    "rationale": "Extractor memory steps defines how long agents remember recent extractor locations. Higher value extends memory for better resource gathering. Conservative +0.23% increase builds on validated improvements. Stacks with 087-592.",
+    "upload": "gamma:v42",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Scissors attempt 592. Clean baseline increased target claim steps. Awaiting tournament validation."
+    "note": "Scissors attempt 593. Clean baseline increased extractor memory steps. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
