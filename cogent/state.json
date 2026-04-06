@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 637,
+      "attempts": 638,
       "improvements": 7,
-      "last_used": "20260406-703-testing"
+      "last_used": "20260406-704-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "703",
-    "focus": "Hotspot penalty cap reduction",
-    "description": "Reduced hotspot penalty cap from 3.32 to 3.30 (-0.60%)",
-    "rationale": "Hotspot penalty cap controls maximum hotspot count multiplier for contested junctions. Lower cap reduces maximum penalty for heavily contested junctions, allowing more aggressive recapture attempts in high-churn areas. Conservative -0.60% reduction for continued contested junction penalty cap tuning. Stacks with 087-702.",
-    "upload": "gamma_v152:v1",
+    "version": "704",
+    "focus": "Network bonus cap reduction",
+    "description": "Reduced network bonus cap from 4.56 to 4.54 (-0.44%)",
+    "rationale": "Network bonus cap controls maximum bonus for chain-building near friendly junctions. Lower cap reduces maximum bonus for dense network clusters, encouraging more distributed expansion. Conservative -0.44% reduction for continued denser network clustering tuning. Stacks with 087-703.",
+    "upload": "gamma_v153:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 703. Reduced hotspot penalty cap for continued contested junction penalty cap tuning. Awaiting tournament validation."
+    "note": "Attempt 704. Reduced network bonus cap for continued denser network clustering tuning. Awaiting tournament validation."
   },
   },
   "last_improvement": {

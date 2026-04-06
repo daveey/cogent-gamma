@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (704) Network bonus cap reduction (4.56→4.54): gamma_v153:v1 qualifying - continued denser network clustering tuning (-0.44%, stacks with 087-703)
 - [ ] (703) Hotspot penalty cap reduction (3.32→3.30): gamma_v152:v1 qualifying - continued contested junction penalty cap tuning (-0.60%, stacks with 087-702)
 - [ ] (702) Hotspot weight near-hub reduction (1.64→1.62): gamma_v151:v1 qualifying - continued near-hub recapture tuning (-1.22%, stacks with 087-701)
 - [ ] (701) Hotspot weight mid-range reduction (5.46→5.44): gamma_v150:v1 qualifying - continued mid-range contested junction tuning (-0.37%, stacks with 087-700)
