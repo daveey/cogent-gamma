@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 797,
+      "attempts": 798,
       "improvements": 7,
-      "last_used": "20260406-863-testing"
+      "last_used": "20260406-864-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "863",
-    "focus": "Hub penalty far-range base increase",
-    "description": "Increased hub penalty far-range base from 48.84 to 48.85 (+0.02%)",
-    "rationale": "Hub penalty far-range base sets the minimum penalty for junctions beyond 25 distance. Higher base increases the floor penalty for very distant junctions. Conservative +0.02% increase for bidirectional far-range base tuning. Stacks with 087-862.",
-    "upload": "gamma_v312_v1:v1",
+    "version": "864",
+    "focus": "Miner HP threshold increase",
+    "description": "Increased miner HP threshold from 18.71 to 18.72 (+0.05%)",
+    "rationale": "Miner HP threshold controls when miners retreat from danger. Higher threshold makes miners retreat earlier for safer resource gathering. Conservative +0.05% increase for bidirectional resource gathering tuning. Stacks with 087-863.",
+    "upload": "gamma_v313_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 863. Increased hub penalty far-range base for bidirectional far-range base tuning. Awaiting tournament validation."
+    "note": "Attempt 864. Increased miner HP threshold for bidirectional resource gathering tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
