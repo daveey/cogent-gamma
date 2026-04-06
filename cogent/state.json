@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 544,
+      "attempts": 545,
       "improvements": 7,
-      "last_used": "20260406-610-testing"
+      "last_used": "20260406-611-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "610",
-    "focus": "Enemy AOE penalty reduction",
-    "description": "Reduced enemy AOE penalty from 10.78 to 10.76 (-0.19%)",
-    "rationale": "Enemy AOE penalty discourages targeting junctions near enemy junctions. Lower penalty reduces safety avoidance in dangerous areas. Conservative -0.19% reduction builds on validated improvements. Stacks with 087-609.",
-    "upload": "gamma:v59",
+    "version": "611",
+    "focus": "Scrambler corner pressure cap reduction",
+    "description": "Reduced scrambler corner pressure cap from 10.92 to 10.90 (-0.18%)",
+    "rationale": "Scrambler corner pressure cap limits maximum pressure bonus for distant enemies. Lower cap reduces maximum pressure incentive for far corners. Conservative -0.18% reduction builds on validated improvements. Stacks with 087-610.",
+    "upload": "gamma:v60",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Scissors attempt 610. Clean baseline reduced enemy AOE penalty. Awaiting tournament validation. [MILESTONE: 610 attempts]"
+    "note": "Scissors attempt 611. Clean baseline reduced scrambler corner pressure cap. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
