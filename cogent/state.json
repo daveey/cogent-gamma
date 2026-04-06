@@ -6,9 +6,9 @@
       "last_used": null
     },
     "design": {
-      "attempts": 5,
+      "attempts": 6,
       "improvements": 3,
-      "last_used": "20260406-hub-camp-dist-2"
+      "last_used": "20260406-early-retreat-120"
     }
   },
   "failed_attempts": [
@@ -65,6 +65,33 @@
       },
       "status": "reverted",
       "notes": "Delta Cycle 83 - Regression. Tighter distance requirement reduced hub camping effectiveness, particularly damaging on seed 46. Context matters: with HP threshold at 85 (not 100), distance 3 works better than 2."
+    },
+    {
+      "date": "20260406",
+      "version": "early-retreat-120-reverted",
+      "focus": "Early retreat window duration",
+      "description": "Reduced early retreat window from 150 to 120 steps (-20%)",
+      "result": "REGRESSION: avg 14.58 vs baseline 16.37 (-11.0%)",
+      "local_scores": {
+        "seeds": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "scores": [
+          17.12,
+          16.44,
+          17.19,
+          15.08,
+          7.05
+        ],
+        "avg": 14.58,
+        "baseline": 16.37
+      },
+      "status": "reverted",
+      "notes": "Delta Cycle 84 - Regression. Shorter early retreat window reduced performance, particularly on seed 46. The longer 150-step window provides better early game flexibility in current context."
     }
   ],
   "last_improvement": {
