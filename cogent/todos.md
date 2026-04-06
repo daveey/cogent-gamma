@@ -833,3 +833,4 @@
 - [ ] (858) Hub penalty 10-15 range multiplier increase (1.33→1.34): gamma_v307_v1 qualifying - bidirectional 10-15 range multiplier tuning (+0.75%, stacks with 087-857)
 - [ ] (859) Hub penalty 10-15 range base increase (1.82→1.83): gamma_v308_v1 qualifying - bidirectional 10-15 range base tuning (+0.55%, stacks with 087-858)
 - [ ] (860) Hub penalty 15-25 range multiplier increase (2.80→2.81): gamma_v309_v1 qualifying - bidirectional 15-25 range multiplier tuning (+0.36%, stacks with 087-859)
+- [ ] (861) Hub penalty 15-25 range base increase (9.55→9.56): gamma_v310_v1 qualifying - bidirectional 15-25 range base tuning (+0.10%, stacks with 087-860)
