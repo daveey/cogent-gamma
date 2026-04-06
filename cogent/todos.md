@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (592) Target claim steps increase (33.40→33.45): gamma:v41 qualifying - continued longer claim validity tuning (+0.15%, stacks with 087-591)
 - [ ] (591) Claimed target penalty reduction (11.03→11.01): gamma:v40 qualifying - continued flexible claim override tuning (-0.18%, stacks with 087-590)
 - [ ] (590) Junction AOE range increase (10.64→10.66): gamma:v39 qualifying - continued larger area-of-effect detection tuning (+0.19%, stacks with 087-589) [MILESTONE: 590 attempts]
 - [ ] (589) Junction align distance increase (16.44→16.46): gamma:v38 qualifying - continued chain-building reach tuning (+0.12%, stacks with 087-588)
