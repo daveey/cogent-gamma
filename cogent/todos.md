@@ -851,3 +851,4 @@
 - [ ] (876) Expansion bonus weight increase (6.65→6.66): gamma_v325_v1 qualifying - bidirectional expansion bonus weight tuning (+0.15%, stacks with 087-875)
 - [ ] (877) Network bonus weight increase (0.95→0.96): gamma_v326_v1 qualifying - bidirectional network bonus weight tuning (+1.05%, stacks with 087-876)
 - [ ] (878) Hotspot penalty cap increase (3.34→3.35): gamma_v327_v1 qualifying - bidirectional contested junction penalty cap tuning (+0.30%, stacks with 087-877)
+- [ ] (879) Near-hub hotspot weight increase (1.66→1.67): gamma_v328_v1 qualifying - bidirectional near-hub recapture tuning (+0.60%, stacks with 087-878)
