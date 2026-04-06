@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (747) Aligner HP threshold increase (45.66→45.68): gamma_v196_v1:v1 qualifying - bidirectional aligner retreat tuning (+0.044%, stacks with 087-746)
 - [ ] (746) Junction AOE range increase (15.0→15.02): gamma_v195_v1:v1 qualifying - bidirectional enemy AOE detection tuning (+0.13%, stacks with 087-745)
 - [ ] (745) Scrambler threat bonus reduction (10.62→10.60): gamma_v194_v1:v1 qualifying - bidirectional defensive priority tuning (-0.19%, stacks with 087-744)
 - [ ] (744) Scrambler corner pressure cap reduction (10.92→10.90): gamma_v193_v1:v1 qualifying - bidirectional corner pressure cap tuning (-0.18%, stacks with 087-743)

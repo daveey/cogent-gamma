@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 680,
+      "attempts": 681,
       "improvements": 7,
-      "last_used": "20260406-746-testing"
+      "last_used": "20260406-747-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "746",
-    "focus": "Junction AOE range increase",
-    "description": "Increased junction AOE range from 15.0 to 15.02 (+0.13%)",
-    "rationale": "Junction AOE range controls how far enemy junctions threaten aligners, affecting retreat decisions. Higher range means earlier retreats from enemy presence. Conservative +0.13% increase for bidirectional enemy AOE detection tuning. Stacks with 087-745.",
-    "upload": "gamma_v195_v1:v1",
+    "version": "747",
+    "focus": "Aligner HP threshold increase",
+    "description": "Increased aligner HP threshold from 45.66 to 45.68 (+0.044%)",
+    "rationale": "Aligner HP threshold controls when aligners retreat to hub for healing. Higher threshold means aligners retreat earlier for safer play. Conservative +0.044% increase for bidirectional aligner retreat tuning. Stacks with 087-746.",
+    "upload": "gamma_v196_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 746. Increased junction AOE range for bidirectional enemy AOE detection tuning. Awaiting tournament validation."
+    "note": "Attempt 747. Increased aligner HP threshold for bidirectional aligner retreat tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
