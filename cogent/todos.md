@@ -809,3 +809,4 @@
 - [ ] (834) Hub penalty 15-25 range base increase (9.54→9.55): gamma_v283_v1 qualifying - bidirectional 15-25 range base tuning (+0.10%, stacks with 087-833)
 - [ ] (835) Hub penalty far-range multiplier increase (7.80→7.81): gamma_v284_v1 qualifying - bidirectional far-range multiplier tuning (+0.13%, stacks with 087-834)
 - [ ] (836) Hub penalty far-range base increase (48.83→48.84): gamma_v285_v1 qualifying - bidirectional far-range base tuning (+0.02%, stacks with 087-835)
+- [ ] (837) Miner HP threshold increase (18.70→18.71): gamma_v286_v1 qualifying - bidirectional resource gathering tuning (+0.05%, stacks with 087-836)
