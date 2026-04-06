@@ -7,7 +7,7 @@
 - [x] **Cycle 86: Aligner HP 50→45 (+41.2%)** — MAJOR breakthrough! Less conservative retreat = more field time
 
 ## Next Candidates
-- [ ] Junction scoring parameter tuning: hub penalty curves, teammate penalty  
+- [ ] Junction scoring parameter tuning: hub penalty curves
 - [ ] Enemy AOE weight in scoring (currently 8.0)
 - [ ] Explore other non-HP parameters that can be validated locally
 - [ ] **BLOCKED:** LLM-dependent changes (cannot validate without LLM access in local tests)
@@ -17,11 +17,13 @@
 - Claim penalty 12.0 is optimal (both 8.0 and 25.0 failed)
 - Target switch threshold 3.0 is optimal (2.5 failed -10.5% with high variance)
 - Hotspot weight 8.0 is optimal (6.0 too marginal +0.4%, likely noise)
+- Teammate penalty 6.0 is optimal (4.0 failed -43.3%, major regression)
 
 ## Testing Protocol Issue
 **Critical finding:** Local tests run with `ANTHROPIC_API_KEY=` (no LLM) per docs/cogames.md, but tournament uses Bedrock (LLM enabled). Cannot validate LLM-dependent changes locally. Cycle 94 reverted due to this issue.
 
 ## Completed
+- [x] Teammate penalty 6.0→4.0 tested and reverted (-43.3%, major regression)
 - [x] Hotspot weight 8.0→6.0 tested and reverted (+0.4%, too marginal)
 - [x] Target switch threshold 3.0→2.5 tested and reverted (-10.5%, high variance)
 - [x] Claim penalty 12.0→8.0 tested and reverted (-7.3%)

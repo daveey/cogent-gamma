@@ -6,12 +6,27 @@
       "last_used": null
     },
     "design": {
-      "attempts": 21,
+      "attempts": 22,
       "improvements": 7,
       "last_used": "20260406-junction-aoe-20"
     }
   },
   "failed_attempts": [
+    {
+      "date": "20260406",
+      "version": "teammate-penalty-4.0-reverted",
+      "focus": "Teammate coordination penalty reduction",
+      "description": "Reduced teammate_penalty from 6.0 to 4.0 (-33%) in aligner_target_score",
+      "result": "MAJOR REGRESSION: seed 42 scored 14.41 vs baseline 25.42 (-43.3%)",
+      "local_scores": {
+        "seeds": [42],
+        "scores": [14.41],
+        "avg": 14.41,
+        "baseline": 25.42
+      },
+      "status": "reverted",
+      "notes": "Cycle 99 - Major regression on first seed test. Lower penalty allowed too much coordination overlap, causing multiple aligners to target same junctions and leaving other areas uncovered. The 6.0 penalty is optimal for spreading aligner coverage. Success rate: 7/22 = 31.8%."
+    },
     {
       "date": "20260406",
       "version": "hotspot-weight-6.0-reverted",
