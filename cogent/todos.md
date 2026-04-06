@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (605) Network bonus weight reduction (0.94→0.93): gamma:v54 qualifying - continued network consolidation tuning (-1.06%, stacks with 087-604)
 - [ ] (604) Hotspot penalty cap reduction (3.34→3.32): gamma:v53 qualifying - continued contested junction penalty cap tuning (-0.60%, stacks with 087-603)
 - [ ] (603) Hotspot weight near-hub reduction (1.66→1.64): gamma:v52 qualifying - continued near-hub contested junction tuning (-1.20%, stacks with 087-602)
 - [ ] (602) Hotspot weight mid-range reduction (5.48→5.46): gamma:v51 qualifying - continued mid-range contested junction tuning (-0.37%, stacks with 087-601)

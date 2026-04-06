@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 538,
+      "attempts": 539,
       "improvements": 7,
-      "last_used": "20260406-604-testing"
+      "last_used": "20260406-605-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "604",
-    "focus": "Hotspot penalty cap reduction",
-    "description": "Reduced hotspot penalty cap from 3.34 to 3.32 (-0.60%)",
-    "rationale": "Hotspot penalty cap limits maximum penalty from contested junctions. Lower cap reduces maximum penalty for highly contested junctions. Conservative -0.60% reduction builds on validated improvements. Stacks with 087-603.",
-    "upload": "gamma:v53",
+    "version": "605",
+    "focus": "Network bonus weight reduction",
+    "description": "Reduced network bonus weight from 0.94 to 0.93 (-1.06%)",
+    "rationale": "Network bonus weight incentivizes building junctions near existing friendly junctions. Lower weight reduces network clustering incentive. Conservative -1.06% reduction builds on validated improvements. Stacks with 087-604.",
+    "upload": "gamma:v54",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Scissors attempt 604. Clean baseline reduced hotspot penalty cap. Awaiting tournament validation."
+    "note": "Scissors attempt 605. Clean baseline reduced network bonus weight. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
