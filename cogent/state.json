@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 499,
+      "attempts": 500,
       "improvements": 7,
-      "last_used": "20260406-565-testing"
+      "last_used": "20260406-566-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "565",
-    "focus": "Hub penalty 15-25 range multiplier reduction",
-    "description": "Reduced hub penalty 15-25 range multiplier from 2.80 to 2.79 (-0.36%)",
-    "rationale": "Hub penalty 15-25 range multiplier applies to junctions 15-25 distance from hub. Lower multiplier reduces penalty growth rate. Conservative -0.36% reduction builds on validated improvements. Stacks with 087-564.",
-    "upload": "scissors_v482:v1",
+    "version": "566",
+    "focus": "Hub penalty far-range multiplier reduction",
+    "description": "Reduced hub penalty far-range multiplier from 7.82 to 7.81 (-0.13%)",
+    "rationale": "Hub penalty far-range multiplier applies to junctions >25 distance from hub. Lower multiplier reduces penalty growth rate for distant junctions. Conservative -0.13% reduction builds on validated improvements. Stacks with 087-565.",
+    "upload": "scissors_v483:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Scissors attempt 565. Clean baseline reduced 15-25 multiplier. Awaiting tournament validation."
+    "note": "Scissors attempt 566. Clean baseline reduced far-range multiplier. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
