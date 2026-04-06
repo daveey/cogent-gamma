@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 808,
+      "attempts": 809,
       "improvements": 7,
-      "last_used": "20260406-874-testing"
+      "last_used": "20260406-875-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "874",
-    "focus": "Target claim steps increase",
-    "description": "Increased target claim steps from 33.53 to 33.54 (+0.03%)",
-    "rationale": "Target claim steps controls how long a junction claim remains valid. Higher value extends claim duration, giving agents more time to reach claimed targets before coordination resets. Conservative +0.03% increase for bidirectional claim validity tuning. Stacks with 087-873.",
-    "upload": "gamma_v323_v1:v1",
+    "version": "875",
+    "focus": "Extractor memory steps increase",
+    "description": "Increased extractor memory steps from 861 to 862 (+0.12%)",
+    "rationale": "Extractor memory steps controls how long agents remember extractor positions. Higher value extends memory duration, allowing agents to use stale extractor data for longer before discarding. Conservative +0.12% increase for bidirectional extractor memory tuning. Stacks with 087-874.",
+    "upload": "gamma_v324_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 874. Increased target claim steps for bidirectional claim validity tuning. Awaiting tournament validation."
+    "note": "Attempt 875. Increased extractor memory steps for bidirectional extractor memory tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
