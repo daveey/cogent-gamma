@@ -764,3 +764,4 @@
 - [ ] (789) Hotspot weight near-hub increase (1.64→1.65): gamma_v238_v1 qualifying - bidirectional near-hub recapture tuning (+0.61%, stacks with 087-788)
 - [ ] (790) Hotspot weight mid-range increase (5.46→5.47): gamma_v239_v1 qualifying - bidirectional mid-range contested junction tuning (+0.18%, stacks with 087-789)
 - [ ] (791) Hotspot penalty cap increase (3.32→3.33): gamma_v240_v1 qualifying - bidirectional contested junction penalty cap tuning (+0.30%, stacks with 087-790)
+- [ ] (792) Network bonus weight increase (0.93→0.94): gamma_v241_v1 qualifying - bidirectional network consolidation weight tuning (+1.08%, stacks with 087-791)
