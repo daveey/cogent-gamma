@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 554,
+      "attempts": 555,
       "improvements": 7,
-      "last_used": "20260406-620-testing"
+      "last_used": "20260406-621-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "620",
-    "focus": "Scrambler heart batch target reduction",
-    "description": "Reduced scrambler heart batch target from 3.56 to 3.54 (-0.56%)",
-    "rationale": "Scrambler heart batch target controls how many hearts scramblers collect before returning to work. Lower target reduces scrambler persistence. Conservative -0.56% reduction builds on validated improvements. Stacks with 087-619.",
-    "upload": "gamma:v69",
+    "version": "621",
+    "focus": "Hub align distance reduction",
+    "description": "Reduced hub align distance from 26.66 to 26.64 (-0.08%)",
+    "rationale": "Hub align distance defines max range for hub to align with junctions. Lower distance reduces hub alignment reach. Conservative -0.08% reduction builds on validated improvements. Stacks with 087-620.",
+    "upload": "gamma:v70",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Scissors attempt 620. Clean baseline reduced scrambler heart batch target. Awaiting tournament validation. [MILESTONE: 620 attempts!]"
+    "note": "Scissors attempt 621. Clean baseline reduced hub align distance. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
