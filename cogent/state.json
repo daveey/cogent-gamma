@@ -133,7 +133,7 @@
       "avg": 23.86,
       "baseline": 23.11
     },
-    "status": "local-only",
+    "status": "uploaded-beta-cvc",
     "notes": "Cycle 87 - Following Cycle 86's success pattern. Less conservative miner retreat threshold allows miners to stay in field longer, improving resource economy. Modest but consistent improvement across test seeds. New baseline: 23.86."
   }
 }
