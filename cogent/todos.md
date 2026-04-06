@@ -803,3 +803,4 @@
 - [ ] (828) Blocked neutrals weight increase (8.82→8.83): gamma_v277_v1 qualifying - bidirectional expansion-blocking tuning (+0.11%, stacks with 087-827)
 - [ ] (829) Corner pressure cap increase (10.91→10.92): gamma_v278_v1 qualifying - bidirectional corner pressure cap tuning (+0.09%, stacks with 087-828)
 - [ ] (830) Hub penalty near-hub multiplier increase (0.262→0.263): gamma_v279_v1 qualifying - bidirectional hub clustering tuning (+0.38%, stacks with 087-829)
+- [ ] (831) Hub penalty 10-15 range multiplier increase (1.32→1.33): gamma_v280_v1 qualifying - bidirectional 10-15 range multiplier tuning (+0.76%, stacks with 087-830)
