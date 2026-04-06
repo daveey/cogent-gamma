@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (668) Hotspot weight mid-range reduction (5.48→5.46): gamma_v117:v1 qualifying - continued mid-range contested junction tuning (-0.37%, stacks with 087-667)
 - [ ] (667) Hotspot weight far-range reduction (11.54→11.52): gamma_v116:v1 qualifying - continued far-range contested junction tuning (-0.17%, stacks with 087-666)
 - [ ] (666) Hub penalty far-range base reduction (48.84→48.83): gamma_v115:v1 qualifying - continued far-range base tuning (-0.02%, stacks with 087-665)
 - [ ] (665) Hub penalty far-range multiplier reduction (7.81→7.80): gamma_v114:v1 qualifying - continued far-range multiplier tuning (-0.13%, stacks with 087-664)
