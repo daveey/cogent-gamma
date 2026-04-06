@@ -63,7 +63,7 @@ _JUNCTION_ALIGN_DISTANCE = 16.49  # Increased from 16.48 to 16.49 (+0.06%) for b
 _JUNCTION_AOE_RANGE = 15.03  # Increased from 15.02 to 15.03 (+0.07%) for bidirectional enemy AOE detection tuning
 _CLAIMED_TARGET_PENALTY = 10.98  # Reduced from 10.99 to 10.98 (-0.09%) for bidirectional claim override tuning
 _TARGET_CLAIM_STEPS = 33.51  # Increased from 33.50 to 33.51 (+0.03%) for bidirectional claim validity tuning
-_EXTRACTOR_MEMORY_STEPS = 858  # Increased from 856 to 858 (+0.23%) for bidirectional extractor memory tuning
+_EXTRACTOR_MEMORY_STEPS = 859  # Increased from 858 to 859 (+0.12%) for bidirectional extractor memory tuning
 _STATION_TARGETS_BY_AGENT = {
     "aligner": {
         0: (-3, 7),
