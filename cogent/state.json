@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 757,
+      "attempts": 758,
       "improvements": 7,
-      "last_used": "20260406-823-testing"
+      "last_used": "20260406-824-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "823",
-    "focus": "Expansion bonus cap increase",
-    "description": "Increased expansion bonus cap from 37.76 to 37.77 (+0.03%)",
-    "rationale": "Expansion bonus cap limits maximum territory unlock value. Higher cap allows junctions with many unreachable neighbors to provide greater expansion incentive. Conservative +0.03% increase for bidirectional expansion bonus cap tuning. Stacks with 087-822.",
-    "upload": "gamma_v272_v1:v1",
+    "version": "824",
+    "focus": "Enemy AOE penalty increase",
+    "description": "Increased enemy AOE penalty from 10.77 to 10.78 (+0.09%)",
+    "rationale": "Enemy AOE penalty discourages targeting junctions within enemy AOE range. Higher penalty increases avoidance of dangerous contested areas. Conservative +0.09% increase for bidirectional enemy avoidance tuning. Stacks with 087-823.",
+    "upload": "gamma_v273_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 823. Increased expansion bonus cap for bidirectional expansion bonus cap tuning. Awaiting tournament validation."
+    "note": "Attempt 824. Increased enemy AOE penalty for bidirectional enemy avoidance tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
