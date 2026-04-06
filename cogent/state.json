@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 630,
+      "attempts": 631,
       "improvements": 7,
-      "last_used": "20260406-696-testing"
+      "last_used": "20260406-697-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "696",
-    "focus": "Hub penalty 15-25 range multiplier reduction",
-    "description": "Reduced hub penalty 15-25 range multiplier from 2.78 to 2.77 (-0.36%)",
-    "rationale": "Hub penalty 15-25 range multiplier controls penalty for extended-range junctions (15-25 distance from hub). Lower penalty slightly reduces cost of capturing junctions in this range. Conservative -0.36% reduction for continued 15-25 range multiplier tuning. Stacks with 087-695.",
-    "upload": "gamma_v145:v1",
+    "version": "697",
+    "focus": "Hub penalty 15-25 range base reduction",
+    "description": "Reduced hub penalty 15-25 range base from 9.54 to 9.53 (-0.10%)",
+    "rationale": "Hub penalty 15-25 range base controls the base penalty for extended-range junctions (15-25 distance from hub). Lower base penalty slightly reduces cost of capturing junctions in this range. Conservative -0.10% reduction for continued 15-25 range base tuning. Stacks with 087-696.",
+    "upload": "gamma_v146:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 696. Reduced hub penalty 15-25 range multiplier for continued extended-range tuning. Awaiting tournament validation."
+    "note": "Attempt 697. Reduced hub penalty 15-25 range base for continued extended-range tuning. Awaiting tournament validation."
   },
   },
   "last_improvement": {
