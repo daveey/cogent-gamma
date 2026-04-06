@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 660,
+      "attempts": 661,
       "improvements": 7,
-      "last_used": "20260406-726-testing"
+      "last_used": "20260406-727-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "726",
-    "focus": "Hub penalty 10-15 range multiplier increase",
-    "description": "Increased hub penalty 10-15 range multiplier from 1.30 to 1.31 (+0.77%)",
-    "rationale": "Hub penalty 10-15 range multiplier controls penalty growth rate for junctions 10-15 distance from hub. Higher multiplier increases penalty slope, discouraging mid-range junction selection. Conservative +0.77% increase for bidirectional 10-15 range multiplier tuning. Stacks with 087-725.",
-    "upload": "gamma_v175_v1:v1",
+    "version": "727",
+    "focus": "Hub penalty 10-15 range base increase",
+    "description": "Increased hub penalty 10-15 range base from 1.80 to 1.81 (+0.56%)",
+    "rationale": "Hub penalty 10-15 range base controls base penalty offset for junctions 10-15 distance from hub. Higher base increases minimum penalty for this range. Conservative +0.56% increase for bidirectional 10-15 range base tuning. Stacks with 087-726.",
+    "upload": "gamma_v176_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 726. Increased hub penalty 10-15 range multiplier for bidirectional 10-15 range multiplier tuning. Awaiting tournament validation."
+    "note": "Attempt 727. Increased hub penalty 10-15 range base for bidirectional 10-15 range base tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
