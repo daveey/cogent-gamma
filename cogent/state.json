@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 676,
+      "attempts": 677,
       "improvements": 7,
-      "last_used": "20260406-742-testing"
+      "last_used": "20260406-743-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "742",
-    "focus": "Scrambler blocked neutrals weight increase",
-    "description": "Increased scrambler blocked neutrals weight from 8.78 to 8.80 (+0.23%)",
-    "rationale": "Scrambler blocked neutrals weight controls bonus for blocking enemy access to neutral junctions. Higher weight increases expansion-blocking priority. Conservative +0.23% increase for bidirectional expansion-blocking tuning. Stacks with 087-741.",
-    "upload": "gamma_v191_v1:v1",
+    "version": "743",
+    "focus": "Scrambler corner pressure divisor reduction",
+    "description": "Reduced scrambler corner_pressure divisor from 7.52 to 7.50 (-0.27%)",
+    "rationale": "Scrambler corner_pressure divisor controls rate of pressure growth for distant enemy junction targeting. Lower divisor means faster pressure ramp (more aggressive distant targeting). Conservative -0.27% reduction for bidirectional pressure growth tuning. Stacks with 087-742.",
+    "upload": "gamma_v192_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 742. Increased scrambler blocked neutrals weight for bidirectional expansion-blocking tuning. Awaiting tournament validation."
+    "note": "Attempt 743. Reduced scrambler corner_pressure divisor for bidirectional pressure growth tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
