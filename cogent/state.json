@@ -6,12 +6,27 @@
       "last_used": null
     },
     "design": {
-      "attempts": 11,
+      "attempts": 12,
       "improvements": 6,
       "last_used": "20260406-scout-hp-25"
     }
   },
   "failed_attempts": [
+    {
+      "date": "20260406",
+      "version": "llm-stagnation-reverted",
+      "focus": "LLM stagnation detection enhancement",
+      "description": "Enhanced LLM prompt with explicit stagnation detection and role-switching directives",
+      "result": "REGRESSION: avg 23.76 vs baseline 25.05 (-5.1%)",
+      "local_scores": {
+        "seeds": [42, 43, 44, 45, 46],
+        "scores": [24.58, 25.83, 23.44, 24.78, 20.15],
+        "avg": 23.76,
+        "baseline": 25.05
+      },
+      "status": "reverted",
+      "notes": "Cycle 90 - Regression. Enhanced LLM prompt to detect stagnation and force role changes more aggressively (alpha.0 cyborg architecture parity attempt). Caused performance drop, particularly on seeds 44 (-23%) and 46 (-16%). The more directive prompt may have caused excessive role switching or suboptimal strategy adjustments. Simpler prompt works better."
+    },
     {
       "date": "20260406",
       "version": "scrambler-hp-25-reverted",

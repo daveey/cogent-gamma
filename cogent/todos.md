@@ -19,3 +19,4 @@
 - [x] Miner HP threshold optimization
 - [x] Scrambler HP threshold 30→25 tested and reverted
 - [x] Scout HP threshold optimization
+- [x] LLM stagnation detection enhancement tested and reverted
