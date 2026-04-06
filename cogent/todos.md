@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (622) Junction align distance reduction (16.46→16.44): gamma:v71 qualifying - continued chain-building reach tuning (-0.12%, stacks with 087-621)
 - [ ] (621) Hub align distance reduction (26.66→26.64): gamma:v70 qualifying - continued extended hub reach tuning (-0.08%, stacks with 087-620)
 - [ ] (620) Scrambler heart batch target reduction (3.56→3.54): gamma:v69 qualifying - continued scrambler persistence tuning (-0.56%, stacks with 087-619) [MILESTONE: 620 attempts!]
 - [ ] (619) Aligner heart batch target reduction (3.56→3.54): gamma:v68 qualifying - continued aligner persistence tuning (-0.56%, stacks with 087-618)
