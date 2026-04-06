@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 535,
+      "attempts": 536,
       "improvements": 7,
-      "last_used": "20260406-601-testing"
+      "last_used": "20260406-602-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "601",
-    "focus": "Hotspot weight far-range reduction",
-    "description": "Reduced hotspot weight far-range from 11.54 to 11.52 (-0.17%)",
-    "rationale": "Hotspot weight far-range applies penalty for contested junctions >15 distance from hub. Lower weight reduces penalty for far-range contested junctions. Conservative -0.17% reduction builds on validated improvements. Stacks with 087-600.",
-    "upload": "gamma:v50",
+    "version": "602",
+    "focus": "Hotspot weight mid-range reduction",
+    "description": "Reduced hotspot weight mid-range from 5.48 to 5.46 (-0.37%)",
+    "rationale": "Hotspot weight mid-range applies penalty for contested junctions at hub distance 10-15. Lower weight reduces penalty for mid-range contested junctions. Conservative -0.37% reduction builds on validated improvements. Stacks with 087-601.",
+    "upload": "gamma:v51",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Scissors attempt 601. Clean baseline reduced hotspot weight far-range. Awaiting tournament validation."
+    "note": "Scissors attempt 602. Clean baseline reduced hotspot weight mid-range. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
