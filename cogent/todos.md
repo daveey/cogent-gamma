@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (734) Hotspot weight far-range increase (11.50→11.52): gamma_v183_v1:v1 qualifying - bidirectional far-range contested junction tuning (+0.17%, stacks with 087-733)
 - [ ] (733) Hotspot weight mid-range increase (5.44→5.46): gamma_v182_v1:v1 qualifying - bidirectional mid-range contested junction tuning (+0.37%, stacks with 087-732)
 - [ ] (732) Hotspot weight near-hub increase (1.62→1.64): gamma_v181_v1:v1 qualifying - bidirectional near-hub recapture tuning (+1.23%, stacks with 087-731)
 - [ ] (731) Hub penalty far-range base increase (48.82→48.83): gamma_v180_v1:v1 qualifying - bidirectional far-range base tuning (+0.02%, stacks with 087-730)
