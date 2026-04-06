@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 552,
+      "attempts": 553,
       "improvements": 7,
-      "last_used": "20260406-618-testing"
+      "last_used": "20260406-619-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "618",
-    "focus": "Emergency resource low threshold reduction",
-    "description": "Reduced emergency resource low from 2.56 to 2.54 (-0.78%)",
-    "rationale": "Emergency resource low threshold triggers emergency mining when resources dip below this level. Lower threshold delays emergency mining trigger. Conservative -0.78% reduction builds on validated improvements. Stacks with 087-617.",
-    "upload": "gamma:v67",
+    "version": "619",
+    "focus": "Aligner heart batch target reduction",
+    "description": "Reduced aligner heart batch target from 3.56 to 3.54 (-0.56%)",
+    "rationale": "Aligner heart batch target controls how many hearts aligners collect before returning to work. Lower target reduces aligner persistence. Conservative -0.56% reduction builds on validated improvements. Stacks with 087-618.",
+    "upload": "gamma:v68",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Scissors attempt 618. Clean baseline reduced emergency resource low threshold. Awaiting tournament validation."
+    "note": "Scissors attempt 619. Clean baseline reduced aligner heart batch target. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",

@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (619) Aligner heart batch target reduction (3.56→3.54): gamma:v68 qualifying - continued aligner persistence tuning (-0.56%, stacks with 087-618)
 - [ ] (618) Emergency resource low threshold reduction (2.56→2.54): gamma:v67 qualifying - continued earlier emergency mining trigger tuning (-0.78%, stacks with 087-617)
 - [ ] (617) Scrambler HP threshold reduction (34.29→34.27): gamma:v66 qualifying - continued aggressive disruption (-0.058%, stacks with 087-616)
 - [ ] (616) Miner HP threshold reduction (18.66→18.64): gamma:v65 qualifying - continued aggressive resource gathering (-0.11%, stacks with 087-615)
