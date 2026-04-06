@@ -753,3 +753,4 @@
 - [ ] (778) Scrambler heart batch target increase (3.58→3.59): gamma_v227_v1 qualifying - bidirectional scrambler persistence tuning (+0.28%, stacks with 087-777)
 - [ ] (779) Hub align distance increase (26.68→26.69): gamma_v228_v1 qualifying - bidirectional hub reach tuning (+0.04%, stacks with 087-778)
 - [ ] (780) Junction align distance increase (16.48→16.49): gamma_v229_v1 qualifying - bidirectional chain-building reach tuning (+0.06%, stacks with 087-779)
+- [ ] (781) Junction AOE range increase (15.02→15.03): gamma_v230_v1 qualifying - bidirectional enemy AOE detection tuning (+0.07%, stacks with 087-780)
