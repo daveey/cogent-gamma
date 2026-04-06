@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 810,
+      "attempts": 811,
       "improvements": 7,
-      "last_used": "20260406-876-testing"
+      "last_used": "20260406-877-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "876",
-    "focus": "Expansion bonus weight increase",
-    "description": "Increased expansion bonus weight from 6.65 to 6.66 (+0.15%)",
-    "rationale": "Expansion bonus weight controls incentive to capture junctions that unlock unreachable entities. Higher value increases reward for strategic expansion that opens new territory. Conservative +0.15% increase for bidirectional expansion bonus weight tuning. Stacks with 087-875.",
-    "upload": "gamma_v325_v1:v1",
+    "version": "877",
+    "focus": "Network bonus weight increase",
+    "description": "Increased network bonus weight from 0.95 to 0.96 (+1.05%)",
+    "rationale": "Network bonus weight controls incentive for chain-building near friendly junctions. Higher value increases reward for consolidating territory around existing network nodes. Conservative +1.05% increase for bidirectional network bonus weight tuning. Stacks with 087-876.",
+    "upload": "gamma_v326_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 876. Increased expansion bonus weight for bidirectional expansion tuning. Awaiting tournament validation."
+    "note": "Attempt 877. Increased network bonus weight for bidirectional chain-building tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",

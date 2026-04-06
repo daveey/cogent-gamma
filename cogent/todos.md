@@ -849,3 +849,4 @@
 - [ ] (874) Target claim steps increase (33.53→33.54): gamma_v323_v1 qualifying - bidirectional claim validity tuning (+0.03%, stacks with 087-873)
 - [ ] (875) Extractor memory steps increase (861→862): gamma_v324_v1 qualifying - bidirectional extractor memory tuning (+0.12%, stacks with 087-874)
 - [ ] (876) Expansion bonus weight increase (6.65→6.66): gamma_v325_v1 qualifying - bidirectional expansion bonus weight tuning (+0.15%, stacks with 087-875)
+- [ ] (877) Network bonus weight increase (0.95→0.96): gamma_v326_v1 qualifying - bidirectional network bonus weight tuning (+1.05%, stacks with 087-876)
