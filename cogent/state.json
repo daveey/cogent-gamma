@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 591,
+      "attempts": 592,
       "improvements": 7,
-      "last_used": "20260406-657-testing"
+      "last_used": "20260406-658-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "657",
-    "focus": "Claimed target penalty reduction",
-    "description": "Reduced claimed target penalty from 11.03 to 11.01 (-0.18%)",
-    "rationale": "Claimed target penalty discourages claiming junctions already targeted by teammates. Lower penalty allows more flexible claim override for better coordination. Conservative -0.18% reduction builds on validated improvements. Stacks with 087-656.",
-    "upload": "gamma_v106:v1",
+    "version": "658",
+    "focus": "Target claim steps increase",
+    "description": "Increased target claim steps from 33.40 to 33.45 (+0.15%)",
+    "rationale": "Target claim steps defines how long junction claims remain valid. Higher duration allows longer claim validity for better coordination. Conservative +0.15% increase builds on validated improvements. Stacks with 087-657.",
+    "upload": "gamma_v107:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Scissors attempt 657. Clean baseline reduced claimed target penalty. Awaiting tournament validation."
+    "note": "Scissors attempt 658. Clean baseline increased target claim steps. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
