@@ -821,3 +821,4 @@
 - [ ] (846) Claimed target penalty increase (10.99→11.00): gamma_v295_v1 qualifying - bidirectional claim override tuning (+0.09%, stacks with 087-845)
 - [ ] (847) Target claim steps increase (33.52→33.53): gamma_v296_v1 qualifying - bidirectional claim validity tuning (+0.03%, stacks with 087-846)
 - [ ] (848) Extractor memory steps increase (860→861): gamma_v297_v1 qualifying - bidirectional extractor memory tuning (+0.12%, stacks with 087-847)
+- [ ] (849) Expansion bonus weight increase (6.64→6.65): gamma_v298_v1 qualifying - bidirectional expansion bonus weight tuning (+0.15%, stacks with 087-848)
