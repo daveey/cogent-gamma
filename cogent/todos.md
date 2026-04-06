@@ -1,6 +1,7 @@
 # scissors — Improvement TODOs
 
 ## In Progress
+- [ ] (641) Expansion bonus weight increase (6.62→6.64): gamma_v90:v1 qualifying - continued expansion emphasis (+0.30%, stacks with 087-640)
 - [ ] (640) Teammate penalty increase (9.51→9.53): gamma_v89:v1 qualifying - continued coordination tuning (+0.21%, stacks with 087-639) [MILESTONE: 640 attempts!]
 - [ ] (639) Network bonus cap increase (4.56→4.58): gamma_v88:v1 qualifying - continued denser network clustering (+0.44%, stacks with 087-638)
 - [ ] (638) Network bonus weight increase (0.93→0.94): gamma_v87:v1 qualifying - continued stronger network consolidation (+1.08%, stacks with 087-637)
