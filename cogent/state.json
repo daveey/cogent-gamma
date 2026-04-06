@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 653,
+      "attempts": 654,
       "improvements": 7,
-      "last_used": "20260406-719-testing"
+      "last_used": "20260406-720-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260406",
-    "version": "719",
-    "focus": "Scrambler heart batch target reduction",
-    "description": "Reduced scrambler heart batch target from 3.58 to 3.56 (-0.56%)",
-    "rationale": "Scrambler heart batch target controls how many hearts scramblers consume at once. Lower target means more frequent smaller heart batches for smoother resource management. Conservative -0.56% reduction for bidirectional scrambler persistence tuning. Stacks with 087-718.",
-    "upload": "gamma_v168_v1:v1",
+    "version": "720",
+    "focus": "Hub align distance reduction",
+    "description": "Reduced hub align distance from 26.68 to 26.66 (-0.08%)",
+    "rationale": "Hub align distance controls how far junctions can be from hub while still counting toward alignment network. Lower distance tightens hub-proximal clustering. Conservative -0.08% reduction for bidirectional hub reach tuning. Stacks with 087-719.",
+    "upload": "gamma_v169_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260406",
-    "note": "Attempt 719. Reduced scrambler heart batch target for bidirectional scrambler persistence tuning. Awaiting tournament validation."
+    "note": "Attempt 720. Reduced hub align distance for bidirectional hub reach tuning. MILESTONE: 720 attempts! Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
