@@ -148,7 +148,7 @@
       "avg": 25.05,
       "baseline": 23.86
     },
-    "status": "local-only",
+    "status": "uploaded-beta-cvc",
     "notes": "Cycle 89 - Scout HP reduction successful where scrambler failed. Less conservative scout retreat improves field presence. Particularly strong on seed 44 (+27.5%). Confirms retreat optimization pattern applies selectively by role (aligner, miner, scout ✓; scrambler ✗). New baseline: 25.05."
   }
 }
