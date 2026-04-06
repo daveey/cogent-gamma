@@ -6,12 +6,27 @@
       "last_used": null
     },
     "design": {
-      "attempts": 20,
+      "attempts": 21,
       "improvements": 7,
       "last_used": "20260406-junction-aoe-20"
     }
   },
   "failed_attempts": [
+    {
+      "date": "20260406",
+      "version": "hotspot-weight-6.0-reverted",
+      "focus": "Hotspot weight reduction",
+      "description": "Reduced hotspot_weight from 8.0 to 6.0 (-25%) in aligner_target_score",
+      "result": "MARGINAL: avg 25.51 vs baseline 25.42 (+0.4%)",
+      "local_scores": {
+        "seeds": [42, 43, 44, 45, 46],
+        "scores": [28.73, 26.53, 24.22, 23.96, 24.12],
+        "avg": 25.51,
+        "baseline": 25.42
+      },
+      "status": "reverted",
+      "notes": "Cycle 98 - Marginal improvement, too small to be meaningful (+0.4%). High variance across seeds (23.96 to 28.73). Improvement is likely statistical noise rather than true performance gain. Previous successful improvements ranged from +1.5% to +41.2%. Decision: revert due to insufficient improvement magnitude. Success rate: 7/21 = 33.3% (declining from 35%)."
+    },
     {
       "date": "20260406",
       "version": "target-switch-2.5-reverted",
