@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 900,
+      "attempts": 901,
       "improvements": 7,
-      "last_used": "20260407-966-testing"
+      "last_used": "20260407-967-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260407",
-    "version": "966",
-    "focus": "Corner pressure scaling adjustment",
-    "description": "Increased corner pressure divisor from 7.52 to 7.53 (+0.13%)",
-    "rationale": "Corner pressure divisor controls how scrambler targets scale with distance from hub. Higher divisor reduces pressure gradient, allowing more far-corner targeting. Conservative +0.13% increase for bidirectional corner pressure scaling tuning. Stacks with 087-965.",
-    "upload": "gamma_v415_v1:v1",
+    "version": "967",
+    "focus": "Corner pressure cap increase",
+    "description": "Increased corner pressure cap from 10.95 to 10.96 (+0.09%)",
+    "rationale": "Corner pressure cap limits maximum pressure for far-corner enemy targets. Higher cap allows more aggressive far-corner targeting. Conservative +0.09% increase for bidirectional corner pressure cap tuning. Stacks with 087-966.",
+    "upload": "gamma_v416_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260407",
-    "note": "Attempt 966. Adjusted corner pressure scaling for bidirectional corner pressure tuning. Awaiting tournament validation."
+    "note": "Attempt 967. Increased corner pressure cap for bidirectional corner pressure tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
