@@ -45,7 +45,7 @@ _SCRAMBLER_EXPLORE_OFFSETS = (
 _ELEMENTS = ("carbon", "oxygen", "germanium", "silicon")
 _HP_THRESHOLDS = {
     "miner": 18.73,  # Increased from 18.72 to 18.73 (+0.05%) for bidirectional resource gathering tuning
-    "aligner": 45.73,  # Increased from 45.72 to 45.73 (+0.02%) for bidirectional aligner retreat tuning
+    "aligner": 45.74,  # Increased from 45.73 to 45.74 (+0.02%) for bidirectional aligner retreat tuning
     "scrambler": 34.36,  # Increased from 34.35 to 34.36 (+0.03%) for bidirectional disruption tuning
     "scout": 30,
     "unknown": 30,
