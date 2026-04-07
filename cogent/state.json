@@ -6,21 +6,21 @@
       "last_used": null
     },
     "design": {
-      "attempts": 875,
+      "attempts": 876,
       "improvements": 7,
-      "last_used": "20260407-941-testing"
+      "last_used": "20260407-942-testing"
     }
   },
   "testing_in_progress": {
     "date": "20260407",
-    "version": "941",
-    "focus": "Aligner heart batch target increase",
-    "description": "Increased aligner heart batch target from 3.63 to 3.64 (+0.28%)",
-    "rationale": "Aligner heart batch target controls how many hearts aligners craft per batch. Higher value means aligners craft more hearts per trip, improving persistence and uptime. Conservative +0.28% increase for bidirectional aligner persistence tuning. Stacks with 087-940.",
-    "upload": "gamma_v390_v1:v1",
+    "version": "942",
+    "focus": "Scrambler heart batch target increase",
+    "description": "Increased scrambler heart batch target from 3.63 to 3.64 (+0.28%)",
+    "rationale": "Scrambler heart batch target controls how many hearts scramblers craft per batch. Higher value means scramblers craft more hearts per trip, improving persistence and uptime. Conservative +0.28% increase for bidirectional scrambler persistence tuning. Stacks with 087-941.",
+    "upload": "gamma_v391_v1:v1",
     "season": "beta-four-score",
     "uploaded_at": "20260407",
-    "note": "Attempt 941. Increased aligner heart batch target for bidirectional aligner persistence tuning. Awaiting tournament validation."
+    "note": "Attempt 942. Increased scrambler heart batch target for bidirectional scrambler persistence tuning. Awaiting tournament validation."
   },
   "last_improvement": {
     "date": "20260404",
