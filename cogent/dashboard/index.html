@@ -303,11 +303,11 @@ button:hover { background: var(--ctp-blue); }
 <h2>⚠️ Known Issues</h2>
 <div class="todo-list">
   <div class="todo-item">
-    <strong style="color: var(--ctp-red);">Testing Infrastructure Failure (NEW - Apr 7)</strong>
+    <strong style="color: var(--ctp-red);">Testing Infrastructure Failure (BLOCKING - Apr 7)</strong>
     <div style="font-size: 0.9rem; color: var(--ctp-subtext0); margin-top: 5px;">
       All test processes hang after "Increasing action timeout" message. Cycle 105 aborted after 28+ hours.
       Last successful test: Apr 6 23:20. Diagnostics show no resource exhaustion, no stale locks, code imports successfully.
-      Suspected deadlock in game engine or policy interaction. Requires investigation before continuing improvement cycles.
+      Suspected deadlock in game engine or policy interaction. <strong>Requires operator investigation before continuing improvement cycles.</strong>
     </div>
   </div>
   <div class="todo-item">
@@ -340,8 +340,13 @@ button:hover { background: var(--ctp-blue); }
   <div class="todo-item">Scramble corner_pressure divisor 8.0 is optimal (6.0 too marginal -0.6%, high variance)</div>
 </div>
 
+<h2>💬 Recent Conversations</h2>
+<div class="todo-list">
+  <div class="todo-item" style="color: var(--ctp-overlay2);">No conversations yet</div>
+</div>
+
 <div class="footer">
-  <div>Generated: 2026-04-07 00:30 UTC</div>
+  <div>Generated: 2026-04-07 UTC</div>
   <button onclick="fetch('/regenerate',{method:'POST'}).then(()=>{this.textContent='Regenerating...';setTimeout(()=>location.reload(),30000)})">Regenerate</button>
 </div>
 </div>
