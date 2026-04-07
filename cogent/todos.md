@@ -953,3 +953,4 @@
 - [ ] (978) Junction AOE range increase (15.08→15.09): gamma_v427_v1 qualifying - bidirectional enemy AOE detection tuning (+0.07%, stacks with 087-977)
 - [ ] (979) Claimed target penalty increase (11.03→11.04): gamma_v428_v1 qualifying - bidirectional claim override tuning (+0.09%, stacks with 087-978)
 - [ ] (980) Target claim steps increase (33.56→33.57): gamma_v429_v1 qualifying - bidirectional claim validity tuning (+0.03%, stacks with 087-979) [MILESTONE: 980 attempts!]
+- [ ] (981) Extractor memory steps increase (865→866): gamma_v430_v1 qualifying - bidirectional extractor memory tuning (+0.12%, stacks with 087-980)
