@@ -936,3 +936,4 @@
 - [ ] (961) Network bonus weight increase (0.98→0.99): gamma_v410_v1 qualifying - bidirectional network bonus weight tuning (+1.02%, stacks with 087-960)
 - [ ] (962) Expansion bonus weight increase (6.68→6.69): gamma_v411_v1 qualifying - bidirectional expansion emphasis tuning (+0.15%, stacks with 087-961)
 - [ ] (963) Expansion bonus cap increase (37.81→37.82): gamma_v412_v1 qualifying - bidirectional expansion bonus cap tuning (+0.03%, stacks with 087-962)
+- [ ] (964) Enemy AOE penalty increase (10.82→10.83): gamma_v413_v1 qualifying - bidirectional enemy avoidance tuning (+0.09%, stacks with 087-963)
