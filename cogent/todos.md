@@ -891,3 +891,4 @@
 - [ ] (916) Hub penalty near-hub multiplier increase (0.265→0.266): gamma_v365_v1 qualifying - bidirectional hub clustering tuning (+0.38%, stacks with 087-915)
 - [ ] (917) Hub penalty 10-15 range multiplier increase (1.35→1.36): gamma_v366_v1 qualifying - bidirectional 10-15 range multiplier tuning (+0.74%, stacks with 087-916)
 - [ ] (918) Hub penalty 10-15 range base increase (1.84→1.85): gamma_v367_v1 qualifying - bidirectional 10-15 range base tuning (+0.54%, stacks with 087-917)
+- [ ] (919) Hub penalty 15-25 range multiplier increase (2.82→2.84): gamma_v368_v1 qualifying - bidirectional 15-25 range multiplier tuning (+0.71%, stacks with 087-918)
