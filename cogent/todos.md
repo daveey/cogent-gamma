@@ -948,3 +948,4 @@
 - [ ] (973) Emergency resource threshold increase (2.64→2.65): gamma_v422_v1 qualifying - bidirectional emergency mining trigger tuning (+0.38%, stacks with 087-972)
 - [ ] (974) Aligner heart batch target increase (3.64→3.65): gamma_v423_v1 qualifying - bidirectional aligner persistence tuning (+0.27%, stacks with 087-973)
 - [ ] (975) Scrambler heart batch target increase (3.64→3.65): gamma_v424_v1 qualifying - bidirectional scrambler persistence tuning (+0.27%, stacks with 087-974)
+- [ ] (976) Hub align distance increase (26.74→26.75): gamma_v425_v1 qualifying - bidirectional hub reach tuning (+0.04%, stacks with 087-975)
