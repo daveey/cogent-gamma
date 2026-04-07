@@ -906,3 +906,4 @@
 - [ ] (931) Enemy AOE penalty increase (10.81→10.82): gamma_v380_v1 qualifying - bidirectional enemy avoidance tuning (+0.09%, stacks with 087-930)
 - [ ] (932) Teammate penalty increase (9.56→9.57): gamma_v381_v1 qualifying - bidirectional coordination tuning (+0.10%, stacks with 087-931)
 - [ ] (933) Scrambler blocked neutrals weight increase (8.85→8.86): gamma_v382_v1 qualifying - bidirectional expansion-blocking tuning (+0.11%, stacks with 087-932)
+- [ ] (934) Scrambler corner pressure divisor increase (7.51→7.52): gamma_v383_v1 qualifying - bidirectional pressure growth tuning (+0.13%, stacks with 087-933)
